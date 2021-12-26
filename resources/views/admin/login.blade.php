@@ -5,23 +5,33 @@
     <div class="text-center mb-6">
         <img src="{{ asset('assets/images/logo.png') }}" class="h-6" alt="">
     </div>
-    <form class="card" action="" method="post">
+    <form class="card" action="{{ route('admin.login') }}" method="post">
+        @csrf
+
         <div class="card-body p-6">
             <div class="card-title">Admin Login</div>
             <div class="form-group">
-                <label class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <label class="form-label" for="email">Email address</label>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') }}" name="email" />
+
+                @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
-                <label class="form-label">
+                <label class="form-label" for="password">
                     Password
                     <a href="./forgot-password.html" class="float-right small">I forgot password</a>
                 </label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" />
+
+                @error('password')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" />
+                    <input type="checkbox" class="custom-control-input" name="remember" {{ old('remember') ? 'checked' : '' }} />
                     <span class="custom-control-label">Remember me</span>
                 </label>
             </div>

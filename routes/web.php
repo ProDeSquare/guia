@@ -17,5 +17,10 @@ Route::get('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, '
 Route::post('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 'register' ]);
 
 Route::middleware(['app.setup'])->group(function () {
-    Route::get('/admin', App\Http\Controllers\Admin\IndexController::class);
+    Route::prefix('admin')->group(function () {
+        Route::get('/', \App\Http\Controllers\Admin\IndexController::class);
+        Route::post('/login', App\Http\Controllers\Admin\LoginController::class)->name('admin.login');
+    });
+
+
 });
