@@ -18,9 +18,13 @@ Route::post('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 
 
 Route::middleware(['app.setup'])->group(function () {
     Route::prefix('admin')->group(function () {
+        Route::get('/login', [ \App\Http\Controllers\Admin\LoginController::class, 'show' ]);
+        Route::post('/login', [ \App\Http\Controllers\Admin\LoginController::class, 'login' ])->name('admin.login');
+
         Route::get('/', \App\Http\Controllers\Admin\IndexController::class);
-        Route::post('/login', App\Http\Controllers\Admin\LoginController::class)->name('admin.login');
     });
 
-
+    Route::get('/', function () {
+        return '<a href="/admin/login">Admin Login</a>';
+    })->name('login');
 });

@@ -1,3 +1,7 @@
+@php
+    if (auth()->guard('admin')->check()) $guard = 'admin';
+@endphp
+
 <div class="header py-4">
     <div class="container">
         <div class="d-flex">
@@ -7,10 +11,16 @@
             <div class="d-flex order-lg-2 ml-auto">
                 <div class="dropdown">
                     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <span class="avatar" style="background-image: url(https://www.gravatar.com/avatar/322eeecb2780eeaffb3f541bcae38b27?s=250)"></span>
+                    <span class="avatar" style="background-image: url({{ auth()->guard($guard)->user()->avatar() }})"></span>
                     <span class="ml-2 d-none d-lg-block">
-                    <span class="text-default">Hamza Mughal</span>
-                    <small class="text-muted d-block mt-1">Administrator</small>
+                    <span class="text-default">
+                        {{ auth()->guard($guard)->user()->name }}
+                    </span>
+                    <small class="text-muted d-block mt-1">
+                        @if ($guard === 'admin')
+                            Administrator
+                        @endif
+                    </small>
                     </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">

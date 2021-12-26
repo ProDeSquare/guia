@@ -12,9 +12,10 @@ class LoginController extends Controller
     public function __construct ()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
     }
 
-    public function __invoke (Request $request)
+    public function login (Request $request)
     {
         $request->validate([
             'email' => 'required',
@@ -31,11 +32,16 @@ class LoginController extends Controller
                     $request->remember
                 )
         ) {
-            return redirect()->intended('/');
+            return redirect()->intended('/admin');
         }
 
         return back()->withErrors([
             'email' => 'Invalid email or password'
         ]);
+    }
+
+    public function show ()
+    {
+        return view('admin.login');
     }
 }

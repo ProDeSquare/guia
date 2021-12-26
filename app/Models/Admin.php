@@ -23,4 +23,9 @@ class Admin extends Authenticatable
         'password',
         'remember_token'
     ];
+
+    public function avatar ()
+    {
+        return "https://www.gravatar.com/avatar/" . md5($this->email) . "?s=100";
+    }
 }
