@@ -13,9 +13,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/', \App\Http\Controllers\Admin\IndexController::class);
     });
 
-    Route::get('/', function () {
-        return '<a href="/admin/login">Admin Login</a>';
-    })->name('login');
+    Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
 
     Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
 });
