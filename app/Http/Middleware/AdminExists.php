@@ -21,6 +21,6 @@ class AdminExists
             return $next($request);
         }
 
-        abort(401);
+        abort(404);
     }
 }
