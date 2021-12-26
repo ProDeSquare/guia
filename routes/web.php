@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 'show' ]);
 Route::post('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 'register' ]);
 
-Route::get('/admin', App\Http\Controllers\Admin\IndexController::class);
+Route::middleware(['app.setup'])->group(function () {
+    Route::get('/admin', App\Http\Controllers\Admin\IndexController::class);
+});
