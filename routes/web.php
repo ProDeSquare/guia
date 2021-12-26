@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 'show' ]);
+Route::post('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 'register' ]);
+
+Route::get('/admin', App\Http\Controllers\Admin\IndexController::class);
