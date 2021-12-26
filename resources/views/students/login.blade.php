@@ -7,7 +7,7 @@
     </div>
     <form class="card" action="" method="post">
         <div class="card-body p-6">
-            <div class="card-title">Admin Login</div>
+            <div class="card-title">Student Login</div>
             <div class="form-group">
                 <label class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
