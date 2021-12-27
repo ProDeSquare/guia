@@ -56,7 +56,7 @@
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ config('mod.default_password') }}" name="password" />
 
                                         <small class="form-hint">
-                                            The default password for mod is "{{ config('mod.default_password') }}", see <code>config/mod.php</code> for more details. Error would reset your input.
+                                            The default password for mod is "{{ config('mod.default_password') }}", see <code>config/mod.php</code> for more details. <strong>Error would reset your input.</strong>
                                         </small>
 
                                         @error('password')

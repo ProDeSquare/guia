@@ -2,10 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Mod extends Model
+class Mod extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable;
+
+    protected $guard = 'mod';
+
+    protected $table = 'moderators';
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token'
+    ];
+
+    public function avatar ()
+    {
+        return "https://www.gravatar.com/avatar/" . md5($this->email) . "?s=100";
+    }
 }

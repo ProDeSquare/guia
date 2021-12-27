@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Mod;
 use App\Rules\FullNameRule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class AddModeratorController extends Controller
 {
@@ -21,7 +23,13 @@ class AddModeratorController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
-        dd($request);
+        Mod::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->intended('/admin/add/moderator?mod_added=true');
     }
 
     public function show ()
