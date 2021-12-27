@@ -13,6 +13,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/', \App\Http\Controllers\Admin\IndexController::class);
 
         Route::get('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'show' ])->name('mod.add');
+        Route::post('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'add' ])->name('mod.add');
     });
 
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
