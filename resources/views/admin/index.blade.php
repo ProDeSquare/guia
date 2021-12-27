@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        <a href="#">Add a moderator</a>
+        <a href="{{ route('mod.add') }}">Add a moderator</a>
     </div>
 @endsection

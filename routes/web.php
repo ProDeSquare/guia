@@ -11,6 +11,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/login', [ \App\Http\Controllers\Admin\LoginController::class, 'login' ])->name('admin.login');
 
         Route::get('/', \App\Http\Controllers\Admin\IndexController::class);
+
+        Route::get('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'show' ])->name('mod.add');
     });
 
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
