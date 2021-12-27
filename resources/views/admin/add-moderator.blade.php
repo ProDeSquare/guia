@@ -25,6 +25,12 @@
 
                             <form action="">
                                 <div class="form-group mb-3">
+                                    <label for="name" class="form-label">Moderator's Name</label>
+
+                                    <input type="text" class="form-control" placeholder="John Doe" name="name" />
+                                </div>
+
+                                <div class="form-group mb-3">
                                     <label for="email" class="form-label">Email Address</label>
 
                                     <input type="email" class="form-control" placeholder="username@riphahfsd.edu.pk" name="email" />
