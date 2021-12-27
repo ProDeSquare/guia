@@ -31,7 +31,7 @@
             <div class="page-main">
                 @include('partials.navigation')
                     @yield('content')
-                @include('partials.footer')
+                {{-- @include('partials.footer') --}}
             </div>
         @else
             <div class="page-single">
