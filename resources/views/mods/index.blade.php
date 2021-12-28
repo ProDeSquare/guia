@@ -13,7 +13,7 @@
 
             <ul>
                 <li><a href="#">Add a Student</a></li>
-                <li><a href="#">Add a teacher</a></li>
+                <li><a href="{{ route('teacher.add') }}">Add a teacher</a></li>
             </ul>
         </div>
     </div>

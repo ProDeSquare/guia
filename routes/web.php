@@ -21,6 +21,9 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/login', [ \App\Http\Controllers\Mod\LoginController::class, 'login' ])->name('mod.login');
 
         Route::get('/', \App\Http\Controllers\Mod\IndexController::class);
+
+        Route::get('/add/teacher', [ \App\Http\Controllers\Mod\AddTeacherController::class, 'show' ])->name('teacher.add');
+        Route::post('/add/teacher', [ \App\Http\Controllers\Mod\AddTeacherController::class, 'add' ])->name('teacher.add');
     });
 
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
