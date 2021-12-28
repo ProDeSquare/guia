@@ -73,6 +73,36 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                            <div class="divide-y">
+                                @foreach ($mods as $mod)
+                                    <div class="pb-4 border-bottom-div">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="avatar" style="background-image: url({{ $mod->avatar() }})"></span>
+                                            </div>
+
+                                            <div class="col">
+                                                <div class="text-truncate">
+                                                    <strong>{{ $mod->name }}</strong>
+                                                </div>
+
+                                                <div class="text-muted">{{ $mod->created_at->diffForHumans() }}</div>
+                                            </div>
+
+                                            <div class="col-auto align-self-center">
+                                                <div class="badge bg-primary"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

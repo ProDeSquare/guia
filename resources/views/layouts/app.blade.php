@@ -24,6 +24,8 @@
     <script src="{{ asset('assets/plugins/charts-c3/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ asset('assets/css/_app.css') }}" />
 </head>
 <body>
     <div class="page">
