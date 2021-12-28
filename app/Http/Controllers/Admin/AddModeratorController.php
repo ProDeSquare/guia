@@ -34,7 +34,7 @@ class AddModeratorController extends Controller
 
     public function show ()
     {
-        $mods = Mod::latest()->take(5)->get();
+        $mods = Mod::latest()->take(15)->get();
 
         return view('admin/add-moderator')->withMods($mods);
     }

@@ -26,6 +26,6 @@ class Mod extends Authenticatable
 
     public function avatar ()
     {
-        return "https://www.gravatar.com/avatar/" . md5($this->email) . "?s=100";
+        return "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
     }
 }
