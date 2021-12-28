@@ -1,5 +1,15 @@
 @php
+    $guard = '';
+
     if (auth()->guard('admin')->check()) $guard = 'admin';
+    if (auth()->guard('mod')->check()) $guard = 'mod';
+
+    $guard_labels = [
+        'admin' => 'Administrator',
+        'mod' => 'Moderator',
+        'teacher' => 'lecturer',
+        'student' => 'Student',
+    ];
 @endphp
 
 <div class="header py-4">
@@ -17,9 +27,10 @@
                         {{ auth()->guard($guard)->user()->name }}
                     </span>
                     <small class="text-muted d-block mt-1">
-                        @if ($guard === 'admin')
+                        {{-- @if ($guard === 'admin')
                             Administrator
-                        @endif
+                        @endif --}}
+                        {{ $guard_labels[$guard] }}
                     </small>
                     </span>
                     </a>

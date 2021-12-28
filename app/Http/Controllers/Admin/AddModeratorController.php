@@ -19,7 +19,7 @@ class AddModeratorController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:25', new FullNameRule()],
-            'email' => 'required|email|unique:admin',
+            'email' => 'required|email|unique:moderators',
             'password' => 'required|min:8|max:255'
         ]);
 

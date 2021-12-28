@@ -18,7 +18,7 @@
 
                         <p>Continue with Mod login if your department have provided you Mod account.</p>
 
-                        <button class="btn btn-primary btn-block">I'm Moderator</button>
+                        <a href="{{ route('mod.login') }}" class="btn btn-primary btn-block">I'm Moderator</a>
                     </div>
                 </div>
             </div>

@@ -25,6 +25,10 @@ class RedirectIfAuthenticated
             if ($guard == 'admin' && Auth::guard($guard)->check()) {
                 return redirect('/admin');
             }
+
+            if ($guard == 'mod' && Auth::guard($guard)->check()) {
+                return redirect('/mod');
+            }
         }
 
         return $next($request);

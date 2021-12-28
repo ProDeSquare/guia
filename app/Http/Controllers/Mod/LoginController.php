@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Mod;
 
 use Auth;
 use Illuminate\Http\Request;
@@ -13,7 +13,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest');
         $this->middleware('guest:admin');
-        $this->middleware('guest:mod');
     }
 
     public function login (Request $request)
@@ -24,7 +23,7 @@ class LoginController extends Controller
         ]);
 
         if (
-            Auth::guard('admin')
+            Auth::guard('mod')
                 ->attempt(
                     [
                         'email' => $request->email,
@@ -33,7 +32,7 @@ class LoginController extends Controller
                     $request->remember
                 )
         ) {
-            return redirect()->intended('/admin');
+            return redirect()->intended('/mod');
         }
 
         return back()->withErrors([
@@ -43,6 +42,6 @@ class LoginController extends Controller
 
     public function show ()
     {
-        return view('admin.login');
+        return view('mods.login');
     }
 }
