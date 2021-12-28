@@ -4,12 +4,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Mod Password
+    | Default Teacher Password
     |--------------------------------------------------------------------------
     |
-    | This value is the default password for the mod you create from the admin
+    | This value is the default password for the teacher you create from the mod
     | panel. Changing this value to something else would also change the default
-    | password for all future mods. Moderators later able to change their passwords
+    | password for all future teachers but they will later able to change their passwords
     |
     */
 

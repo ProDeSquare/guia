@@ -12,7 +12,7 @@
             <div>Actions: </div>
 
             <ul>
-                <li><a href="#">Add a Student</a></li>
+                <li><a href="{{ route('student.add') }}">Add a Student</a></li>
                 <li><a href="{{ route('teacher.add') }}">Add a teacher</a></li>
             </ul>
         </div>

@@ -2,10 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Student extends Model
+class Student extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable;
+
+    protected $guard = 'student';
+
+    protected $table = 'students';
+
+    protected $fillable = [
+        'name',
+        'username',
+        'email',
+        'password',
+        'group_id',
+        'bio',
+        'github',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function avatar ()
+    {
+        return $this->email
+            ? 'https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mm'
+            : 'http://www.gravatar.com/avatar/?d=mm';
+    }
 }
