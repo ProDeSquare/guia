@@ -29,6 +29,13 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'add' ])->name('student.add');
     });
 
+    Route::prefix('teacher')->group(function () {
+        Route::get('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'show' ])->name('teacher.login');
+        Route::post('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'login' ])->name('teacher.login');
+
+        Route::get('/', \App\Http\Controllers\Teacher\IndexController::class);
+    });
+
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
 
     Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');

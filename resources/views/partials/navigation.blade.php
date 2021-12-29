@@ -3,11 +3,12 @@
 
     if (auth()->guard('admin')->check()) $guard = 'admin';
     if (auth()->guard('mod')->check()) $guard = 'mod';
+    if (auth()->guard('teacher')->check()) $guard = 'teacher';
 
     $guard_labels = [
         'admin' => 'Administrator',
         'mod' => 'Moderator',
-        'teacher' => 'lecturer',
+        'teacher' => 'Lecturer',
         'student' => 'Student',
     ];
 @endphp

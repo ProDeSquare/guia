@@ -50,6 +50,11 @@ return [
             'driver' => 'session',
             'provider' => 'mods'
         ],
+
+        'teacher' => [
+            'driver' => 'session',
+            'provider' => 'teachers'
+        ],
     ],
 
     /*
@@ -85,10 +90,10 @@ return [
             'model' => App\Models\Mod::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
+        ],
     ],
 
     /*

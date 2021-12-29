@@ -29,7 +29,7 @@
 
                         <p>Login with account provided you by your moderator as a teacher.</p>
 
-                        <button class="btn btn-primary btn-block">I'm Teacher</button>
+                        <a href="{{ route('teacher.login') }}" class="btn btn-primary btn-block">I'm Teacher</a>
                     </div>
                 </div>
             </div>

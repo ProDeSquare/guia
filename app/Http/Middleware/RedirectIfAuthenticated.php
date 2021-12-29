@@ -29,6 +29,10 @@ class RedirectIfAuthenticated
             if ($guard == 'mod' && Auth::guard($guard)->check()) {
                 return redirect('/mod');
             }
+
+            if ($guard == 'teacher' && Auth::guard($guard)->check()) {
+                return redirect('/teacher');
+            }
         }
 
         return $next($request);
