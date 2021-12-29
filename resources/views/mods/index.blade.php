@@ -4,16 +4,16 @@
     <div class="container">
         <div class="page-header">
             <div class="page-title">
-                You're logged in as a moderator
+                Moderator Actions
             </div>
         </div>
 
         <div class="page-body">
-            <div>Actions: </div>
+            <p>Following is the list of available moderator actions.</p>
 
             <ul>
                 <li><a href="{{ route('student.add') }}">Add a Student</a></li>
-                <li><a href="{{ route('teacher.add') }}">Add a teacher</a></li>
+                <li><a href="{{ route('teacher.add') }}">Add a Teacher</a></li>
             </ul>
         </div>
     </div>
