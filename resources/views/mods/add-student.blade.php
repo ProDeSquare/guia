@@ -30,7 +30,7 @@
                                 <div class="form-group mb-3">
                                     <label for="name" class="form-label">Students's Name</label>
 
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="John Doe" name="name" value="{{ old('name') }}" required />
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="John Doe" name="name" id="name" value="{{ old('name') }}" required />
 
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -41,7 +41,7 @@
                                 <div class="form-group mb-3">
                                     <label for="roll_no" class="form-label">Roll Number</label>
 
-                                    <input type="number" class="form-control @error('roll_no') is-invalid @enderror" placeholder="10706" name="roll_no" value="{{ old('roll_no') }}" required />
+                                    <input type="number" class="form-control @error('roll_no') is-invalid @enderror" placeholder="10706" name="roll_no" id="roll_no" value="{{ old('roll_no') }}" required />
 
                                     @error('roll_no')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -52,7 +52,7 @@
                                 <div class="form-group mb-3">
                                     <label for="username" class="form-label">Username</label>
 
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="{{ config('student.default_username') }}" name="username" value="{{ old('username') ?? config('student.default_username') }}" required />
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="{{ config('student.default_username') }}" name="username" value="{{ old('username') ?? config('student.default_username') }}" id="username" required />
 
                                     <small class="form-hint">
                                         Students would use username instead of email to login.
@@ -68,7 +68,7 @@
                                     <label for="password" class="form-label">Generate Password</label>
 
                                     <div>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ config('student.default_password') }}" name="password" required />
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ config('student.default_password') }}" name="password" id="password" required />
 
                                         <small class="form-hint">
                                             The default password for student is "{{ config('student.default_password') }}", see <code>config/student.php</code> for more details. <strong>Error would reset your input.</strong>

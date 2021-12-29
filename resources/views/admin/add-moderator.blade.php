@@ -30,7 +30,7 @@
                                 <div class="form-group mb-3">
                                     <label for="name" class="form-label">Moderator's Name</label>
 
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="John Doe" name="name" value="{{ old('name') }}" required />
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="John Doe" name="name" id="name" value="{{ old('name') }}" required />
 
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -41,7 +41,7 @@
                                 <div class="form-group mb-3">
                                     <label for="email" class="form-label">Email Address</label>
 
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="username@riphahfsd.edu.pk" name="email" value="{{ old('email') }}" required />
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="username@riphahfsd.edu.pk" name="email" id="email" value="{{ old('email') }}" required />
 
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -53,7 +53,7 @@
                                     <label for="password" class="form-label">Generate Password</label>
 
                                     <div>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ config('mod.default_password') }}" name="password" required />
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ config('mod.default_password') }}" id="password" name="password" required />
 
                                         <small class="form-hint">
                                             The default password for mod is "{{ config('mod.default_password') }}", see <code>config/mod.php</code> for more details. <strong>Error would reset your input.</strong>
