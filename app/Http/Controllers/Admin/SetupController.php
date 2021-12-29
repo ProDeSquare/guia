@@ -22,7 +22,7 @@ class SetupController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:25', new FullNameRule()],
-            'email' => 'required|email|unique:admin',
+            'email' => 'required|email|unique:admin|unique:moderators|unique:teachers|unique:students',
             'password' => 'required|min:8|max:255'
         ]);
 
