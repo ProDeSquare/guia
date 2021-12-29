@@ -14,7 +14,7 @@
             {{-- name --}}
             <div class="form-group">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" name="name" value="{{ old('name') }}" />
+                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" name="name" value="{{ old('name') }}" required />
 
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -24,7 +24,7 @@
             {{-- email --}}
             <div class="form-group">
                 <label class="form-label">Email address</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" name="email" value="{{ old('email') }}" />
+                <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" name="email" value="{{ old('email') }}" required />
 
                 @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -34,7 +34,7 @@
             {{-- password --}}
             <div class="form-group">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" />
+                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required />
 
                 @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>

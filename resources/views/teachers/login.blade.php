@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="email" class="form-label">Email address</label>
 
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter email" name="email" value="{{ old('email') }}" />
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter email" name="email" value="{{ old('email') }}" required />
 
                 @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -25,10 +25,10 @@
             <div class="form-group">
                 <label for="password" class="form-label">
                     Password
-                    <a href="./forgot-password.html" class="float-right small">I forgot password</a>
+                    {{-- <a href="./forgot-password.html" class="float-right small">I forgot password</a> --}}
                 </label>
 
-                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" />
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required />
 
                 @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>

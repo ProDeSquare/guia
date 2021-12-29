@@ -14,6 +14,8 @@ class LoginController extends Controller
         $this->middleware('guest');
         $this->middleware('guest:admin');
         $this->middleware('guest:mod');
+        $this->middleware('guest:teacher');
+        $this->middleware('guest:student');
     }
 
     public function login (Request $request)

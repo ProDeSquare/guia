@@ -30,7 +30,7 @@
                                 <div class="form-group mb-3">
                                     <label for="name" class="form-label">Teacher's Name</label>
 
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="John Doe" name="name" value="{{ old('name') }}" />
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="John Doe" name="name" value="{{ old('name') }}" required />
 
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -41,7 +41,7 @@
                                 <div class="form-group mb-3">
                                     <label for="email" class="form-label">Email Address</label>
 
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="username@riphahfsd.edu.pk" name="email" value="{{ old('email') }}" />
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="username@riphahfsd.edu.pk" name="email" value="{{ old('email') }}" required />
 
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -53,7 +53,7 @@
                                     <label for="password" class="form-label">Generate Password</label>
 
                                     <div>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ config('teacher.default_password') }}" name="password" />
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ config('teacher.default_password') }}" name="password" required />
 
                                         <small class="form-hint">
                                             The default password for teacher is "{{ config('teacher.default_password') }}", see <code>config/teacher.php</code> for more details. <strong>Error would reset your input.</strong>

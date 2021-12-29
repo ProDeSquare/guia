@@ -10,21 +10,28 @@ class LogoutController extends Controller
 {
     protected $guard;
 
+    protected $guards_list = [
+        'admin',
+        'mod',
+        'teacher',
+        'student',
+    ];
+
     public function __invoke (Request $request)
     {
-        $this->getGuardName();
-
+        $this->setGuardName();
         Auth::guard($this->guard)->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');
     }
 
-    protected function getGuardName ()
+    protected function setGuardName ()
     {
-        if (Auth::guard('admin')->check()) $this->guard = 'admin';
+        foreach ($this->guards_list as $guard) {
+            Auth::guard($guard)->check() && $this->guard = $guard;
+        }
     }
 }
