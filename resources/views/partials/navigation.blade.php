@@ -4,6 +4,7 @@
     if (auth()->guard('admin')->check()) $guard = 'admin';
     if (auth()->guard('mod')->check()) $guard = 'mod';
     if (auth()->guard('teacher')->check()) $guard = 'teacher';
+    if (auth()->guard('student')->check()) $guard = 'student';
 
     $guard_labels = [
         'admin' => 'Administrator',

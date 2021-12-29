@@ -12,6 +12,7 @@ class WelcomeController extends Controller
         $this->middleware('guest:admin');
         $this->middleware('guest:mod');
         $this->middleware('guest:teacher');
+        $this->middleware('guest:student');
     }
 
     public function __invoke ()

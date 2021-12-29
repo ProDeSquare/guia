@@ -40,7 +40,7 @@
 
                         <p>Login with account provided you by your moderator as a student.</p>
 
-                        <button class="btn btn-primary btn-block">I'm Student</button>
+                        <a href="{{ route('student.login') }}" class="btn btn-primary btn-block">I'm Student</a>
                     </div>
                 </div>
             </div>

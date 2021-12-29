@@ -36,6 +36,13 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/', \App\Http\Controllers\Teacher\IndexController::class);
     });
 
+    Route::prefix('student')->group(function () {
+        Route::get('/login', [ \App\Http\Controllers\Student\LoginController::class, 'show' ])->name('student.login');
+        Route::post('/login', [ \App\Http\Controllers\Student\LoginController::class, 'login' ])->name('student.login');
+
+        Route::get('/', \App\Http\Controllers\Student\IndexController::class);
+    });
+
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
 
     Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
