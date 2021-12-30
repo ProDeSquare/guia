@@ -2,4 +2,4 @@
 
 @section('title', __('Unauthorized'))
 @section('code', '401')
-@section('message', __('You\'re unauthorized to perform this action'))
+@section('message', __('We are sorry but you are not authorized to access this page'))
