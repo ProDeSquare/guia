@@ -30,12 +30,6 @@ class AddModeratorController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Mod::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
-
         return redirect()->intended('/admin/add/moderator?mod_added=true');
     }
 
