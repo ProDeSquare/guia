@@ -23,6 +23,8 @@ class CreateStudentsTable extends Migration
             $table->text('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('github')->nullable();
+            $table->bigInteger('created_by');
+            $table->boolean('enabled')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
