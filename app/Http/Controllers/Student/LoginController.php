@@ -35,7 +35,13 @@ class LoginController extends Controller
                     $request->remember
                 )
         ) {
-            return redirect()->intended('/student');
+            if (Auth::guard('student')->user()->enabled) return redirect()->intended('/student');
+
+            Auth::guard('student')->logout();
+
+            return back()->withErrors([
+                'username' => 'Your account has been blocked by your moderator'
+            ]);
         }
 
         return back()->withErrors([
