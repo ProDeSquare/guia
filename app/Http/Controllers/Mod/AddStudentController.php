@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mod;
 
+use Auth;
 use App\Models\Student;
 use App\Rules\FullNameRule;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class AddStudentController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
-        Student::create([
+        Auth::guard('mod')->user()->students()->create([
             'name' => $request->name,
             'username' => $request->username,
             'roll_no' => $request->roll_no,
