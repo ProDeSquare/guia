@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
 use App\Models\Mod;
 use App\Rules\FullNameRule;
 use Illuminate\Http\Request;
@@ -23,11 +24,17 @@ class AddModeratorController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
-        Mod::create([
+        Auth::guard('admin')->user()->moderators()->create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // Mod::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
         return redirect()->intended('/admin/add/moderator?mod_added=true');
     }

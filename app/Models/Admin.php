@@ -28,4 +28,9 @@ class Admin extends Authenticatable
     {
         return "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
     }
+
+    public function moderators ()
+    {
+        return $this->hasMany(\App\Models\Mod::class, 'created_by');
+    }
 }
