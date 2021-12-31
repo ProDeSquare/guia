@@ -31,6 +31,6 @@ class Admin extends Authenticatable
 
     public function moderators ()
     {
-        return $this->hasMany(\App\Models\Mod::class, 'created_by');
+        return $this->hasMany(Mod::class, 'created_by');
     }
 }
