@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mod;
 
+use Auth;
 use App\Models\Teacher;
 use App\Rules\FullNameRule;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class AddTeacherController extends Controller
             'password' => 'required|min:8|max:255',
         ]);
 
-        Teacher::create([
+        Auth::guard('mod')->user()->teachers()->create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

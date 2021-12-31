@@ -28,4 +28,14 @@ class Mod extends Authenticatable
     {
         return "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
     }
+
+    public function teachers ()
+    {
+        return $this->hasMany(Teacher::class, 'created_by');
+    }
+
+    public function students ()
+    {
+        return $this->hasMany(Student::class, 'created_by');
+    }
 }
