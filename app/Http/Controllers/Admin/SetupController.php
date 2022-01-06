@@ -26,7 +26,7 @@ class SetupController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->intended('/admin?setup=success');
+        return redirect()->intended('/admin/login?setup=success');
     }
 
     public function show()
