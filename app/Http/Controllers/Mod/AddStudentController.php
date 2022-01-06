@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Mod;
 
 use Auth;
 use App\Models\Student;
-use App\Rules\FullNameRule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StudentRegisterRequest;
 
 class AddStudentController extends Controller
 {
@@ -16,15 +16,8 @@ class AddStudentController extends Controller
         $this->middleware('auth:mod');
     }
 
-    public function add (Request $request)
+    public function add (StudentRegisterRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'min:3', 'max:25', new FullNameRule()],
-            'username' => 'required|unique:students|min:3|max:25|alpha_dash',
-            'roll_no' => 'required|integer',
-            'password' => 'required|min:8|max:255'
-        ]);
-
         Auth::guard('mod')->user()->students()->create([
             'name' => $request->name,
             'username' => $request->username,

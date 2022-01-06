@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StudentLoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -18,23 +19,9 @@ class LoginController extends Controller
         $this->middleware('guest:student');
     }
 
-    public function login (Request $request)
+    public function login (StudentLoginRequest $request)
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
-        if (
-            Auth::guard('student')
-                ->attempt(
-                    [
-                        'username' => $request->username,
-                        'password' => $request->password,
-                    ],
-                    $request->remember
-                )
-        ) {
+        if (Auth::guard('student')->attempt($request->only('username', 'password'), $request->remember)) {
             if (Auth::guard('student')->user()->enabled) return redirect()->intended('/student');
 
             Auth::guard('student')->logout();

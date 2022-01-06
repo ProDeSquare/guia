@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mod;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DefaultLoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -18,23 +19,9 @@ class LoginController extends Controller
         $this->middleware('guest:student');
     }
 
-    public function login (Request $request)
+    public function login (DefaultLoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
-        if (
-            Auth::guard('mod')
-                ->attempt(
-                    [
-                        'email' => $request->email,
-                        'password' => $request->password,
-                    ],
-                    $request->remember
-                )
-        ) {
+        if (Auth::guard('mod')->attempt($request->only('email', 'password'), $request->remember)) {
             return redirect()->intended('/mod');
         }
 

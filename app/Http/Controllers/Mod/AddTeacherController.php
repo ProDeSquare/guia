@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Mod;
 
 use Auth;
 use App\Models\Teacher;
-use App\Rules\FullNameRule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\DefaultRegisterRequest;
 
 class AddTeacherController extends Controller
 {
@@ -16,14 +16,8 @@ class AddTeacherController extends Controller
         $this->middleware('auth:mod');
     }
 
-    public function add (Request $request)
+    public function add (DefaultRegisterRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'min:3', 'max:25', new FullNameRule()],
-            'email' => 'required|email|unique:admin|unique:moderators|unique:teachers|unique:students',
-            'password' => 'required|min:8|max:255',
-        ]);
-
         Auth::guard('mod')->user()->teachers()->create([
             'name' => $request->name,
             'email' => $request->email,

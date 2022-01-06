@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Auth;
 use App\Models\Mod;
-use App\Rules\FullNameRule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\DefaultRegisterRequest;
 
 class AddModeratorController extends Controller
 {
@@ -16,14 +16,8 @@ class AddModeratorController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function add (Request $request)
+    public function add (DefaultRegisterRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'min:3', 'max:25', new FullNameRule()],
-            'email' => 'required|email|unique:admin|unique:moderators|unique:teachers|unique:students',
-            'password' => 'required|min:8|max:255'
-        ]);
-
         Auth::guard('admin')->user()->moderators()->create([
             'name' => $request->name,
             'email' => $request->email,

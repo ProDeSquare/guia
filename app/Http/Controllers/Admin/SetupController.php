@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Hash;
-use App\Rules\FullNameRule;
 use App\Models\Admin;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\DefaultRegisterRequest;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class SetupController extends Controller
 {
@@ -18,14 +18,8 @@ class SetupController extends Controller
         $this->middleware('admin.exists');
     }
 
-    public function register (Request $request)
+    public function register (DefaultRegisterRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'min:3', 'max:25', new FullNameRule()],
-            'email' => 'required|email|unique:admin|unique:moderators|unique:teachers|unique:students',
-            'password' => 'required|min:8|max:255'
-        ]);
-
         Admin::create([
             'name' => $request->name,
             'email' => $request->email,
