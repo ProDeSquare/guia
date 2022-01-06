@@ -17,6 +17,11 @@ class LogoutController extends Controller
         'student',
     ];
 
+    public function __construct ()
+    {
+        $this->middleware('auth:admin,mod,teacher,student');
+    }
+
     public function __invoke (Request $request)
     {
         $this->setGuardName();
