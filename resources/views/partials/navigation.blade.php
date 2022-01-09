@@ -12,7 +12,7 @@
 <div class="header py-4">
     <div class="container">
         <div class="d-flex">
-            <a class="header-brand" href="./index.html">
+            <a class="header-brand" href="{{ route('home') }}">
             <img src="{{ asset("assets/images/logo.png") }}" class="header-brand-img" alt="riphah logo">
             </a>
             <div class="d-flex order-lg-2 ml-auto">
@@ -29,9 +29,23 @@
                     </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#">
-                        <i class="dropdown-icon fe fe-user"></i> Profile
-                        </a>
+                        @if (auth()->guard()->user()->getGuardType() === 'admin')
+                            <a class="dropdown-item" href="{{ route('admin.profile', ['admin' => auth()->guard()->id()]) }}">
+                                <i class="dropdown-icon fe fe-user"></i> Profile
+                            </a>
+                        @elseif (auth()->guard()->user()->getGuardType() === 'mod')
+                            <a class="dropdown-item" href="{{ route('mod.profile', ['mod' => auth()->guard()->id()]) }}">
+                                <i class="dropdown-icon fe fe-user"></i> Profile
+                            </a>
+                        @elseif (auth()->guard()->user()->getGuardType() === 'teacher')
+                            <a class="dropdown-item" href="{{ route('teacher.profile', ['teacher' => auth()->guard()->id()]) }}">
+                                <i class="dropdown-icon fe fe-user"></i> Profile
+                            </a>
+                        @elseif (auth()->guard()->user()->getGuardType() === 'student')
+                            <a class="dropdown-item" href="{{ route('student.profile', ['student' => auth()->guard()->id()]) }}">
+                                <i class="dropdown-icon fe fe-user"></i> Profile
+                            </a>
+                        @endif
                         <a class="dropdown-item" href="#">
                         <i class="dropdown-icon fe fe-settings"></i> Settings
                         </a>
@@ -75,7 +89,7 @@
             <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                     <li class="nav-item">
-                        <a href="{{ route('home') }}" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                        <a href="{{ route('home') }}" class="nav-link active"><i class="fe fe-home"></i> Dashboard</a>
                     </li>
 
                     <li class="nav-item dropdown">

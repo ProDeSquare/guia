@@ -14,6 +14,8 @@ Route::middleware(['app.setup'])->group(function () {
 
         Route::get('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'show' ])->name('mod.add');
         Route::post('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'add' ])->name('mod.add');
+
+        Route::get('/view/{admin}', \App\Http\Controllers\Admin\ViewProfileController::class)->name('admin.profile');
     });
 
     Route::prefix('mod')->group(function () {
@@ -27,6 +29,8 @@ Route::middleware(['app.setup'])->group(function () {
 
         Route::get('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'show' ])->name('student.add');
         Route::post('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'add' ])->name('student.add');
+
+        Route::get('/view/{mod}', \App\Http\Controllers\Mod\ViewProfileController::class)->name('mod.profile');
     });
 
     Route::prefix('teacher')->group(function () {
@@ -34,6 +38,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'login' ])->name('teacher.login');
 
         Route::get('/', \App\Http\Controllers\Teacher\IndexController::class);
+
+        Route::get('/view/{teacher}', \App\Http\Controllers\Teacher\ViewProfileController::class)->name('teacher.profile');
     });
 
     Route::prefix('student')->group(function () {
@@ -41,6 +47,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/login', [ \App\Http\Controllers\Student\LoginController::class, 'login' ])->name('student.login');
 
         Route::get('/', \App\Http\Controllers\Student\IndexController::class);
+
+        Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');
     });
 
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');

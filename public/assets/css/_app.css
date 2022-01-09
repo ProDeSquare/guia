@@ -14,3 +14,30 @@
 .users-list-div:last-child {
     margin-bottom: -0.7rem;
 }
+
+/* Badges */
+.badge-admin-mod {
+    color: #2fb344!important;
+    background: rgba(47,179,68,.1)!important;
+}
+
+.badge-teacher-student {
+    color: #ae3ec9!important;
+    background: rgba(174,62,201,.1)!important;
+}
+
+.badge {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #64748b;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    min-width: 1.3571428571em;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
