@@ -38,4 +38,9 @@ class Mod extends Authenticatable
     {
         return $this->hasMany(Student::class, 'created_by');
     }
+
+    public function getGuardType ()
+    {
+        return $this->guard;
+    }
 }

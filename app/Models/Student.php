@@ -38,4 +38,9 @@ class Student extends Authenticatable
             ? 'https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mm'
             : 'http://www.gravatar.com/avatar/?d=mm';
     }
+
+    public function getGuardType ()
+    {
+        return $this->guard;
+    }
 }

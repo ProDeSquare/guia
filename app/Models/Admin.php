@@ -33,4 +33,9 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Mod::class, 'created_by');
     }
+
+    public function getGuardType ()
+    {
+        return $this->guard;
+    }
 }

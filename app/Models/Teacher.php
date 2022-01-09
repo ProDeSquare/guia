@@ -32,4 +32,9 @@ class Teacher extends Authenticatable
     {
         return "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
     }
+
+    public function getGuardType ()
+    {
+        return $this->guard;
+    }
 }
