@@ -1,10 +1,5 @@
 @php
-    $guard = '';
-
-    if (auth()->guard('admin')->check()) $guard = 'admin';
-    if (auth()->guard('mod')->check()) $guard = 'mod';
-    if (auth()->guard('teacher')->check()) $guard = 'teacher';
-    if (auth()->guard('student')->check()) $guard = 'student';
+    $guard = auth()->guard()->user()->getGuardType();
 
     $guard_labels = [
         'admin' => 'Administrator',
@@ -29,9 +24,6 @@
                         {{ auth()->guard($guard)->user()->name }}
                     </span>
                     <small class="text-muted d-block mt-1">
-                        {{-- @if ($guard === 'admin')
-                            Administrator
-                        @endif --}}
                         {{ $guard_labels[$guard] }}
                     </small>
                     </span>
@@ -56,7 +48,7 @@
                         </a>
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button class="dropdown-item" href="#">
+                            <button class="dropdown-item">
                                 <i class="dropdown-icon fe fe-log-out"></i> Sign out
                             </button>
                         </form>
@@ -83,43 +75,19 @@
             <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                        <a href="{{ route('home') }}" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Interface</a>
-                        <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="./cards.html" class="dropdown-item ">Cards design</a>
-                            <a href="./charts.html" class="dropdown-item ">Charts</a>
-                            <a href="./pricing-cards.html" class="dropdown-item ">Pricing cards</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Components</a>
-                        <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="./maps.html" class="dropdown-item ">Maps</a>
-                            <a href="./icons.html" class="dropdown-item ">Icons</a>
-                            <a href="./store.html" class="dropdown-item ">Store</a>
-                            <a href="./blog.html" class="dropdown-item ">Blog</a>
-                            <a href="./carousel.html" class="dropdown-item ">Carousel</a>
-                        </div>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="./profile.html" class="dropdown-item ">Profile</a>
-                            <a href="./login.html" class="dropdown-item ">Login</a>
-                            <a href="./register.html" class="dropdown-item ">Register</a>
-                            <a href="./forgot-password.html" class="dropdown-item ">Forgot password</a>
+                            <a href="#" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">Login</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Forms</a>
-                    </li>
+
                     <li class="nav-item">
-                        <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
+                        <a href="#" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
                     </li>
                 </ul>
             </div>
