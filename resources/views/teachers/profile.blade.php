@@ -20,9 +20,9 @@
                             <span class="badge badge-teacher-student">Lecturer</span>
                         </div>
 
-                        <button class="btn btn-outline-success btn-sm">
+                        {{-- <button class="btn btn-outline-success btn-sm">
                             <span class="fa fa-whatsapp"></span> WhatsApp
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>
