@@ -93,7 +93,9 @@
                                                     </div>
                                                     <div class="col">
                                                         <div class="text-truncate">
-                                                            <strong>{{ $mod->name }}</strong>
+                                                            <a href="{{ route('mod.profile', ['mod' => $mod->id]) }}">
+                                                                <strong>{{ $mod->name }}</strong>
+                                                            </a>
                                                         </div>
 
                                                         <div class="text-muted">

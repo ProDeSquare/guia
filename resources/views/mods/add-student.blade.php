@@ -108,7 +108,9 @@
                                                     </div>
                                                     <div class="col">
                                                         <div class="text-truncate">
-                                                            <strong>{{ $student->name }}</strong>
+                                                            <a href="{{ route('student.profile', ['student' => $student->id]) }}">
+                                                                <strong>{{ $student->name }}</strong>
+                                                            </a>
                                                         </div>
 
                                                         <div class="text-muted">
