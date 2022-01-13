@@ -46,6 +46,9 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/login', [ \App\Http\Controllers\Student\LoginController::class, 'show' ])->name('student.login');
         Route::post('/login', [ \App\Http\Controllers\Student\LoginController::class, 'login' ])->name('student.login');
 
+        Route::get('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'show' ])->name('student.add.email');
+        Route::post('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'add' ])->name('student.add.email');
+
         Route::get('/', \App\Http\Controllers\Student\IndexController::class);
 
         Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');

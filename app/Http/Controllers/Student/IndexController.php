@@ -10,6 +10,7 @@ class IndexController extends Controller
     public function __construct ()
     {
         $this->middleware('auth:student');
+        $this->middleware('student.added.email');
     }
 
     public function __invoke ()

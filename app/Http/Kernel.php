@@ -65,5 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin.exists' => \App\Http\Middleware\AdminExists::class,
         'app.setup' => \App\Http\Middleware\AppSetup::class,
+        'student.added.email' => \App\Http\Middleware\StudentHasAddedEmail::class,
+        'student.not.added.email' => \App\Http\Middleware\StudentHasNotAddedEmail::class,
     ];
 }
