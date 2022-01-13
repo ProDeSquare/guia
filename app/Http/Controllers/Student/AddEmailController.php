@@ -20,7 +20,9 @@ class AddEmailController extends Controller
             'email' => 'required|email|unique:admin|unique:moderators|unique:teachers|unique:students'
         ]));
 
-        return redirect()->route('home');
+        return redirect()->route('student.profile', [
+            'student' => Auth::guard()->id(),
+        ]);
     }
 
     public function show()
