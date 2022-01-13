@@ -11,6 +11,7 @@ class ViewProfileController extends Controller
     public function __construct ()
     {
         $this->middleware('auth:admin,mod,teacher,student');
+        $this->middleware('student.added.email');
     }
 
     public function __invoke (Mod $mod)

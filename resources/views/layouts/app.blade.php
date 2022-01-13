@@ -32,9 +32,9 @@
         @auth
             <div class="page-main">
                 @include('partials.navigation')
-                    @yield('content')
-                {{-- @include('partials.footer') --}}
+                @yield('content')
             </div>
+            @include('partials.footer')
         @else
             <div class="page-single">
                 <div class="container">
