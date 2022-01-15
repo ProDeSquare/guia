@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Search;
 
+use Auth;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
 use App\Http\Controllers\Controller;
+use App\Models\Search as ModelsSearch;
 use Spatie\Searchable\ModelSearchAspect;
 
 class PerformController extends Controller
@@ -32,6 +34,11 @@ class PerformController extends Controller
                     ->addSearchableAttribute('name')
                     ->addExactSearchableAttribute('email');
             })->search($request->q);
+        
+        Auth::guard()->user()->searchHistory()->create([
+            'query' => $request->q,
+            'guard' => Auth::guard()->user()->getGuardType()
+        ]);
 
         return view('pages.search')->withResults($results);
     }

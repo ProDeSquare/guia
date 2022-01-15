@@ -63,4 +63,9 @@ class Student extends Authenticatable implements Searchable
             $url,
         );
     }
+
+    public function searchHistory ()
+    {
+        return $this->hasMany(Search::class, 'user_id')->where('guard', $this->guard);
+    }
 }

@@ -44,4 +44,9 @@ class Admin extends Authenticatable
     {
         return Auth::guard()->id() === $id;        
     }
+
+    public function searchHistory ()
+    {
+        return $this->hasMany(Search::class, 'user_id')->where('guard', $this->guard);
+    }
 }
