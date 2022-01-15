@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Auth;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Teacher extends Authenticatable
+class Teacher extends Authenticatable implements Searchable
 {
     use Notifiable;
 
@@ -43,5 +45,16 @@ class Teacher extends Authenticatable
     public function owner ($id) : bool
     {
         return Auth::guard()->id() === $id;        
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('teacher.profile', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->name,
+            $url,
+        );
     }
 }

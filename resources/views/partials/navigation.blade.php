@@ -79,8 +79,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-3 ml-auto">
-                <form class="input-icon my-3 my-lg-0">
-                    <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
+                <form class="input-icon my-3 my-lg-0" method="get" action="{{ route('search') }}">
+                    <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1" name="q" value="{{ app('request')->input('q') }}" />
                     <div class="input-icon-addon">
                         <i class="fe fe-search"></i>
                     </div>

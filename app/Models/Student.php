@@ -59,7 +59,7 @@ class Student extends Authenticatable implements Searchable
 
         return new SearchResult(
             $this,
-            $this->username,
+            $this->name,
             $url,
         );
     }
