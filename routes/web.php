@@ -54,6 +54,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/', \App\Http\Controllers\Student\IndexController::class);
 
         Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');
+
+        Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
     });
 
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');

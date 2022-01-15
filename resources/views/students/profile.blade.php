@@ -13,7 +13,7 @@
 
                         <h3 class="mb-3">{{ $student->name }}</h3>
                         <p class="mb-4">
-                            Lorem ipsum dolor sit amet.
+                            {{ $student->bio }}
                         </p>
 
                         <div class="mb-3">
@@ -21,7 +21,7 @@
                         </div>
 
                         @if ($student->github)
-                            <a class="btn btn-outline-dark btn-sm" href="{{ $student->github }}" target="_blank">
+                            <a class="btn btn-outline-dark btn-sm" href="{{ $student->github }}">
                                 <span class="fa fa-github"></span> GitHub
                             </a>
                         @endif
@@ -32,6 +32,7 @@
             <div class="col-lg-8">
                 {{-- update password form --}}
                 @if (Auth::guard('student')->check() && Auth::guard()->user()->owner($student->id))
+                    @include('partials.students-update-profile')
                     @include('partials.update-password')
                 @endif
             </div>
