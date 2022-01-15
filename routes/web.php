@@ -40,6 +40,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/', \App\Http\Controllers\Teacher\IndexController::class);
 
         Route::get('/view/{teacher}', \App\Http\Controllers\Teacher\ViewProfileController::class)->name('teacher.profile');
+
+        Route::post('/profile/update', \App\Http\Controllers\Teacher\UpdateProfileController::class)->name('teacher.profile.update');
     });
 
     Route::prefix('student')->group(function () {

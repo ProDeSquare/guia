@@ -30,6 +30,7 @@
             <div class="col-lg-8">
                 {{-- update password form --}}
                 @if (Auth::guard('teacher')->check() && Auth::guard()->user()->owner($teacher->id))
+                    @include('partials.teachers-update-profile')
                     @include('partials.update-password')
                 @endif
             </div>

@@ -22,6 +22,7 @@ class Teacher extends Authenticatable
         'co_supervise_count',
         'requirements',
         'bio',
+        'whatsapp',
     ];
 
     protected $hidden = [
