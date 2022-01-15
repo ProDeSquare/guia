@@ -27,7 +27,7 @@ class StudentRegisterRequest extends FormRequest
         return [
             'name' => ['required', 'min:3', 'max:25', new FullNameRule()],
             'username' => 'required|unique:students|min:3|max:25|alpha_dash',
-            'roll_no' => 'required|integer',
+            'roll_no' => 'required|integer|unique:students',
             'password' => 'required|min:8|max:255',
         ];
     }

@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('username');
             $table->string('email')->unique()->nullable();
             $table->string('password');
+            $table->integer('roll_no')->unique();
             $table->bigInteger('group_id')->nullable();
             $table->text('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();

@@ -58,6 +58,10 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
     });
 
+    Route::prefix('search')->group(function () {
+        Route::get('/{q?}', \App\Http\Controllers\Search\PerformController::class)->name('search');
+    });
+
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
 
     Route::prefix('auth')->group(function () {
