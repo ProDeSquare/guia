@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -37,5 +38,10 @@ class Admin extends Authenticatable
     public function getGuardType ()
     {
         return $this->guard;
+    }
+
+    public function owner ($id) : bool
+    {
+        return Auth::guard()->id() === $id;        
     }
 }

@@ -25,7 +25,9 @@
 
             <div class="col-lg-8">
                 {{-- update password form --}}
-                @include('partials.update-password')
+                @if (Auth::guard('mod')->check() && Auth::guard()->user()->owner($mod->id))
+                    @include('partials.update-password')
+                @endif
 
                 {{-- teachers list --}}
                 <div class="card">

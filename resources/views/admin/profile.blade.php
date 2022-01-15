@@ -25,7 +25,9 @@
 
             <div class="col-lg-8">
                 {{-- update password form --}}
-                @include('partials.update-password')
+                @if (Auth::guard('admin')->check() && Auth::guard()->user()->owner($admin->id))
+                    @include('partials.update-password')
+                @endif
             </div>
         </div>
     </div>
