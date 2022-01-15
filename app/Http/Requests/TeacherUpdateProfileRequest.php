@@ -26,8 +26,8 @@ class TeacherUpdateProfileRequest extends FormRequest
         return [
             'bio' => 'nullable|min:10|max:60',
             'requirements' => 'nullable|max:255',
-            'supervise_count' => 'required|min:0|max:4|integer',
-            'co_supervise_count' => 'required|min:0|max:4|integer',
+            'supervise_count' => 'required|min:0|max:3|integer',
+            'co_supervise_count' => 'required|integer',
             'whatsapp' => 'required',
         ];
     }
