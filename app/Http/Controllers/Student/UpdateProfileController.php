@@ -17,6 +17,6 @@ class UpdateProfileController extends Controller
     {
         Auth::guard()->user()->update($request->validated());
 
-        return redirect()->route('home');
+        return redirect()->back()->withSuccess('Profile Information Updated!');
     }
 }

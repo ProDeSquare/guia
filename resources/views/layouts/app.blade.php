@@ -32,6 +32,9 @@
         @auth
             <div class="page-main">
                 @include('partials.navigation')
+                
+                @include('partials.success-alert')
+
                 @yield('content')
             </div>
             @include('partials.footer')
