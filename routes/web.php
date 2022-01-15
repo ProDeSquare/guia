@@ -56,5 +56,8 @@ Route::middleware(['app.setup'])->group(function () {
 
     Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('home');
 
-    Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
+    Route::prefix('auth')->group(function () {
+        Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
+        Route::post('/auth/update/password', \App\Http\Controllers\Auth\UpdatePasswordController::class)->name('update.password');
+    });
 });

@@ -26,6 +26,11 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-8">
+                {{-- update password form --}}
+                @include('partials.update-password')
+            </div>
         </div>
     </div>
 </div>
