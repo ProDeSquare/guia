@@ -55,10 +55,13 @@ Route::middleware(['app.setup'])->group(function () {
 
         Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');
 
+        Route::get('/requests/view', \App\Http\Controllers\Student\ViewRequestsController::class)->name('requests.view');
+
         Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
     
         Route::post('/send-group-request/{student}', \App\Http\Controllers\Group\SendGroupRequestController::class)->name('add.to.group');
         Route::post('/cancel-group-request/{student}', \App\Http\Controllers\Group\CancelGroupRequestController::class)->name('remove.from.group');
+        Route::post('/accept-group-request/{request}', \App\Http\Controllers\Group\AcceptGroupRequestController::class)->name('accept.group.request');
     });
 
     Route::prefix('search')->group(function () {

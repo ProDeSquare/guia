@@ -47,19 +47,31 @@
                             </a>
                         @endif
                         <a class="dropdown-item" href="#">
-                        <i class="dropdown-icon fe fe-settings"></i> Settings
+                            <i class="dropdown-icon fe fe-settings"></i> Settings
                         </a>
+
                         <a class="dropdown-item" href="#">
-                        <span class="float-right"><span class="badge badge-primary">6</span></span>
-                        <i class="dropdown-icon fe fe-mail"></i> Inbox
+                            <span class="float-right"><span class="badge badge-primary">6</span></span>
+                            <i class="dropdown-icon fe fe-mail"></i> Inbox
                         </a>
-                        <a class="dropdown-item" href="#">
-                        <i class="dropdown-icon fe fe-send"></i> Message
-                        </a>
+
+                        @if (Auth::guard('student')->check())
+                            <a class="dropdown-item" href="{{ route('requests.view') }}">
+                                <span class="float-right">
+                                    <span class="badge badge-primary">
+                                        {{ Auth::guard()->user()->groupRequests()->count() }}
+                                    </span>
+                                </span>
+                                <i class="dropdown-icon fe fe-send"></i> Requests
+                            </a>
+                        @endif
+
                         <div class="dropdown-divider"></div>
+
                         <a class="dropdown-item" href="#">
-                        <i class="dropdown-icon fe fe-help-circle"></i> Need help?
+                            <i class="dropdown-icon fe fe-help-circle"></i> Need help?
                         </a>
+
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
                             <button class="dropdown-item">
