@@ -58,6 +58,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
     
         Route::post('/send-group-request/{student}', \App\Http\Controllers\Group\SendGroupRequestController::class)->name('add.to.group');
+        Route::post('/cancel-group-request/{student}', \App\Http\Controllers\Group\CancelGroupRequestController::class)->name('remove.from.group');
     });
 
     Route::prefix('search')->group(function () {

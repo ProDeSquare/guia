@@ -28,22 +28,24 @@
                             @endif
 
                             @if(Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
-                                @if ($student->hasAlreadyRequestedForCurrentGroup(Auth::guard()->user()->group()->first()->group_id))
-                                    <form action="{{ route('add.to.group', $student->id) }}" method="post">
-                                        @csrf
+                                @if (! $student->isGrouped())
+                                    @if ($student->hasAlreadyRequestedForCurrentGroup(Auth::guard()->user()->group()->first()->group_id))
+                                        <form action="{{ route('remove.from.group', $student->id) }}" method="post">
+                                            @csrf
 
-                                        <button class="btn btn-outline-primary btn-sm mt-3" type="submit">
-                                            Requested
-                                        </button>
-                                    </form>
-                                @elseif (! $student->isGrouped())
-                                    <form action="{{ route('add.to.group', $student->id) }}" method="post">
-                                        @csrf
+                                            <button class="btn btn-outline-danger btn-sm mt-3" type="submit">
+                                                Cancel Request
+                                            </button>
+                                        </form>
+                                    @elseif (! $student->isGrouped())
+                                        <form action="{{ route('add.to.group', $student->id) }}" method="post">
+                                            @csrf
 
-                                        <button class="btn btn-outline-primary btn-sm mt-3" type="submit">
-                                            Add to group
-                                        </button>
-                                    </form>
+                                            <button class="btn btn-outline-primary btn-sm mt-3" type="submit">
+                                                Add to group
+                                            </button>
+                                        </form>
+                                    @endif
                                 @endif
                             @endif
                         </div>
