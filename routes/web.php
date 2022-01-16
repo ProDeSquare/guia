@@ -56,6 +56,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');
 
         Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
+    
+        Route::post('/send-group-request/{student}', \App\Http\Controllers\Group\SendGroupRequestController::class)->name('add.to.group');
     });
 
     Route::prefix('search')->group(function () {

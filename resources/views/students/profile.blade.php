@@ -20,11 +20,23 @@
                             <span class="badge badge-teacher-student">Student</span>
                         </div>
 
-                        @if ($student->github)
-                            <a class="btn btn-outline-dark btn-sm" href="{{ $student->github }}">
-                                <span class="fa fa-github"></span> GitHub
-                            </a>
-                        @endif
+                        <div>
+                            @if ($student->github)
+                                <a class="btn btn-outline-dark btn-sm" href="{{ $student->github }}">
+                                    <span class="fa fa-github"></span> GitHub
+                                </a>
+                            @endif
+
+                            @if(Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
+                                <form action="{{ route('add.to.group', $student->id) }}" method="post">
+                                    @csrf
+
+                                    <button class="btn btn-outline-primary btn-sm mt-3" type="submit">
+                                        Add to group
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

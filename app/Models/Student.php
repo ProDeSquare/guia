@@ -68,4 +68,14 @@ class Student extends Authenticatable implements Searchable
     {
         return $this->hasMany(Search::class, 'user_id')->where('guard', $this->guard);
     }
+
+    public function group ()
+    {
+        return $this->hasOne(GroupMember::class, 'student_id')->where('accepted', 1);
+    }
+
+    public function isGrouped (): bool
+    {
+        return $this->group()->count();
+    }
 }
