@@ -3,25 +3,35 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <h3 class="page-title">Search Results.</h3>
+            @if (strlen(app('request')->input('q')) > 0 && strlen(app('request')->input('q')) < 3)
+                <h3 class="page-title">
+                    Search Results.
+                </h3>
+            @else
+                <h3 class="page-title">
+                    Search For Something.
+                </h3>
+            @endif
         </div>
 
         <div class="page-body">
-            <p>
-                There are <strong>{{ $results->count() }}</strong> results for <strong>{{ app('request')->input('q') }}</strong>
-            </p>
+            @if (strlen(app('request')->input('q')) < 3)
+                There were no search results.
+            @else
+                @include('partials.search-results')
+            @endif
 
-            @foreach ($results->groupByType() as $type => $modelSearchResults)
-                <h3>{{ ucwords($type) }}</h3>
+            @if (Auth::guard()->user()->searchHistory()->count())
+                <h3 class="page-title mt-6">Search History.</h3>
 
-                @foreach ($modelSearchResults as $result)
-                    <ul>
+                <ul>
+                    @foreach (Auth::guard()->user()->searchHistory()->latest()->take(10)->get() as $searchQuery)
                         <li>
-                            <a href="{{ $result->url }}">{{ $result->title }}</a>
+                            <a href="{{ route('search') . '?q=' . $searchQuery->query }}">{{ $searchQuery->query }}</a>
                         </li>
-                    </ul>
-                @endforeach
-            @endforeach
+                    @endforeach
+                </ul>
+            @endif
         </div>
     </div>
 @endsection

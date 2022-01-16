@@ -20,7 +20,7 @@ class PerformController extends Controller
 
     public function __invoke (Request $request)
     {
-        if (strlen($request->q) < 3) return redirect()->route('home');
+        if (strlen($request->q) < 3) return view('pages.search');
 
         $results = (new Search())
             ->registerModel(Student::class, function(ModelSearchAspect $modelSearchAspect) {
@@ -35,7 +35,7 @@ class PerformController extends Controller
                     ->addExactSearchableAttribute('email');
             })->search($request->q);
         
-        Auth::guard()->user()->searchHistory()->create([
+        Auth::guard()->user()->searchHistory()->updateOrCreate([
             'query' => $request->q,
             'guard' => Auth::guard()->user()->getGuardType()
         ]);
