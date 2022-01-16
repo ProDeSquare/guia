@@ -74,6 +74,14 @@ class Student extends Authenticatable implements Searchable
         return $this->hasOne(GroupMember::class, 'student_id')->where('accepted', 1);
     }
 
+    public function hasAlreadyRequestedForCurrentGroup ($id): bool
+    {
+        return $this->hasOne(GroupMember::class, 'student_id')->where([
+            'accepted' => 0,
+            'group_id' => $id,
+        ])->count();
+    }
+
     public function isGrouped (): bool
     {
         return $this->group()->count();

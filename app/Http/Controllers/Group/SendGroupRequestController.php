@@ -28,10 +28,13 @@ class SendGroupRequestController extends Controller
             ]);
         }
 
+        $group_id = Auth::guard()->user()->group()->first()->group_id;
+
         if ($student->isGrouped()) return redirect()->back();
+        if ($student->hasAlreadyRequestedForCurrentGroup($group_id)) return redirect()->back();
 
         $student->group()->create([
-            'group_id' => Auth::guard()->user()->group()->first()->group_id,
+            'group_id' => $group_id,
         ]);
 
         return redirect()->route('student.profile', $student->id)->withSuccess('Requested!');
