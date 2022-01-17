@@ -67,6 +67,12 @@
             </div>
 
             <div class="col-lg-8">
+                @if ($student->isGrouped())
+                    @include('partials.group-info-student-profile')
+                @else
+                    Not in a group
+                @endif
+
                 {{-- update password form --}}
                 @if (Auth::guard('student')->check() && Auth::guard()->user()->owner($student->id))
                     @include('partials.students-update-profile')
