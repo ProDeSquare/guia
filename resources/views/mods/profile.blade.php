@@ -34,7 +34,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Teachers ({{ $mod->teachers()->count() }})</h3>
                     </div>
-                    <div class="card-body o-auto" style="height: 15rem">
+                    <div class="card-body o-auto" style="max-height: 15rem">
                         <ul class="list-unstyled list-separated">
                             @if ($mod->teachers()->count())
                                 @foreach ($mod->teachers()->latest()->take(5)->get() as $teacher)
@@ -64,21 +64,21 @@
                 </div>
 
                 {{-- students list --}}
-                <div class="card" bis_skin_checked="1">
-                    <div class="card-header" bis_skin_checked="1">
+                <div class="card">
+                    <div class="card-header">
                         <h3 class="card-title">Students ({{ $mod->students()->count() }})</h3>
                     </div>
-                    <div class="card-body o-auto" style="height: 15rem" bis_skin_checked="1">
+                    <div class="card-body o-auto" style="max-height: 15rem">
                         <ul class="list-unstyled list-separated">
                             @if ($mod->students()->count())
                                 @foreach ($mod->students()->latest()->take(5)->get() as $student)
                                     <li class="list-separated-item">
-                                        <div class="row align-items-center" bis_skin_checked="1">
-                                            <div class="col-auto" bis_skin_checked="1">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
                                                 <span class="avatar avatar-md d-block" style="background-image: url({{ $student->avatar() }})"></span>
                                             </div>
-                                            <div class="col" bis_skin_checked="1">
-                                                <div bis_skin_checked="1">
+                                            <div class="col">
+                                                <div>
                                                     <a href="{{ route('student.profile', ['student' => $student->id]) }}" class="text-inherit">{{ $student->name }}</a>
                                                 </div>
                                                 @if ($student->email)

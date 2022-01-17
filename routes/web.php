@@ -56,6 +56,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');
 
         Route::get('/requests/view', \App\Http\Controllers\Student\ViewRequestsController::class)->name('requests.view');
+        Route::patch('/request/accept/{request}', \App\Http\Controllers\Student\AcceptRequestController::class)->name('request.accept');
 
         Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
     

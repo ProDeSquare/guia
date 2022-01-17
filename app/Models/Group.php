@@ -11,6 +11,6 @@ class Group extends Model
 
     public function members ()
     {
-        return $this->hasMany(GroupMember::class, 'group_id');
+        return $this->hasMany(GroupMember::class, 'group_id')->where('accepted', 1);
     }
 }

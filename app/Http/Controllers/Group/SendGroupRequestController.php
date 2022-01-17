@@ -26,6 +26,10 @@ class SendGroupRequestController extends Controller
                 'group_id' => $group->id,
                 'accepted' => 1,
             ]);
+        } else {
+            if (Auth::guard()->user()->group()->first()->group()->first()->members()->count() >= 3) {
+                abort(403);
+            }
         }
 
         $group_id = Auth::guard()->user()->group()->first()->group_id;

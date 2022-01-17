@@ -29,7 +29,10 @@
 
                             @if(Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
                                 @if (! $student->isGrouped())
-                                    @if (Auth::guard()->user()->isGrouped())
+                                    @if (
+                                        Auth::guard()->user()->isGrouped() &&
+                                        Auth::guard()->user()->group()->first()->group()->first()->members()->count() < 3
+                                    )
                                         @if ($student->hasAlreadyRequestedForCurrentGroup(Auth::guard()->user()->group()->first()->group_id))
                                             <form action="{{ route('remove.from.group', $student->id) }}" method="post">
                                                 @csrf
@@ -47,7 +50,7 @@
                                                 </button>
                                             </form>
                                         @endif                                        
-                                    @else
+                                    @elseif (! Auth::guard()->user()->isGrouped())
                                         <form action="{{ route('add.to.group', $student->id) }}" method="post">
                                             @csrf
 
