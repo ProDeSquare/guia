@@ -29,15 +29,25 @@
 
                             @if(Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
                                 @if (! $student->isGrouped())
-                                    @if ($student->hasAlreadyRequestedForCurrentGroup(Auth::guard()->user()->group()->first()->group_id))
-                                        <form action="{{ route('remove.from.group', $student->id) }}" method="post">
-                                            @csrf
+                                    @if (Auth::guard()->user()->isGrouped())
+                                        @if ($student->hasAlreadyRequestedForCurrentGroup(Auth::guard()->user()->group()->first()->group_id))
+                                            <form action="{{ route('remove.from.group', $student->id) }}" method="post">
+                                                @csrf
 
-                                            <button class="btn btn-outline-danger btn-sm mt-3" type="submit">
-                                                Cancel Request
-                                            </button>
-                                        </form>
-                                    @elseif (! $student->isGrouped())
+                                                <button class="btn btn-outline-danger btn-sm mt-3" type="submit">
+                                                    Cancel Request
+                                                </button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('add.to.group', $student->id) }}" method="post">
+                                                @csrf
+
+                                                <button class="btn btn-outline-primary btn-sm mt-3" type="submit">
+                                                    Add to group
+                                                </button>
+                                            </form>
+                                        @endif                                        
+                                    @else
                                         <form action="{{ route('add.to.group', $student->id) }}" method="post">
                                             @csrf
 
