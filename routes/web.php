@@ -57,6 +57,7 @@ Route::middleware(['app.setup'])->group(function () {
 
         Route::get('/requests/view', \App\Http\Controllers\Student\ViewRequestsController::class)->name('requests.view');
         Route::patch('/request/accept/{request}', \App\Http\Controllers\Student\AcceptRequestController::class)->name('request.accept');
+        Route::delete('/request/decline/{request}', \App\Http\Controllers\Student\DeclineRequestController::class)->name('request.decline');
 
         Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
     

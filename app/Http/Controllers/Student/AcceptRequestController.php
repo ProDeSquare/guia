@@ -15,7 +15,7 @@ class AcceptRequestController extends Controller
 
     public function __invoke (GroupMember $request)
     {
-        if ($request->student_id !== Auth::guard()->id()) abort(403);
+        if ($request->student_id !== Auth::guard()->id()) abort(404);
 
         if ($request->group()->first()->members()->count() >= 3) {
             $request->delete();

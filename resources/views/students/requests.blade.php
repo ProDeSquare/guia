@@ -47,9 +47,15 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-sm">
-                                            <button class="btn btn-link btn-block">
-                                                Decline
-                                            </button>
+                                            <form action="{{ route('request.decline', $request->id) }}" method="post">
+                                                @csrf
+
+                                                <input type="hidden" name="_method" value="delete" />
+
+                                                <button class="btn btn-link btn-block">
+                                                    Decline
+                                                </button>
+                                            </form>
                                         </div>
 
                                         <div class="col-sm">
