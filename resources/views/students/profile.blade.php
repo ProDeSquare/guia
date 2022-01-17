@@ -27,7 +27,7 @@
                                 </a>
                             @endif
 
-                            @if(Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
+                            {{-- @if(Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
                                 @if (! $student->isGrouped())
                                     @if (
                                         Auth::guard()->user()->isGrouped() &&
@@ -49,7 +49,7 @@
                                                     Add to group
                                                 </button>
                                             </form>
-                                        @endif                                        
+                                        @endif
                                     @elseif (! Auth::guard()->user()->isGrouped())
                                         <form action="{{ route('add.to.group', $student->id) }}" method="post">
                                             @csrf
@@ -60,17 +60,19 @@
                                         </form>
                                     @endif
                                 @endif
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-8">
+                {{-- if student is in a group --}}
                 @if ($student->isGrouped())
                     @include('partials.group-info-student-profile')
-                @else
-                    Not in a group
+                {{-- logged in as a student & on someones profile --}}
+                @elseif (Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
+                    @include('partials.add-student-to-group')
                 @endif
 
                 {{-- update password form --}}
