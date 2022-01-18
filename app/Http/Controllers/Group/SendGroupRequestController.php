@@ -24,11 +24,9 @@ class SendGroupRequestController extends Controller
         if (! Auth::guard()->user()->isGrouped()) {
             $this->groupService->createNewGroupAndAddStudent();
         }
-        
-        else {
-            if (Auth::guard()->user()->group()->first()->group()->first()->members()->count() >= 3) {
-                abort(403);
-            }
+
+        else if ($this->groupService->groupExceedsMembersLimit(Auth::guard()->user()->group()->first()->group()->first())) {
+            abort(403);
         }
 
         $group_id = Auth::guard()->user()->group()->first()->group_id;

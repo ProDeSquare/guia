@@ -16,4 +16,9 @@ class GroupService
             'group_id' => $group->id,
         ]);
     }
+
+    public function groupExceedsMembersLimit(Group $group)
+    {
+        return $group->members()->count() >= 3;
+    }
 }
