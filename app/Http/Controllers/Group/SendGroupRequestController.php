@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Group;
 
-use Auth;
-use App\Models\Group;
 use App\Models\Student;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Modules\GroupModules\GroupService;
 
 class SendGroupRequestController extends Controller
 {
+    protected $groupService;
+
     public function __construct ()
     {
         $this->middleware('auth:student');
+        $this->groupService = new GroupService();
     }
 
     public function __invoke (Student $student)
@@ -20,13 +22,10 @@ class SendGroupRequestController extends Controller
         if (Auth::guard()->id() === $student->id) abort(403);
 
         if (! Auth::guard()->user()->isGrouped()) {
-            $group = Group::create();
-
-            Auth::guard()->user()->group()->create([
-                'group_id' => $group->id,
-                'accepted' => 1,
-            ]);
-        } else {
+            $this->groupService->createNewGroupAndAddStudent();
+        }
+        
+        else {
             if (Auth::guard()->user()->group()->first()->group()->first()->members()->count() >= 3) {
                 abort(403);
             }
