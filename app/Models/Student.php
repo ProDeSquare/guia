@@ -88,4 +88,9 @@ class Student extends Authenticatable implements Searchable
     {
         return $this->group()->count();
     }
+
+    public function getGroupId()
+    {
+        return $this->group()->first()->group()->first()->id;
+    }
 }

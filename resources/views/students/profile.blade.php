@@ -26,41 +26,6 @@
                                     <span class="fa fa-github"></span> GitHub
                                 </a>
                             @endif
-
-                            {{-- @if(Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
-                                @if (! $student->isGrouped())
-                                    @if (
-                                        Auth::guard()->user()->isGrouped() &&
-                                        Auth::guard()->user()->group()->first()->group()->first()->members()->count() < 3
-                                    )
-                                        @if ($student->hasAlreadyRequestedForCurrentGroup(Auth::guard()->user()->group()->first()->group_id))
-                                            <form action="{{ route('remove.from.group', $student->id) }}" method="post">
-                                                @csrf
-
-                                                <button class="btn btn-outline-danger btn-sm mt-3" type="submit">
-                                                    Cancel Request
-                                                </button>
-                                            </form>
-                                        @else
-                                            <form action="{{ route('add.to.group', $student->id) }}" method="post">
-                                                @csrf
-
-                                                <button class="btn btn-outline-primary btn-sm mt-3" type="submit">
-                                                    Add to group
-                                                </button>
-                                            </form>
-                                        @endif
-                                    @elseif (! Auth::guard()->user()->isGrouped())
-                                        <form action="{{ route('add.to.group', $student->id) }}" method="post">
-                                            @csrf
-
-                                            <button class="btn btn-outline-primary btn-sm mt-3" type="submit">
-                                                Add to group
-                                            </button>
-                                        </form>
-                                    @endif
-                                @endif
-                            @endif --}}
                         </div>
                     </div>
                 </div>
@@ -77,6 +42,10 @@
                     @if (!$student->isGrouped())
                         @include('partials.student-create-group')
                     @endif
+                @else
+                    <p class="text-center">
+                        <strong>{{ $student->name }}</strong> has no activity for the time being.
+                    </p>
                 @endif
 
                 {{-- update password form --}}

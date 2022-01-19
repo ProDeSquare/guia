@@ -30,4 +30,20 @@
             @endforeach
         </ul>
     </div>
+
+    @if (Auth::guard('student')->check() && Auth::guard()->id() === $student->id)
+        @if (Auth::guard()->user()->group()->first()->group()->first()->members()->count() <= 1)
+            <div class="card-footer">
+                <form action="{{ route('group.delete') }}" method="post">
+                    @csrf
+
+                    <input type="hidden" name="_method" value="delete" />
+
+                    <button class="btn btn-block btn-primary">
+                        Leave Group
+                    </button>
+                </form>
+            </div>
+        @endif
+    @endif
 </div>
