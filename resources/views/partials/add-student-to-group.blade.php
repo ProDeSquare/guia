@@ -14,7 +14,7 @@
 
             <div class="card-body">
                 <p>
-                    You've already requested <strong>{{ $student->name }}</strong>  to join your group. You can cancel
+                    You've already requested <strong>{{ $student->name }}</strong> to join your group. You can cancel
                     this request if they don't accept.
                 </p>
             </div>

@@ -73,12 +73,16 @@
                 {{-- logged in as a student & on someones profile --}}
                 @elseif (Auth::guard('student')->check() && !Auth::guard()->user()->owner($student->id))
                     @include('partials.add-student-to-group')
+                @elseif (Auth::guard('student')->check() && Auth::guard()->user()->owner($student->id))
+                    @if (!$student->isGrouped())
+                        @include('partials.student-create-group')
+                    @endif
                 @endif
 
                 {{-- update password form --}}
                 @if (Auth::guard('student')->check() && Auth::guard()->user()->owner($student->id))
-                    @include('partials.students-update-profile')
-                    @include('partials.update-password')
+                    {{-- @include('partials.students-update-profile')
+                    @include('partials.update-password') --}}
                 @endif
             </div>
         </div>
