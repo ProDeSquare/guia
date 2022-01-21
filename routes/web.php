@@ -69,6 +69,13 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/accept-group-request/{request}', \App\Http\Controllers\Group\AcceptGroupRequestController::class)->name('accept.group.request');
     });
 
+    Route::prefix('group')->group(function () {
+        Route::get('/create/project', [ \App\Http\Controllers\Project\CreateController::class, 'show' ])->name('create.project');
+        Route::post('/create/project', [ \App\Http\Controllers\Project\CreateController::class, 'add' ])->name('create.project');
+
+        Route::get('/{group}/view/projects', \App\Http\Controllers\Group\GetProjectsController::class)->name('view.group.projects');
+    });
+
     Route::prefix('search')->group(function () {
         Route::get('/{q?}', \App\Http\Controllers\Search\PerformController::class)->name('search');
     });

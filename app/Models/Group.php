@@ -13,4 +13,9 @@ class Group extends Model
     {
         return $this->hasMany(GroupMember::class, 'group_id')->where('accepted', 1);
     }
+
+    public function projects ()
+    {
+        return $this->hasMany(Project::class, 'group_id');
+    }
 }
