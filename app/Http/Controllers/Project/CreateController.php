@@ -29,6 +29,8 @@ class CreateController extends Controller
     {
         if (! Auth::guard()->user()->isGrouped()) return redirect('student.profile');
 
-        return view('projects.add');
+        $group = Group::find(Auth::guard()->user()->getGroupId());
+
+        return view('projects.add')->withMembers($group->members);
     }
 }

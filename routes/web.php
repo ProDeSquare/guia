@@ -73,6 +73,9 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/create/project', [ \App\Http\Controllers\Project\CreateController::class, 'show' ])->name('create.project');
         Route::post('/create/project', [ \App\Http\Controllers\Project\CreateController::class, 'add' ])->name('create.project');
 
+        Route::get('/update/project/{project}', [ \App\Http\Controllers\Project\UpdateController::class, 'show' ])->name('update.project');
+        Route::patch('/update/project/{project}', [ \App\Http\Controllers\Project\UpdateController::class, 'update' ])->name('update.project');
+
         Route::get('/{group}/view/projects', \App\Http\Controllers\Group\GetProjectsController::class)->name('view.group.projects');
     });
 
