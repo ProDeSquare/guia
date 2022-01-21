@@ -77,6 +77,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::patch('/update/project/{project}', [ \App\Http\Controllers\Project\UpdateController::class, 'update' ])->name('update.project');
 
         Route::get('/{group}/view/projects', \App\Http\Controllers\Group\GetProjectsController::class)->name('view.group.projects');
+
+        Route::get('view/project/{project}', \App\Http\Controllers\Project\ViewController::class)->name('project.view');
     });
 
     Route::prefix('search')->group(function () {

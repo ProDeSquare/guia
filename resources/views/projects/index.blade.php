@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <h3 class="page-title">
-                Group Projects
-            </h3>
+            <div class="page-title">
+                {{ $project->title }}
+            </div>
         </div>
 
         <div class="page-body">
@@ -15,13 +15,7 @@
                 </div>
 
                 <div class="col-lg">
-                    @if ($projects->count())
-                        @foreach ($projects as $project)
-                            @include('partials.project-details')
-                        @endforeach
-                    @else
-                        <p class="text-center">No projects found.</p>
-                    @endif
+                    @include('partials.project-details')
                 </div>
             </div>
         </div>

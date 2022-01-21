@@ -21,7 +21,7 @@ class UpdateController extends Controller
 
         $project->update($request->validated());
 
-        return redirect()->route('view.group.projects', $project->group_id);
+        return redirect()->route('project.view', $project->id);
     }
 
     public function show (Project $project)
