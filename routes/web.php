@@ -10,7 +10,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/login', [ \App\Http\Controllers\Admin\LoginController::class, 'show' ])->name('admin.login');
         Route::post('/login', [ \App\Http\Controllers\Admin\LoginController::class, 'login' ])->name('admin.login');
 
-        Route::get('/', \App\Http\Controllers\Admin\IndexController::class);
+        Route::get('/', \App\Http\Controllers\Admin\IndexController::class)->name('dashboard');
 
         Route::get('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'show' ])->name('mod.add');
         Route::post('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'add' ])->name('mod.add');
@@ -22,7 +22,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/login', [ \App\Http\Controllers\Mod\LoginController::class, 'show' ])->name('mod.login');
         Route::post('/login', [ \App\Http\Controllers\Mod\LoginController::class, 'login' ])->name('mod.login');
 
-        Route::get('/', \App\Http\Controllers\Mod\IndexController::class);
+        Route::get('/', \App\Http\Controllers\Mod\IndexController::class)->name('dashboard');
 
         Route::get('/add/teacher', [ \App\Http\Controllers\Mod\AddTeacherController::class, 'show' ])->name('teacher.add');
         Route::post('/add/teacher', [ \App\Http\Controllers\Mod\AddTeacherController::class, 'add' ])->name('teacher.add');
@@ -37,7 +37,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'show' ])->name('teacher.login');
         Route::post('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'login' ])->name('teacher.login');
 
-        Route::get('/', \App\Http\Controllers\Teacher\IndexController::class);
+        Route::get('/', \App\Http\Controllers\Teacher\IndexController::class)->name('dashboard');
 
         Route::get('/view/{teacher}', \App\Http\Controllers\Teacher\ViewProfileController::class)->name('teacher.profile');
 
@@ -51,7 +51,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'show' ])->name('student.add.email');
         Route::post('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'add' ])->name('student.add.email');
 
-        Route::get('/', \App\Http\Controllers\Student\IndexController::class);
+        Route::get('/', \App\Http\Controllers\Student\IndexController::class)->name('dashboard');
 
         Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');
 

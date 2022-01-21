@@ -18,10 +18,10 @@
             <div class="d-flex order-lg-2 ml-auto">
                 <div class="dropdown">
                     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <span class="avatar" style="background-image: url({{ auth()->guard($guard)->user()->avatar() }})"></span>
+                    <span class="avatar" style="background-image: url({{ auth()->guard()->user()->avatar() }})"></span>
                     <span class="ml-2 d-none d-lg-block">
                     <span class="text-default">
-                        {{ auth()->guard($guard)->user()->name }}
+                        {{ auth()->guard()->user()->name }}
                     </span>
                     <small class="text-muted d-block mt-1">
                         {{ $guard_labels[$guard] }}
@@ -50,12 +50,10 @@
                             <i class="dropdown-icon fe fe-settings"></i> Settings
                         </a>
 
-                        <a class="dropdown-item" href="#">
-                            <span class="float-right"><span class="badge badge-primary">6</span></span>
-                            <i class="dropdown-icon fe fe-mail"></i> Inbox
-                        </a>
-
-                        @if (Auth::guard('student')->check())
+                        @if (
+                            Auth::guard('student')->check() &&
+                            !Auth::guard()->user()->isGrouped()
+                        )
                             <a class="dropdown-item" href="{{ route('requests.view') }}">
                                 <span class="float-right">
                                     <span class="badge badge-primary">
@@ -67,10 +65,6 @@
                         @endif
 
                         <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="#">
-                            <i class="dropdown-icon fe fe-help-circle"></i> Need help?
-                        </a>
 
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
@@ -101,20 +95,29 @@
             <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                     <li class="nav-item">
-                        <a href="{{ route('home') }}" class="nav-link active"><i class="fe fe-home"></i> Dashboard</a>
+                        <a href="{{ route('home') }}" class="nav-link {{ Route::currentRouteName() === 'dashboard' ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="#" class="dropdown-item">Profile</a>
                             <a href="#" class="dropdown-item">Login</a>
                         </div>
-                    </li>
+                    </li> --}}
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
-                    </li>
+                    @if (
+                        Auth::guard('student')->check() &&
+                        Auth::guard()->user()->isGrouped()
+                    )
+                        <li class="nav-item">
+                            <a href="{{ route('view.group.projects', Auth::guard()->user()->getGroupId()) }}" class="nav-link {{ Route::currentRouteName() === 'view.group.projects' ? 'active' : '' }}"><i class="fe fe-file-text"></i> Group Projects</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a href="{{ route('create.project') }}" class="nav-link {{ Route::currentRouteName() === 'create.project' ? 'active' : '' }}"><i class="fe fe-plus"></i> Create Project</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
