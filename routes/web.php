@@ -16,6 +16,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'add' ])->name('mod.add');
 
         Route::get('/view/{admin}', \App\Http\Controllers\Admin\ViewProfileController::class)->name('admin.profile');
+        Route::get('/account/settings', \App\Http\Controllers\Admin\SettingsController::class)->name('admin.settings');
     });
 
     Route::prefix('mod')->group(function () {
@@ -31,6 +32,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'add' ])->name('student.add');
 
         Route::get('/view/{mod}', \App\Http\Controllers\Mod\ViewProfileController::class)->name('mod.profile');
+        Route::get('/account/settings', \App\Http\Controllers\Mod\SettingsController::class)->name('mod.settings');
     });
 
     Route::prefix('teacher')->group(function () {
@@ -42,6 +44,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/view/{teacher}', \App\Http\Controllers\Teacher\ViewProfileController::class)->name('teacher.profile');
 
         Route::post('/profile/update', \App\Http\Controllers\Teacher\UpdateProfileController::class)->name('teacher.profile.update');
+        Route::get('/account/settings', \App\Http\Controllers\Teacher\SettingsController::class)->name('teacher.settings');
     });
 
     Route::prefix('student')->group(function () {
@@ -52,6 +55,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'add' ])->name('student.add.email');
 
         Route::get('/', \App\Http\Controllers\Student\IndexController::class)->name('dashboard');
+
+        Route::get('/account/settings', \App\Http\Controllers\Student\SettingsController::class)->name('student.settings');
 
         Route::get('/view/{student}', \App\Http\Controllers\Student\ViewProfileController::class)->name('student.profile');
 

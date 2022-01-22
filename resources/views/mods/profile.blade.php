@@ -5,30 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <div class="card card-profile">
-                    <div class="card-header"></div>
-
-                    <div class="card-body text-center">
-                        <img class="card-profile-img" src="{{ $mod->avatar() }}">
-
-                        <h3 class="mb-3">{{ $mod->name }}</h3>
-                        <p class="mb-4">
-                            Lorem ipsum dolor sit amet.
-                        </p>
-
-                        <div class="mb-3">
-                            <span class="badge badge-admin-mod">Moderator</span>
-                        </div>
-                    </div>
-                </div>
+                @include('partials.mods.profile-card')
             </div>
 
             <div class="col-lg-8">
-                {{-- update password form --}}
-                @if (Auth::guard('mod')->check() && Auth::guard()->user()->owner($mod->id))
-                    @include('partials.update-password')
-                @endif
-
                 {{-- teachers list --}}
                 <div class="card">
                     <div class="card-header">

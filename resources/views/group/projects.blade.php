@@ -19,6 +19,8 @@
                         @foreach ($projects as $project)
                             @include('partials.project-details')
                         @endforeach
+
+                        {{ $projects->links() }}
                     @else
                         <p class="text-center">No projects found.</p>
                     @endif

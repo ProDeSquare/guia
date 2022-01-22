@@ -33,22 +33,35 @@
                             <a class="dropdown-item" href="{{ route('admin.profile', ['admin' => auth()->guard()->id()]) }}">
                                 <i class="dropdown-icon fe fe-user"></i> Profile
                             </a>
+
+                            <a class="dropdown-item" href="{{ route('admin.settings') }}">
+                                <i class="dropdown-icon fe fe-settings"></i> Settings
+                            </a>
                         @elseif (auth()->guard()->user()->getGuardType() === 'mod')
                             <a class="dropdown-item" href="{{ route('mod.profile', ['mod' => auth()->guard()->id()]) }}">
                                 <i class="dropdown-icon fe fe-user"></i> Profile
+                            </a>
+
+                            <a class="dropdown-item" href="{{ route('mod.settings') }}">
+                                <i class="dropdown-icon fe fe-settings"></i> Settings
                             </a>
                         @elseif (auth()->guard()->user()->getGuardType() === 'teacher')
                             <a class="dropdown-item" href="{{ route('teacher.profile', ['teacher' => auth()->guard()->id()]) }}">
                                 <i class="dropdown-icon fe fe-user"></i> Profile
                             </a>
+
+                            <a class="dropdown-item" href="{{ route('teacher.settings') }}">
+                                <i class="dropdown-icon fe fe-settings"></i> Settings
+                            </a>
                         @elseif (auth()->guard()->user()->getGuardType() === 'student')
                             <a class="dropdown-item" href="{{ route('student.profile', ['student' => auth()->guard()->id()]) }}">
                                 <i class="dropdown-icon fe fe-user"></i> Profile
                             </a>
+
+                            <a class="dropdown-item" href="{{ route('student.settings') }}">
+                                <i class="dropdown-icon fe fe-settings"></i> Settings
+                            </a>
                         @endif
-                        <a class="dropdown-item" href="#">
-                            <i class="dropdown-icon fe fe-settings"></i> Settings
-                        </a>
 
                         @if (
                             Auth::guard('student')->check() &&
@@ -97,14 +110,6 @@
                     <li class="nav-item">
                         <a href="{{ route('home') }}" class="nav-link {{ Route::currentRouteName() === 'dashboard' ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                     </li>
-
-                    {{-- <li class="nav-item dropdown">
-                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a>
-                        <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="#" class="dropdown-item">Profile</a>
-                            <a href="#" class="dropdown-item">Login</a>
-                        </div>
-                    </li> --}}
 
                     @if (
                         Auth::guard('student')->check() &&
