@@ -18,4 +18,19 @@ class Group extends Model
     {
         return $this->hasMany(Project::class, 'group_id');
     }
+
+    public function supervisorRequests ()
+    {
+        return $this->hasMany(Supervisor::class, 'group_id')->where('accepted', 0);
+    }
+
+    public function requested ($id): bool
+    {
+        return $this->supervisorRequests()->where('teacher_id', $id)->count();
+    }
+
+    public function supervisor ()
+    {
+        return $this->hasOne(Supervisor::class, 'group_id')->where('accepted', 1);
+    }
 }

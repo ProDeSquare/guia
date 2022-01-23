@@ -93,4 +93,9 @@ class Student extends Authenticatable implements Searchable
     {
         return $this->group()->first()->group()->first()->id;
     }
+
+    public function mainGroup ()
+    {
+        return Group::find($this->getGroupId());
+    }
 }

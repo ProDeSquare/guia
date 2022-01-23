@@ -6,6 +6,8 @@
         <div class="row">
             <div class="col-lg-4">
                 @include('partials.teachers.profile-card')
+
+                @include('partials.teachers.requirements')
             </div>
 
             <div class="col-lg-8">

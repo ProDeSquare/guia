@@ -86,6 +86,11 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('view/project/{project}', \App\Http\Controllers\Project\ViewController::class)->name('project.view');
     });
 
+    Route::prefix('supervisor')->group(function () {
+        Route::post('/request/{teacher}', \App\Http\Controllers\Supervisor\RequestController::class)->name('supervise.request');
+        Route::delete('/request/{teacher}', \App\Http\Controllers\Supervisor\CancelRequestController::class)->name('supervise.request.cancel');
+    });
+
     Route::prefix('search')->group(function () {
         Route::get('/{q?}', \App\Http\Controllers\Search\PerformController::class)->name('search');
     });
