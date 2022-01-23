@@ -16,7 +16,13 @@
 
                 <div class="col-lg">
                     @include('partials.project-details')
+
+                    @include('partials.project-rejection-form')
                 </div>
+            </div>
+
+            <div>
+                @include('partials.project-rejections-list')
             </div>
         </div>
     </div>

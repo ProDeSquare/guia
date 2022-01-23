@@ -58,13 +58,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-lg">
-                    <form action="#" method="post">
-                        @csrf
-
-                        <button class="btn btn-outline-danger">
-                            Reject
-                        </button>
-                    </form>
+                    
                 </div>
 
                 <div class="col-lg">

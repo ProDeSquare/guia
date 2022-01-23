@@ -22,4 +22,9 @@ class Project extends Model
     {
         return $this->belongsTo(Group::class, 'group_id');
     }
+
+    public function rejections ()
+    {
+        return $this->hasMany(Rejection::class, 'project_id');
+    }
 }

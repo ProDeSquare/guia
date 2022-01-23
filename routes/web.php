@@ -93,6 +93,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::delete('/request/{teacher}', \App\Http\Controllers\Supervisor\CancelRequestController::class)->name('supervise.request.cancel');
 
         Route::post('/request/accept/{group}/{project}', \App\Http\Controllers\Supervisor\AcceptRequestController::class)->name('accept.supervision.request');
+        Route::post('/reject/project/{project}', \App\Http\Controllers\Rejections\RejectController::class)->name('reject.project');
     });
 
     Route::prefix('search')->group(function () {

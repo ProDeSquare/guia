@@ -20,6 +20,7 @@ class ViewController extends Controller
         return view('projects.index')->with([
             'project' => $project,
             'members' => $group->members()->get(),
+            'rejections' => $project->rejections()->latest()->get(),
         ]);
     }
 }
