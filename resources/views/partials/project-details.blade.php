@@ -50,6 +50,8 @@
             <div class="row">
                 <div class="col-lg">
                     <form action="#" method="post">
+                        @csrf
+
                         <button class="btn btn-outline-danger">
                             Reject
                         </button>
@@ -57,7 +59,9 @@
                 </div>
 
                 <div class="col-lg">
-                    <form action="#" method="post">
+                    <form action="{{ route('accept.supervision.request', [$project->group_id, $project->id]) }}" method="post">
+                        @csrf
+
                         <button class="btn btn-primary float-right">
                             <i class="fe fe-check"></i>
 
