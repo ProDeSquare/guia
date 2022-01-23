@@ -18,6 +18,7 @@ class UpdateController extends Controller
     public function update (Project $project, ProjectRequest $request)
     {
         if (Auth::guard()->user()->getGroupId() !== $project->group_id) abort(404);
+        if (Auth::guard()->user()->mainGroup()->supervisor()->count()) abort(404);
 
         $project->update($request->validated());
 
@@ -27,6 +28,7 @@ class UpdateController extends Controller
     public function show (Project $project)
     {
         if (Auth::guard()->user()->getGroupId() !== $project->group_id) abort(404);
+        if (Auth::guard()->user()->mainGroup()->supervisor()->count()) abort(404);
 
         $group = Group::find(Auth::guard()->user()->getGroupId());
 

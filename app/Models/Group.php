@@ -33,4 +33,9 @@ class Group extends Model
     {
         return $this->hasOne(Supervisor::class, 'group_id')->where('accepted', 1);
     }
+
+    public function isSupervisedBy ($id): bool
+    {
+        return $this->supervisor()->where('teacher_id', $id)->count();
+    }
 }

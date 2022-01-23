@@ -14,20 +14,25 @@
                 Auth::guard()->user()->isGrouped() &&
                 Auth::guard()->user()->mainGroup()->projects()->count()
             )
-                @if (Auth::guard()->user()->mainGroup()->requested($teacher->id))
-                    <form action="{{ route('supervise.request.cancel', $teacher->id) }}" method="post">
-                        @csrf
+                @if (Auth::guard()->user()->mainGroup()->isSupervisedBy($teacher->id))
+                    <button class="btn btn-primary btn-disabled btn-block" disabled>Supervisor</button>
+                @elseif (Auth::guard()->user()->mainGroup()->supervisor()->count() === 0)
 
-                        <input type="hidden" name="_method" value="delete" />
+                    @if (Auth::guard()->user()->mainGroup()->requested($teacher->id))
+                        <form action="{{ route('supervise.request.cancel', $teacher->id) }}" method="post">
+                            @csrf
 
-                        <button class="btn btn-outline-danger btn-block" type="submit">Cancel Request</button>
-                    </form>
-                @else
-                    <form action="{{ route('supervise.request', $teacher->id) }}" method="post">
-                        @csrf
+                            <input type="hidden" name="_method" value="delete" />
 
-                        <button class="btn btn-primary btn-block" type="submit">Supervision Request</button>
-                    </form>
+                            <button class="btn btn-outline-danger btn-block" type="submit">Cancel Request</button>
+                        </form>
+                    @else
+                        <form action="{{ route('supervise.request', $teacher->id) }}" method="post">
+                            @csrf
+
+                            <button class="btn btn-primary btn-block" type="submit">Supervision Request</button>
+                        </form>
+                    @endif
                 @endif
             @endif
         </div>

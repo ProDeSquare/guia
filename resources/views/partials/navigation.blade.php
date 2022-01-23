@@ -130,9 +130,11 @@
                             <a href="{{ route('view.group.projects', Auth::guard()->user()->getGroupId()) }}" class="nav-link {{ Route::currentRouteName() === 'view.group.projects' ? 'active' : '' }}"><i class="fe fe-file-text"></i> Group Projects</a>
                         </li>
     
-                        <li class="nav-item">
-                            <a href="{{ route('create.project') }}" class="nav-link {{ Route::currentRouteName() === 'create.project' ? 'active' : '' }}"><i class="fe fe-plus"></i> Create Project</a>
-                        </li>
+                        @if (Auth::guard()->user()->mainGroup()->supervisor()->count() === 0)
+                            <li class="nav-item">
+                                <a href="{{ route('create.project') }}" class="nav-link {{ Route::currentRouteName() === 'create.project' ? 'active' : '' }}"><i class="fe fe-plus"></i> Create Project</a>
+                            </li>
+                        @endif
                     @endif
                 </ul>
             </div>

@@ -35,7 +35,8 @@
 
     @if (
         Auth::guard('student')->check() &&
-        Auth::guard()->user()->getGroupId() === $project->group_id
+        Auth::guard()->user()->getGroupId() === $project->group_id &&
+        Auth::guard()->user()->mainGroup()->supervisor()->count() === 0
     )
         <div class="card-footer">
             <a href="{{ route('update.project', $project->id) }}" class="btn btn-primary float-right">Update</a>

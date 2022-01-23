@@ -17,6 +17,7 @@ class CreateController extends Controller
     public function add (ProjectRequest $request)
     {
         if (! Auth::guard()->user()->isGrouped()) abort(404);
+        if (! Auth::guard()->user()->mainGroup()->supervisor()->count()) abort(404);
 
         $group = Group::find(Auth::guard()->user()->getGroupId());
 
@@ -27,7 +28,8 @@ class CreateController extends Controller
 
     public function show ()
     {
-        if (! Auth::guard()->user()->isGrouped()) return redirect('student.profile');
+        if (! Auth::guard()->user()->isGrouped()) abort(404);
+        if (Auth::guard()->user()->mainGroup()->supervisor()->count()) abort(404);
 
         $group = Group::find(Auth::guard()->user()->getGroupId());
 
