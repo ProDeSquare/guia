@@ -15,7 +15,7 @@ class GetProjectsController extends Controller
     public function __invoke (Group $group)
     {
         return view('group.projects')->with([
-            'projects' => $group->projects()->latest()->simplePaginate(5),
+            'projects' => $group->projects()->orderBy('status', 'desc')->simplePaginate(5),
             'members' => $group->members()->get(),
         ]);
     }

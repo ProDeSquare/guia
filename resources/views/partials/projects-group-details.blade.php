@@ -27,3 +27,16 @@
         </ul>
     </div>
 </div>
+
+@if ($member->group()->first()->supervisor()->count())
+    <div class="card">
+        <div class="card-body">
+            <p>
+                Supervised by
+                <a href="{{ route('teacher.profile', $member->group()->first()->supervisor()->first()->supervisor()->first()->id) }}">
+                    {{ $member->group()->first()->supervisor()->first()->supervisor()->first()->name }}
+                </a>
+            </p>
+        </div>
+    </div>
+@endif

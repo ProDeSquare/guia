@@ -2,6 +2,14 @@
     <div class="card-header">
         <h3 class="card-title">
             <a href="{{ route('project.view', $project->id) }}">{{ $project->title }}</a>
+
+            @if ($project->status === 1)
+                <button class="btn btn-link btn-disabled" disabled>
+                    <i class="fe fe-check"></i>
+
+                    Accepted
+                </button>
+            @endif
         </h3>
     </div>
 
