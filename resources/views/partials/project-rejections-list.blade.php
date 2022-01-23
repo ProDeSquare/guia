@@ -23,7 +23,9 @@
                             </td>
                             <td>
                                 <div>
-                                    {{ $rejection->teacher()->first()->name }}
+                                    <a href="{{ route('teacher.profile', $rejection->teacher()->first()->id) }}">
+                                        {{ $rejection->teacher()->first()->name }}
+                                    </a>
                                 </div>
                                 <div class="small text-muted">
                                     {{ $rejection->created_at->diffForHumans() }}

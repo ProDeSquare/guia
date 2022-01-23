@@ -58,7 +58,9 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-lg">
-                    
+                    <div class="small text-muted my-2">
+                        Reject project to decline.
+                    </div>
                 </div>
 
                 <div class="col-lg">
