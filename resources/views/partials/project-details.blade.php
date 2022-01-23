@@ -41,4 +41,31 @@
             <a href="{{ route('update.project', $project->id) }}" class="btn btn-primary float-right">Update</a>
         </div>
     @endif
+
+    @if (
+        Auth::guard('teacher')->check() &&
+        $project->group()->first()->requested(Auth::guard()->id())
+    )
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-lg">
+                    <form action="#" method="post">
+                        <button class="btn btn-outline-danger">
+                            Reject
+                        </button>
+                    </form>
+                </div>
+
+                <div class="col-lg">
+                    <form action="#" method="post">
+                        <button class="btn btn-primary float-right">
+                            <i class="fe fe-check"></i>
+
+                            Accept
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>

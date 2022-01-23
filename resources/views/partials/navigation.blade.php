@@ -77,6 +77,17 @@
                             </a>
                         @endif
 
+                        @if (Auth::guard('teacher')->check())
+                            <a class="dropdown-item" href="{{ route('supervision.requests') }}">
+                                <span class="float-right">
+                                    <span class="badge badge-primary">
+                                        1
+                                    </span>
+                                </span>
+                                <i class="dropdown-icon fe fe-send"></i> Requests
+                            </a>
+                        @endif
+
                         <div class="dropdown-divider"></div>
 
                         <form action="{{ route('logout') }}" method="post">

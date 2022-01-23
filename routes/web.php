@@ -45,6 +45,8 @@ Route::middleware(['app.setup'])->group(function () {
 
         Route::post('/profile/update', \App\Http\Controllers\Teacher\UpdateProfileController::class)->name('teacher.profile.update');
         Route::get('/account/settings', \App\Http\Controllers\Teacher\SettingsController::class)->name('teacher.settings');
+
+        Route::get('/supervision/requests', \App\Http\Controllers\Supervisor\ViewRequestsController::class)->name('supervision.requests');
     });
 
     Route::prefix('student')->group(function () {

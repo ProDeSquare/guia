@@ -62,4 +62,9 @@ class Teacher extends Authenticatable implements Searchable
     {
         return $this->hasMany(Search::class, 'user_id')->where('guard', $this->guard);
     }
+
+    public function supervisionRequests ()
+    {
+        return $this->hasMany(Supervisor::class, 'teacher_id')->where('accepted', 0);
+    }
 }
