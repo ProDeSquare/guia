@@ -81,7 +81,7 @@
                             <a class="dropdown-item" href="{{ route('supervision.requests') }}">
                                 <span class="float-right">
                                     <span class="badge badge-primary">
-                                        1
+                                        {{ Auth::guard()->user()->supervisionRequests()->count() }}
                                     </span>
                                 </span>
                                 <i class="dropdown-icon fe fe-send"></i> Requests

@@ -13,7 +13,10 @@
             <span class="badge badge-teacher-student">Lecturer</span>
         </div>
 
-        @if (Auth::guard('teacher')->check() && Auth::guard()->user()->owner($teacher->id))
+        @if (
+            (Auth::guard('teacher')->check() && Auth::guard()->user()->owner($teacher->id)) ||
+            (Auth::guard('student')->check() && Auth::user()->isGrouped() && Auth::guard()->user()->mainGroup()->isSupervisedBy($teacher->id))
+        )
             @if ($teacher->whatsapp)
                 <a href="{{ $teacher->whatsapp }}" class="btn btn-outline-success btn-sm">
                     <span class="fa fa-whatsapp"></span> WhatsApp
