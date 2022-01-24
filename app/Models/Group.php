@@ -19,6 +19,11 @@ class Group extends Model
         return $this->hasMany(Project::class, 'group_id');
     }
 
+    public function acceptedProject ()
+    {
+        return $this->projects()->where('status', 1)->first();
+    }
+
     public function supervisorRequests ()
     {
         return $this->hasMany(Supervisor::class, 'group_id')->where('accepted', 0);

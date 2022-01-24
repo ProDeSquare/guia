@@ -11,9 +11,13 @@
             </div>
 
             <div class="col-lg-8">
-                <p class="text-center">
-                    <strong>{{ $teacher->name }}</strong> has no activity for time being.
-                </p>
+                @if ($teacher->underSupervision()->count())
+                    @include('partials.teachers.supervision-list')
+                @else
+                    <p class="text-center">
+                        <strong>{{ $teacher->name }}</strong> has no activity for time being.
+                    </p>
+                @endif
             </div>
         </div>
     </div>

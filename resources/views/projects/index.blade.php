@@ -14,15 +14,13 @@
                     @include('partials.projects-group-details')
                 </div>
 
-                <div class="col-lg">
+                <div class="col-lg-8">
                     @include('partials.project-details')
 
                     @include('partials.project-rejection-form')
-                </div>
-            </div>
 
-            <div>
-                @include('partials.project-rejections-list')
+                    @include('partials.project-rejections-list')
+                </div>
             </div>
         </div>
     </div>
