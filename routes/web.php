@@ -31,6 +31,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::get('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'show' ])->name('student.add');
         Route::post('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'add' ])->name('student.add');
 
+        Route::get('/view/all', \App\Http\Controllers\Details\ModeratorsController::class)->name('all.moderators');
+
         Route::get('/view/{mod}', \App\Http\Controllers\Mod\ViewProfileController::class)->name('mod.profile');
         Route::get('/account/settings', \App\Http\Controllers\Mod\SettingsController::class)->name('mod.settings');
     });
@@ -40,6 +42,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'login' ])->name('teacher.login');
 
         Route::get('/', \App\Http\Controllers\Teacher\IndexController::class)->name('dashboard');
+
+        Route::get('/view/all', \App\Http\Controllers\Details\TeachersController::class)->name('all.teachers');
 
         Route::get('/view/{teacher}', \App\Http\Controllers\Teacher\ViewProfileController::class)->name('teacher.profile');
 
@@ -57,6 +61,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'add' ])->name('student.add.email');
 
         Route::get('/', \App\Http\Controllers\Student\IndexController::class)->name('dashboard');
+
+        Route::get('/view/all', \App\Http\Controllers\Details\StudentsController::class)->name('all.students');
 
         Route::get('/account/settings', \App\Http\Controllers\Student\SettingsController::class)->name('student.settings');
 

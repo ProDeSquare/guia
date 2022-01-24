@@ -37,6 +37,11 @@ class Teacher extends Authenticatable implements Searchable
         return "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
     }
 
+    public function createdBy ()
+    {
+        return $this->belongsTo(Mod::class, 'created_by')->first();
+    }
+
     public function getGuardType ()
     {
         return $this->guard;

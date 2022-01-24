@@ -36,6 +36,11 @@ class Student extends Authenticatable implements Searchable
         'email_verified_at' => 'datetime',
     ];
 
+    public function createdBy ()
+    {
+        return $this->belongsTo(Mod::class, 'created_by')->first();
+    }
+
     public function avatar ()
     {
         return $this->email
