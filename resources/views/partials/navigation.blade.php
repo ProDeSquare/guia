@@ -122,6 +122,22 @@
                         <a href="{{ route('home') }}" class="nav-link {{ Route::currentRouteName() === 'dashboard' ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                     </li>
 
+                    @if (Auth::guard('admin')->check())
+                        <li class="nav-item">
+                            <a href="{{ route('mod.add') }}" class="nav-link {{ Route::currentRouteName() === 'mod.add' ? 'active' : '' }}"><i class="fe fe-plus"></i> Add Moderator</a>
+                        </li>
+                    @endif
+
+                    @if (Auth::guard('mod')->check())
+                        <li class="nav-item">
+                            <a href="{{ route('teacher.add') }}" class="nav-link {{ Route::currentRouteName() === 'teacher.add' ? 'active' : '' }}"><i class="fe fe-plus"></i> Add Teacher</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('student.add') }}" class="nav-link {{ Route::currentRouteName() === 'student.add' ? 'active' : '' }}"><i class="fe fe-plus"></i> Add Student</a>
+                        </li>
+                    @endif
+
                     @if (
                         Auth::guard('student')->check() &&
                         Auth::guard()->user()->isGrouped()
