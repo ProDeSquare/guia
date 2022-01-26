@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="text-muted mb-4">
-                                Moderators
+                                <a href="{{ route('all.moderators') }}">Moderators</a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="text-muted mb-4">
-                                Teachers
+                                <a href="{{ route('all.teachers') }}">Teachers</a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="text-muted mb-4">
-                                Students
+                                <a href="{{ route('all.students') }}">Students</a>
                             </div>
                         </div>
                     </div>
