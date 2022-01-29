@@ -56,11 +56,11 @@
 
                                         <td>
                                             <span class="{{ $student->isGrouped() ? 'text-green' : 'text-red' }}">
-                                                {{ $student->isGrouped() ? 'Yes' : 'No' }}
+                                                {!! $student->isGrouped() ? '<i class="fe fe-check"></i>' : '<i>No</i>' !!}
                                             </span>
                                         </td>
 
-                                        <td>{{ $student->enabled ? 'Yes' : 'No' }}</td>
+                                        <td>{!! $student->enabled ? '<i class="fe fe-check"></i>' : '<i>No</i>' !!}</td>
 
                                         <td>{{ $student->created_at->format('d M Y') }}</td>
                                     </tr>

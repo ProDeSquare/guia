@@ -25,7 +25,7 @@
                                 <a href="{{ route('student.profile', $member->student()->first()->id) }}" class="text-inherit">{{ $member->student()->first()->name }}</a>
                             </div>
                             <small class="d-block item-except text-sm text-muted h-1x">
-                                {{ $member->student()->first()->email }}
+                                {{ $member->student()->first()->roll_no }}
                             </small>
                         </div>
                     </div>

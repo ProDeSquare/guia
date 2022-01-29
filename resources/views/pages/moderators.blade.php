@@ -39,7 +39,11 @@
                                             <div class="avatar d-block" style="background-image: url({{ $mod->avatar() }})"></div>
                                         </td>
 
-                                        <td>{{ $mod->name }}</td>
+                                        <td>
+                                            <a href="{{ route('mod.profile', $mod->id) }}">
+                                                {{ $mod->name }}
+                                            </a>
+                                        </td>
 
                                         <td>{{ $mod->email }}</td>
 
