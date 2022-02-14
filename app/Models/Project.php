@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Project extends Model
+class Project extends Model implements Searchable
 {
     use HasFactory;
 
@@ -26,5 +28,16 @@ class Project extends Model
     public function rejections ()
     {
         return $this->hasMany(Rejection::class, 'project_id');
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('project.view', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url,
+        ); 
     }
 }

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Search;
 
 use Auth;
+use App\Models\Project;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
 use App\Http\Controllers\Controller;
-use App\Models\Search as ModelsSearch;
 use Spatie\Searchable\ModelSearchAspect;
 
 class PerformController extends Controller
@@ -33,6 +33,10 @@ class PerformController extends Controller
                 $modelSearchAspect
                     ->addSearchableAttribute('name')
                     ->addExactSearchableAttribute('email');
+            })->registerModel(Project::class, function(ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('title')
+                    ->addSearchableAttribute('description');
             })->search($request->q);
         
         Auth::guard()->user()->searchHistory()->updateOrCreate([
@@ -41,5 +45,37 @@ class PerformController extends Controller
         ]);
 
         return view('pages.search')->withResults($results);
+    }
+
+    protected function searchStudents($q)
+    {
+        return (new Search())
+            ->registerModel(Student::class, function(ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('name')
+                    ->addExactSearchableAttribute('email')
+                    ->addExactSearchableAttribute('roll_no')
+                    ->addExactSearchableAttribute('username');
+            })->search($q);
+    }
+
+    protected function searchTeachers($q)
+    {
+        return (new Search())
+            ->registerModel(Teacher::class, function(ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('name')
+                    ->addExactSearchableAttribute('email');
+            })->search($q);
+    }
+
+    protected function searchProjects($q)
+    {
+        return (new Search())
+            ->registerModel(Project::class, function(ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('title')
+                    ->addSearchableAttribute('description');
+            })->search($q);
     }
 }

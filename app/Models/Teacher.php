@@ -58,7 +58,7 @@ class Teacher extends Authenticatable implements Searchable
 
         return new SearchResult(
             $this,
-            $this->name,
+            $this->name . ' - ' . $this->email,
             $url,
         );
     }

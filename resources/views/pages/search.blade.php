@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            @if (strlen(app('request')->input('q')) > 0 && strlen(app('request')->input('q')) < 3)
+            @if (strlen(app('request')->input('q')))
                 <h3 class="page-title">
                     Search Results.
                 </h3>
