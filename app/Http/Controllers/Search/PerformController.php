@@ -35,8 +35,7 @@ class PerformController extends Controller
                     ->addExactSearchableAttribute('email');
             })->registerModel(Project::class, function(ModelSearchAspect $modelSearchAspect) {
                 $modelSearchAspect
-                    ->addSearchableAttribute('title')
-                    ->addSearchableAttribute('description');
+                    ->addSearchableAttribute('title');
             })->search($request->q);
         
         Auth::guard()->user()->searchHistory()->updateOrCreate([
@@ -74,8 +73,7 @@ class PerformController extends Controller
         return (new Search())
             ->registerModel(Project::class, function(ModelSearchAspect $modelSearchAspect) {
                 $modelSearchAspect
-                    ->addSearchableAttribute('title')
-                    ->addSearchableAttribute('description');
+                    ->addSearchableAttribute('title');
             })->search($q);
     }
 }
