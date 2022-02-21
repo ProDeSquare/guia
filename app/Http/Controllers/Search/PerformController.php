@@ -45,35 +45,4 @@ class PerformController extends Controller
 
         return view('pages.search')->withResults($results);
     }
-
-    protected function searchStudents($q)
-    {
-        return (new Search())
-            ->registerModel(Student::class, function(ModelSearchAspect $modelSearchAspect) {
-                $modelSearchAspect
-                    ->addSearchableAttribute('name')
-                    ->addExactSearchableAttribute('email')
-                    ->addExactSearchableAttribute('roll_no')
-                    ->addExactSearchableAttribute('username');
-            })->search($q);
-    }
-
-    protected function searchTeachers($q)
-    {
-        return (new Search())
-            ->registerModel(Teacher::class, function(ModelSearchAspect $modelSearchAspect) {
-                $modelSearchAspect
-                    ->addSearchableAttribute('name')
-                    ->addExactSearchableAttribute('email');
-            })->search($q);
-    }
-
-    protected function searchProjects($q)
-    {
-        return (new Search())
-            ->registerModel(Project::class, function(ModelSearchAspect $modelSearchAspect) {
-                $modelSearchAspect
-                    ->addSearchableAttribute('title');
-            })->search($q);
-    }
 }
