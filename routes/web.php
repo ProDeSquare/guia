@@ -2,34 +2,34 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 'show' ]);
-Route::post('/app/setup', [ \App\Http\Controllers\Admin\SetupController::class, 'register' ]);
+Route::get('/app/setup', [\App\Http\Controllers\Admin\SetupController::class, 'show']);
+Route::post('/app/setup', [\App\Http\Controllers\Admin\SetupController::class, 'register']);
 
 Route::middleware(['app.setup'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/login', [ \App\Http\Controllers\Admin\LoginController::class, 'show' ])->name('admin.login');
-        Route::post('/login', [ \App\Http\Controllers\Admin\LoginController::class, 'login' ])->name('admin.login');
+        Route::get('/login', [\App\Http\Controllers\Admin\LoginController::class, 'show'])->name('admin.login');
+        Route::post('/login', [\App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
 
         Route::get('/', \App\Http\Controllers\Admin\IndexController::class)->name('dashboard');
 
-        Route::get('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'show' ])->name('mod.add');
-        Route::post('/add/moderator', [ \App\Http\Controllers\Admin\AddModeratorController::class, 'add' ])->name('mod.add');
+        Route::get('/add/moderator', [\App\Http\Controllers\Admin\AddModeratorController::class, 'show'])->name('mod.add');
+        Route::post('/add/moderator', [\App\Http\Controllers\Admin\AddModeratorController::class, 'add'])->name('mod.add');
 
         Route::get('/view/{admin}', \App\Http\Controllers\Admin\ViewProfileController::class)->name('admin.profile');
         Route::get('/account/settings', \App\Http\Controllers\Admin\SettingsController::class)->name('admin.settings');
     });
 
     Route::prefix('mod')->group(function () {
-        Route::get('/login', [ \App\Http\Controllers\Mod\LoginController::class, 'show' ])->name('mod.login');
-        Route::post('/login', [ \App\Http\Controllers\Mod\LoginController::class, 'login' ])->name('mod.login');
+        Route::get('/login', [\App\Http\Controllers\Mod\LoginController::class, 'show'])->name('mod.login');
+        Route::post('/login', [\App\Http\Controllers\Mod\LoginController::class, 'login'])->name('mod.login');
 
         Route::get('/', \App\Http\Controllers\Mod\IndexController::class)->name('dashboard');
 
-        Route::get('/add/teacher', [ \App\Http\Controllers\Mod\AddTeacherController::class, 'show' ])->name('teacher.add');
-        Route::post('/add/teacher', [ \App\Http\Controllers\Mod\AddTeacherController::class, 'add' ])->name('teacher.add');
+        Route::get('/add/teacher', [\App\Http\Controllers\Mod\AddTeacherController::class, 'show'])->name('teacher.add');
+        Route::post('/add/teacher', [\App\Http\Controllers\Mod\AddTeacherController::class, 'add'])->name('teacher.add');
 
-        Route::get('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'show' ])->name('student.add');
-        Route::post('/add/student', [ \App\Http\Controllers\Mod\AddStudentController::class, 'add' ])->name('student.add');
+        Route::get('/add/student', [\App\Http\Controllers\Mod\AddStudentController::class, 'show'])->name('student.add');
+        Route::post('/add/student', [\App\Http\Controllers\Mod\AddStudentController::class, 'add'])->name('student.add');
 
         Route::get('/view/all', \App\Http\Controllers\Details\ModeratorsController::class)->name('all.moderators');
 
@@ -38,8 +38,8 @@ Route::middleware(['app.setup'])->group(function () {
     });
 
     Route::prefix('teacher')->group(function () {
-        Route::get('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'show' ])->name('teacher.login');
-        Route::post('/login', [ \App\Http\Controllers\Teacher\LoginController::class, 'login' ])->name('teacher.login');
+        Route::get('/login', [\App\Http\Controllers\Teacher\LoginController::class, 'show'])->name('teacher.login');
+        Route::post('/login', [\App\Http\Controllers\Teacher\LoginController::class, 'login'])->name('teacher.login');
 
         Route::get('/', \App\Http\Controllers\Teacher\IndexController::class)->name('dashboard');
 
@@ -54,11 +54,11 @@ Route::middleware(['app.setup'])->group(function () {
     });
 
     Route::prefix('student')->group(function () {
-        Route::get('/login', [ \App\Http\Controllers\Student\LoginController::class, 'show' ])->name('student.login');
-        Route::post('/login', [ \App\Http\Controllers\Student\LoginController::class, 'login' ])->name('student.login');
+        Route::get('/login', [\App\Http\Controllers\Student\LoginController::class, 'show'])->name('student.login');
+        Route::post('/login', [\App\Http\Controllers\Student\LoginController::class, 'login'])->name('student.login');
 
-        Route::get('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'show' ])->name('student.add.email');
-        Route::post('/add/email', [ \App\Http\Controllers\Student\AddEmailController::class, 'add' ])->name('student.add.email');
+        Route::get('/add/email', [\App\Http\Controllers\Student\AddEmailController::class, 'show'])->name('student.add.email');
+        Route::post('/add/email', [\App\Http\Controllers\Student\AddEmailController::class, 'add'])->name('student.add.email');
 
         Route::get('/', \App\Http\Controllers\Student\IndexController::class)->name('dashboard');
 
@@ -73,7 +73,7 @@ Route::middleware(['app.setup'])->group(function () {
         Route::delete('/request/decline/{request}', \App\Http\Controllers\Student\DeclineRequestController::class)->name('request.decline');
 
         Route::post('/profile/update', \App\Http\Controllers\Student\UpdateProfileController::class)->name('student.profile.update');
-    
+
         Route::post('/group/create', \App\Http\Controllers\Group\CreateGroupController::class)->name('group.create');
         Route::delete('/group/delete', \App\Http\Controllers\Group\DeleteGroupController::class)->name('group.delete');
 
@@ -83,15 +83,19 @@ Route::middleware(['app.setup'])->group(function () {
     });
 
     Route::prefix('group')->group(function () {
-        Route::get('/create/project', [ \App\Http\Controllers\Project\CreateController::class, 'show' ])->name('create.project');
-        Route::post('/create/project', [ \App\Http\Controllers\Project\CreateController::class, 'add' ])->name('create.project');
+        Route::get('/create/project', [\App\Http\Controllers\Project\CreateController::class, 'show'])->name('create.project');
+        Route::post('/create/project', [\App\Http\Controllers\Project\CreateController::class, 'add'])->name('create.project');
 
-        Route::get('/update/project/{project}', [ \App\Http\Controllers\Project\UpdateController::class, 'show' ])->name('update.project');
-        Route::patch('/update/project/{project}', [ \App\Http\Controllers\Project\UpdateController::class, 'update' ])->name('update.project');
+        Route::get('/update/project/{project}', [\App\Http\Controllers\Project\UpdateController::class, 'show'])->name('update.project');
+        Route::patch('/update/project/{project}', [\App\Http\Controllers\Project\UpdateController::class, 'update'])->name('update.project');
 
         Route::get('/{group}/view/projects', \App\Http\Controllers\Group\GetProjectsController::class)->name('view.group.projects');
 
         Route::get('view/project/{project}', \App\Http\Controllers\Project\ViewController::class)->name('project.view');
+
+        Route::prefix('view/project/{project}/milestones')->group(function () {
+            Route::get('/add', [\App\Http\Controllers\Milestones\CreateController::class, 'show'])->name('create.milestone');
+        });
     });
 
     Route::prefix('supervisor')->group(function () {
