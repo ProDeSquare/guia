@@ -76,5 +76,9 @@
                 </div>
             </div>
         </div>
+    @elseif ($project->status === 1)
+        <div class="card-footer">
+            <a href="#">View Milestones</a>
+        </div>
     @endif
 </div>
