@@ -19,6 +19,7 @@ class CreateMilestonesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->boolean('is_completed');
+            $table->string('github_issue_link')->nullable();
             $table->timestamps();
         });
     }
