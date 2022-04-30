@@ -78,7 +78,7 @@
         </div>
     @elseif ($project->status === 1)
         <div class="card-footer">
-            <a href="#">View Milestones</a>
+            <a href="{{ route('project.milestones', $project->id) }}">View Milestones</a>
         </div>
     @endif
 </div>
