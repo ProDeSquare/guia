@@ -9,15 +9,22 @@
         </div>
 
         <div class="page-body">
+            @if (
+                Auth::guard('student')->check() &&
+                Auth::guard('student')->user()->mainGroup()->acceptedProject()->id === $project->id
+            )
+                <div>
+                    <p>
+                        <a href="{{ route('create.milestone', $project->id) }}">Add a new milestone</a>
+                    </p>
+                </div>
+            @endif
+
             <div>
                 @if ($milestones->count())
-                    <ul>
-                        @foreach ($milestones as $milestone)
-                            <li>
-                                {{ $milestone->title }}
-                            </li>
-                        @endforeach
-                    </ul>
+                    @foreach ($milestones as $milestone)
+                        @include('partials.milestone-details')
+                    @endforeach
                 @else
                     <p>There were no milestones for this project.</p>
                 @endif

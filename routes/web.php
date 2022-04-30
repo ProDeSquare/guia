@@ -96,6 +96,8 @@ Route::middleware(['app.setup'])->group(function () {
         Route::prefix('view/project/{project}/milestones')->group(function () {
             Route::get('/', \App\Http\Controllers\Milestones\GetMilestonesController::class)->name('project.milestones');
 
+            Route::get('/view/{milestone}', \App\Http\Controllers\Milestones\ViewController::class)->name('milestone.view');
+
             Route::get('/add', [\App\Http\Controllers\Milestones\CreateController::class, 'show'])->name('create.milestone');
             Route::post('/add', [\App\Http\Controllers\Milestones\CreateController::class, 'add'])->name('create.milestone');
         });
