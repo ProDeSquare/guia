@@ -10,13 +10,17 @@
 
         <div class="page-body">
             <div>
-                <ul>
-                    @foreach ($milestones as $milestone)
-                        <li>
-                            {{ $milestone->title }}
-                        </li>
-                    @endforeach
-                </ul>
+                @if ($milestones->count())
+                    <ul>
+                        @foreach ($milestones as $milestone)
+                            <li>
+                                {{ $milestone->title }}
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>There were no milestones for this project.</p>
+                @endif
             </div>
         </div>
     </div>
