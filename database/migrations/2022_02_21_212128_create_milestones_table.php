@@ -18,7 +18,7 @@ class CreateMilestonesTable extends Migration
             $table->foreignId('project_id');
             $table->string('title');
             $table->text('description');
-            $table->boolean('is_completed');
+            $table->boolean('is_completed')->default(false);
             $table->string('github_issue_link')->nullable();
             $table->timestamps();
         });

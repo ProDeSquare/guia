@@ -13,5 +13,6 @@ class Milestone extends Model
         'title',
         'description',
         'is_completed',
+        'github_issue_link'
     ];
 }

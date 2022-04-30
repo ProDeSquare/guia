@@ -18,7 +18,7 @@
                     <div class="card card-body">
                         <h3 class="card-title">Create a milestone</h3>
 
-                        <form action="#" method="post">
+                        <form action="{{ route('create.milestone', $project->id) }}" method="post">
                             @csrf
 
                             <div class="form-group">
@@ -38,11 +38,11 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="github_repo" class="form-label">GitHub Issue Link</label>
+                                <label for="github_issue_link" class="form-label">GitHub Issue Link</label>
 
-                                <input type="text" class="form-control @error('github_repo') is-invalid @enderror" id="github_repo" placeholder="Github issue link for this milestone" name="github_repo" value="{{ old('github_repo') }}" />
+                                <input type="text" class="form-control @error('github_issue_link') is-invalid @enderror" id="github_issue_link" placeholder="Github issue link for this milestone" name="github_issue_link" value="{{ old('github_issue_link') }}" />
 
-                                @error('github_repo')
+                                @error('github_issue_link')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
