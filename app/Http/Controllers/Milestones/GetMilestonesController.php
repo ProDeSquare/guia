@@ -16,7 +16,7 @@ class GetMilestonesController extends Controller
     {
         $milestones = $project->milestones()->get();
 
-        return view('milestones.index')->with([
+        return view('pages.milestones')->with([
             'milestones' => $milestones,
             'project' => $project,
         ]);
