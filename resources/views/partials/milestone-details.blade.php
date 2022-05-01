@@ -16,4 +16,13 @@
             @endif
         </div>
     </div>
+
+    @if (
+        Auth::guard('teacher')->check() &&
+        $project->group()->first()->isSupervisedBy(Auth::guard()->id())
+    )
+        <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-block">Add Assignment</a>
+        </div>
+    @endif
 </div>
