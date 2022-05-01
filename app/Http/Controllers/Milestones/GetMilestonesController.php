@@ -14,7 +14,7 @@ class GetMilestonesController extends Controller
 
     public function __invoke(Project $project)
     {
-        $milestones = $project->milestones()->get();
+        $milestones = $project->milestones()->simplePaginate(5);
 
         return view('pages.milestones')->with([
             'milestones' => $milestones,

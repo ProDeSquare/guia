@@ -23,8 +23,18 @@
             <div>
                 @if ($milestones->count())
                     @foreach ($milestones as $milestone)
-                        @include('partials.milestone-details')
+                        <div class="row">
+                            <div class="col-lg-4">
+                                @include('partials.milestone-details')
+                            </div>
+
+                            <div class="col-lg-8">
+                                {{-- Few assignments here --}}
+                            </div>
+                        </div>
                     @endforeach
+
+                    {{ $milestones->links() }}
                 @else
                     <p>There were no milestones for this project.</p>
                 @endif
