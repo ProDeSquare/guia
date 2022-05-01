@@ -8,13 +8,13 @@
     <div class="card-body">
         <p>{{ $milestone->description }}</p>
 
-        <div>
-            @if ($milestone->github_issue_link)
+        @if ($milestone->github_issue_link)
+            <div>
                 <a class="btn btn-outline-dark btn-sm" target="blank" href="{{ $milestone->github_issue_link }}">
                     <span class="fa fa-github"></span> GitHub
                 </a>
-            @endif
-        </div>
+            </div>
+        @endif
     </div>
 
     @if (
