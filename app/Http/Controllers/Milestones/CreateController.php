@@ -19,9 +19,9 @@ class CreateController extends Controller
     {
         if (!$this->projectIsAcceptedAndBelongsToUser($project)) abort(403);
 
-        $project->milestones()->firstOrCreate($request->validated());
+        $milestone = $project->milestones()->firstOrCreate($request->validated());
 
-        // redirect to individual milestone page.
+        return redirect()->route('milestone.view', [$project, $milestone]);
     }
 
     public function show(Project $project)

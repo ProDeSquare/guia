@@ -9,6 +9,10 @@
         </div>
 
         <div class="page-body">
+            <p>
+                <a href="{{ route('project.milestones', $project) }}">View all milestones.</a>
+            </p>
+
             <div class="row">
                 <div class="col-lg-4">
                     @include('partials.milestone-details')

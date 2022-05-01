@@ -10,7 +10,7 @@
 
         <div>
             @if ($milestone->github_issue_link)
-                <a class="btn btn-outline-dark btn-sm" href="{{ $milestone->github_issue_link }}">
+                <a class="btn btn-outline-dark btn-sm" target="blank" href="{{ $milestone->github_issue_link }}">
                     <span class="fa fa-github"></span> GitHub
                 </a>
             @endif
