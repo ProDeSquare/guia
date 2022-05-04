@@ -100,6 +100,10 @@ Route::middleware(['app.setup'])->group(function () {
 
             Route::get('/add', [\App\Http\Controllers\Milestones\CreateController::class, 'show'])->name('create.milestone');
             Route::post('/add', [\App\Http\Controllers\Milestones\CreateController::class, 'add'])->name('create.milestone');
+
+            Route::prefix('{milestone}/assignments')->group(function () {
+                Route::get('/create', [\App\Http\Controllers\Assignments\CreateController::class, 'show'])->name('create.assignment');
+            });
         });
     });
 

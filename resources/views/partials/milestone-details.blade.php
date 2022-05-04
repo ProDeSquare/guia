@@ -22,7 +22,7 @@
         $project->group()->first()->isSupervisedBy(Auth::guard()->id())
     )
         <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-block">Add Assignment</a>
+            <a href="{{ route('create.assignment', [$project->id, $milestone->id]) }}" class="btn btn-primary btn-block">Add Assignment</a>
         </div>
     @endif
 </div>
