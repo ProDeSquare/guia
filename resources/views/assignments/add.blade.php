@@ -47,8 +47,6 @@
                                 <label for="assigned_to" class="form-label">Assign to <span class="text-red">*</span></label>
 
                                 <select class="form-control" name="student_id" id="assigned_to">
-                                    <option value="">--SELECT--</option>
-                                    
                                     @foreach ($members as $member)
                                         <option value="{{ $member->student()->first()->id }}">
                                             {{ $member->student()->first()->name }} -
