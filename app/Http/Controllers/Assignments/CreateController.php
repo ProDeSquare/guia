@@ -13,8 +13,17 @@ class CreateController extends Controller
         $this->middleware('auth:teacher');
     }
 
+    public function add()
+    {
+        // 
+    }
+
     public function show(Project $project, Milestone $milestone)
     {
-        dd($project);
+        return view('assignments.add')->with([
+            'project' => $project,
+            'members' => $project->group()->first()->members()->get(),
+            'milestone' => $milestone,
+        ]);
     }
 }
