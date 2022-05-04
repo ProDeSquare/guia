@@ -3,19 +3,41 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <div class="page-title">
-                {{ $project->title }}
-            </div>
+            <h3 class="page-title">
+                <a href="{{ route('project.view', $project->id) }}">{{ $project->title }}</a>
+            </h3>
         </div>
 
         <div class="page-body">
-            <p>
-                <a href="{{ route('project.milestones', $project) }}">View all milestones.</a>
-            </p>
-
             <div class="row">
                 <div class="col-lg-4">
                     @include('partials.milestone-details')
+
+                    <div class="card">
+                        <div class="card-body">
+                            View all <a href="{{ route('project.milestones', $project->id) }}">milestones</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Assignments
+                        </div>
+
+                        <div class="card-body">
+                            @if ($assignments->count())
+                                <ul>
+                                    @foreach ($assignments as $assignment)
+                                        <li>{{ $assignment->title }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>There were no assignments for this milestone.</p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

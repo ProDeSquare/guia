@@ -29,7 +29,23 @@
                             </div>
 
                             <div class="col-lg-8">
-                                {{-- Few assignments here --}}
+                                <div class="card">
+                                    <div class="card-header">
+                                        Assignments {{ $milestone->assignments->count() ? '('.$milestone->assignments->count().')' : ''  }}
+                                    </div>
+
+                                    <div class="card-body">
+                                        @if ($milestone->assignments->count())
+                                            <ul>
+                                                @foreach ($milestone->assignments()->limit(3)->get() as $assignment)
+                                                    <li>{{ $assignment->title }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @else
+                                            <p>There were no assignments created for this milestone.</p>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     @endforeach

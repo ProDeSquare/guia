@@ -15,11 +15,14 @@ class ViewController extends Controller
 
     public function __invoke(Project $project, Milestone $milestone)
     {
-        $milestone = $project->milestones()->findOrFail($milestone->id);
+        $project->milestones()->findOrFail($milestone->id);
+
+        $assignments = $milestone->assignments()->get();
 
         return view('milestones.index')->with([
             'project' => $project,
             'milestone' => $milestone,
+            'assignments' => $assignments,
         ]);
     }
 }
