@@ -103,6 +103,7 @@ Route::middleware(['app.setup'])->group(function () {
 
             Route::prefix('{milestone}/assignments')->group(function () {
                 Route::get('/create', [\App\Http\Controllers\Assignments\CreateController::class, 'show'])->name('create.assignment');
+                Route::post('/create', [\App\Http\Controllers\Assignments\CreateController::class, 'add'])->name('create.assignment');
             });
         });
     });

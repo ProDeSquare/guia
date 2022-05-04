@@ -41,6 +41,10 @@
                                 <label for="description" class="form-label">Assignment Description <span class="text-red">*</span></label>
 
                                 <textarea rows="7" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Describe the task in detail" name="description" required>{{ old('description') }}</textarea>
+                            
+                                @error('description')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -48,10 +52,14 @@
 
                                 <select class="form-control" name="student_id" id="assigned_to">
                                     @foreach ($members as $member)
-                                        <option value="{{ $member->student()->first()->id }}">
+                                        <option
+                                            value="{{ $member->student()->first()->id }}"
+                                            
+                                        >
                                             {{ $member->student()->first()->name }} -
                                             {{ $member->student()->first()->roll_no }}
                                         </option>
+                                        @old('student_id')
                                     @endforeach
                                 </select>
 

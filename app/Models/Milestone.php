@@ -15,4 +15,9 @@ class Milestone extends Model
         'is_completed',
         'github_issue_link'
     ];
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class, 'milestone_id');
+    }
 }
