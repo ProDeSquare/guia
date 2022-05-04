@@ -22,6 +22,8 @@ class CreateController extends Controller
         if (!$project->group()->first()->members()->where('student_id', $request->student_id)->count()) abort(404);
 
         $milestone->assignments()->firstOrCreate($request->validated());
+
+        return redirect()->route('milestone.view', [$project->id, $milestone->id]);
     }
 
     public function show(Project $project, Milestone $milestone)
