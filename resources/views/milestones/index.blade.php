@@ -31,7 +31,10 @@
                                 <ul>
                                     @foreach ($assignments as $assignment)
                                         <li>
-                                            <a href="#">{{ $assignment->title }}</a>
+                                            <a
+                                                href="{{ route('assignment.view', [$project->id, $milestone->id, $assignment->id]) }}"
+                                            >{{ $assignment->title }}</a>
+
                                             <span class="text-muted">({{ $assignment->student()->first()->name }})</span>
                                         </li>
                                     @endforeach
