@@ -14,9 +14,7 @@
                 Auth::guard('student')->user()->mainGroup()->acceptedProject()->id === $project->id
             )
                 <div>
-                    <p>
-                        <a href="{{ route('create.milestone', $project->id) }}">Add a new milestone</a>
-                    </p>
+                    <a class="btn btn-primary mb-4" href="{{ route('create.milestone', $project->id) }}">Add a new milestone</a>
                 </div>
             @endif
 
@@ -38,7 +36,11 @@
                                         @if ($milestone->assignments->count())
                                             <ul>
                                                 @foreach ($milestone->assignments()->limit(3)->get() as $assignment)
-                                                    <li>{{ $assignment->title }}</li>
+                                                    <li>
+                                                        <a href="{{ route('assignment.view', [$project, $milestone, $assignment]) }}">
+                                                            {{ $assignment->title }}
+                                                        </a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         @else
