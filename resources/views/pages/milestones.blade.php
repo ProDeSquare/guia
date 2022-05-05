@@ -29,7 +29,9 @@
                             <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-header">
-                                        Assignments {{ $milestone->assignments->count() ? '('.$milestone->assignments->count().')' : ''  }}
+                                        <h3 class="card-title">
+                                            Assignments {{ $milestone->assignments->count() ? '('.$milestone->assignments->count().')' : ''  }}
+                                        </h3>
                                     </div>
 
                                     <div class="card-body">
@@ -42,6 +44,12 @@
                                                         </a>
 
                                                         <span class="text-muted">({{ $assignment->student()->first()->name }})</span>
+
+                                                        @if ($assignment->is_completed)
+                                                            <span class="text-green">
+                                                                <i class="fe fe-check"></i>
+                                                            </span>
+                                                        @endif
                                                     </li>
                                                 @endforeach
                                             </ul>
