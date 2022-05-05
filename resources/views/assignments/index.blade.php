@@ -21,7 +21,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            Assigned to
+                            <h3 class="card-title">Assigned to</h3>
                         </div>
 
                         <div class="card-body">
@@ -58,6 +58,16 @@
 
                         <div class="card-body">
                             <p>{{ $assignment->description }}</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Mark as done.</h3>
+                        </div>
+                        
+                        <div class="card-body">
+                            {{--  --}}
                         </div>
                     </div>
                 </div>

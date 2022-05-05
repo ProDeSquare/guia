@@ -18,6 +18,7 @@ class CreateAssignmentsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->foreignId('student_id');
+            $table->string('github_commit_link')->nullable();
             $table->foreignId('milestone_id')->constrained()->onDelete('cascade');
             $table->boolean('is_completed')->default(false);
             $table->timestamps();
