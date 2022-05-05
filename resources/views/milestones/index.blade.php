@@ -30,7 +30,10 @@
                             @if ($assignments->count())
                                 <ul>
                                     @foreach ($assignments as $assignment)
-                                        <li>{{ $assignment->title }}</li>
+                                        <li>
+                                            <a href="#">{{ $assignment->title }}</a>
+                                            <span class="text-muted">({{ $assignment->student()->first()->name }})</span>
+                                        </li>
                                     @endforeach
                                 </ul>
                             @else

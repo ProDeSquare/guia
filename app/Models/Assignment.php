@@ -14,4 +14,9 @@ class Assignment extends Model
         'description',
         'student_id',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
 }
