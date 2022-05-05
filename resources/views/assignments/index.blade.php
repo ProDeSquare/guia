@@ -53,11 +53,25 @@
                                 <a
                                     href="{{ route('assignment.view', [$project->id, $milestone->id, $assignment->id]) }}"
                                 >{{ $assignment->title }}</a>
+
+                                @if ($assignment->is_completed === 1)
+                                    <button class="btn btn-link btn-disabled" disabled>
+                                        <i class="fe fe-check"></i>
+
+                                        Completed
+                                    </button>
+                                @endif
                             </h3>
                         </div>
 
                         <div class="card-body">
                             <p>{{ $assignment->description }}</p>
+
+                            @if ($assignment->github_commit_link)
+                                <a class="btn btn-outline-dark btn-sm" href="{{ $assignment->github_commit_link }}" target="_blank">
+                                    <span class="fa fa-github"></span> View Commit on GitHub
+                                </a>
+                            @endif
                         </div>
                     </div>
 
@@ -72,7 +86,7 @@
                             </div>
                             
                             <div class="card-body">
-                                <form action="post">
+                                <form action="{{ route('mark.assignment.done', [$project, $milestone, $assignment]) }}" method="post">
                                     @csrf
 
                                     @method('put')

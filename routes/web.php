@@ -106,6 +106,8 @@ Route::middleware(['app.setup'])->group(function () {
                 Route::post('/create', [\App\Http\Controllers\Assignments\CreateController::class, 'add'])->name('create.assignment');
 
                 Route::get('/view/{assignment}', \App\Http\Controllers\Assignments\ViewController::class)->name('assignment.view');
+
+                Route::put('/{assignment}/mark-as-completed', \App\Http\Controllers\Assignments\MarkAsDoneController::class)->name('mark.assignment.done');
             });
         });
     });

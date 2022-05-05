@@ -14,6 +14,7 @@ class Assignment extends Model
         'description',
         'student_id',
         'github_commit_link',
+        'is_completed',
     ];
 
     public function student()
