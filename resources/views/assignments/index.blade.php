@@ -61,15 +61,43 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Mark as done.</h3>
+                    @if (
+                        Auth::guard('student')->check() &&
+                        Auth::guard()->user()->isAssigned($assignment) &&
+                        !$assignment->is_completed
+                    )
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Mark as done</h3>
+                            </div>
+                            
+                            <div class="card-body">
+                                <form action="post">
+                                    @csrf
+
+                                    @method('put')
+
+                                    <div class="form-group">
+                                        <label for="github_commit_link" class="form-label">GitHub Commit Link</label>
+        
+                                        <input type="text" class="form-control @error('github_commit_link') is-invalid @enderror" id="github_commit_link" placeholder="Commit link from git repository" name="github_commit_link" value="{{ old('github_commit_link') }}" />
+
+                                        <small class="form-hint">
+                                            This is field is optional but if you've pushed your changes to git then paste the commit link in the field and submit.
+                                        </small>
+
+                                        @error('github_commit_link')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group mb-0">
+                                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        
-                        <div class="card-body">
-                            {{--  --}}
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
