@@ -5,9 +5,9 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h2 class="page-title">
+                    <h3 class="page-title">
                         Add Teacher
-                    </h2>
+                    </h3>
 
                     <p>
                         A teacher can accept project proposals/requests from the students.

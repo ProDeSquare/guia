@@ -5,9 +5,9 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h2 class="page-title">
+                    <h3 class="page-title">
                         Add Moderator
-                    </h2>
+                    </h3>
 
                     <p>
                         A Mod can add multiple teachers and students.

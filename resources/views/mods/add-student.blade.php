@@ -5,9 +5,9 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h2 class="page-title">
+                    <h3 class="page-title">
                         Add Student
-                    </h2>
+                    </h3>
 
                     <p>
                         Students can request or make request to join groups. Make requests to teachers to supervise or co-supervise them.

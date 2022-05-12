@@ -4,7 +4,7 @@
     <div class="container">
         <div class="page-header">
             <h3 class="page-title">
-                Update "{{ $project->title }}"
+                Update "<a href="{{ route('project.view', $project->id) }}">{{ $project->title }}</a>"
             </h3>
         </div>
 

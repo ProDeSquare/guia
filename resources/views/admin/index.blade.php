@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <div class="page-title">
+            <h3 class="page-title">
                 Admin Dashboard
-            </div>
+            </h3>
         </div>
 
         <div class="page-body">

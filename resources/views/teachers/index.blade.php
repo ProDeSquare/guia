@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <div class="page-title">Teacher Dashboard</div>
+            <h3 class="page-title">Teacher Dashboard</h3>
         </div>
 
         <div class="page-body">

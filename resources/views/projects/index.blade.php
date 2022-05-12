@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <div class="page-title">
-                {{ $project->title }}
-            </div>
+            <h3 class="page-title">
+                <a href="{{ route('project.view', $project->id) }}">{{ $project->title }}</a>
+            </h3>
         </div>
 
         <div class="page-body">

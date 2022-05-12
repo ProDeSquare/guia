@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <div class="page-title">Moderators</div>
+            <h3 class="page-title">Moderators</h3>
         </div>
 
         <div class="page-body">
