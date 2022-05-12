@@ -30,6 +30,11 @@ class Project extends Model implements Searchable
         return $this->hasMany(Rejection::class, 'project_id');
     }
 
+    public function milestones ()
+    {
+        return $this->hasMany(Milestone::class, 'project_id');
+    }
+
     public function getSearchResult(): SearchResult
     {
         $url = route('project.view', $this->id);

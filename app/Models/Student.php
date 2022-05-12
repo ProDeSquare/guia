@@ -36,26 +36,26 @@ class Student extends Authenticatable implements Searchable
         'email_verified_at' => 'datetime',
     ];
 
-    public function createdBy ()
+    public function createdBy()
     {
         return $this->belongsTo(Mod::class, 'created_by')->first();
     }
 
-    public function avatar ()
+    public function avatar()
     {
         return $this->email
             ? 'https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mm'
             : 'http://www.gravatar.com/avatar/?d=mm';
     }
 
-    public function getGuardType ()
+    public function getGuardType()
     {
         return $this->guard;
     }
 
-    public function owner ($id) : bool
+    public function owner($id): bool
     {
-        return Auth::guard()->id() === $id;        
+        return Auth::guard()->id() === $id;
     }
 
     public function getSearchResult(): SearchResult
@@ -69,27 +69,27 @@ class Student extends Authenticatable implements Searchable
         );
     }
 
-    public function searchHistory ()
+    public function searchHistory()
     {
         return $this->hasMany(Search::class, 'user_id')->where('guard', $this->guard);
     }
 
-    public function group ()
+    public function group()
     {
         return $this->hasOne(GroupMember::class, 'student_id')->where('accepted', 1);
     }
 
-    public function groupRequests ()
+    public function groupRequests()
     {
         return $this->hasMany(GroupMember::class, 'student_id')->where('accepted', 0);
     }
 
-    public function hasAlreadyRequestedForCurrentGroup ($id): bool
+    public function hasAlreadyRequestedForCurrentGroup($id): bool
     {
         return $this->groupRequests()->where('group_id', $id)->count();
     }
 
-    public function isGrouped (): bool
+    public function isGrouped(): bool
     {
         return $this->group()->count();
     }
@@ -99,8 +99,20 @@ class Student extends Authenticatable implements Searchable
         return $this->group()->first()->group()->first()->id;
     }
 
-    public function mainGroup ()
+    public function mainGroup()
     {
         return Group::find($this->getGroupId());
+    }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class, 'student_id');
+    }
+
+    public function isAssigned(Assignment $assignment): bool
+    {
+        return $this->assignments()->count()
+            ? $this->assignments()->find($assignment->id)->count()
+            : false;
     }
 }
