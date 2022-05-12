@@ -18,7 +18,11 @@
             (Auth::guard('student')->check() && Auth::user()->isGrouped() && Auth::guard()->user()->mainGroup()->isSupervisedBy($teacher->id))
         )
             @if ($teacher->whatsapp)
-                <a href="//{{ ltrim($teacher->whatsapp, 'https://') }}" class="btn btn-outline-success btn-sm" target="_blank">
+                <a
+                    href="//{{ ltrim($teacher->whatsapp, 'https://') }}"
+                    class="btn btn-outline-success btn-sm"
+                    target="_blank"
+                >
                     <span class="fa fa-whatsapp"></span> WhatsApp
                 </a>
             @endif
