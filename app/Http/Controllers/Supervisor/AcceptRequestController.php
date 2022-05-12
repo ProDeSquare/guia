@@ -9,18 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class AcceptRequestController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:teacher');
     }
 
-    public function __invoke (Group $group, Project $project)
+    public function __invoke(Group $group, Project $project)
     {
         $group->supervisorRequests()->where('teacher_id', Auth::guard()->id())->update([
             'accepted' => 1,
-        ]);
-
-        $project->update([
+        ]) && $project->update([
             'status' => 1,
         ]);
 
