@@ -28,13 +28,13 @@
 
         <div>
             @if ($project->github_repo)
-                <a class="btn btn-outline-dark btn-sm" href="{{ $project->github_repo }}">
+                <a class="btn btn-outline-dark btn-sm" href="{{ $project->github_repo }}" target="_blank">
                     <span class="fa fa-github"></span> GitHub
                 </a>
             @endif
 
             @if ($project->link)
-                <a class="btn btn-outline-primary btn-sm" href="{{ $project->link }}">
+                <a class="btn btn-outline-primary btn-sm" href="{{ $project->link }}" target="_blank">
                     <span class="fa fa-link"></span> Link
                 </a>
             @endif

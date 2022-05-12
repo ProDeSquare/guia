@@ -15,7 +15,7 @@
 
         <div>
             @if ($student->github)
-                <a class="btn btn-outline-dark btn-sm" href="{{ $student->github }}">
+                <a class="btn btn-outline-dark btn-sm" href="{{ $student->github }}" target="_blank">
                     <span class="fa fa-github"></span> GitHub
                 </a>
             @endif
