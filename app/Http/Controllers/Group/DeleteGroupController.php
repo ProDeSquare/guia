@@ -22,6 +22,7 @@ class DeleteGroupController extends Controller
         if ($group->members()->count() > 1) return redirect()->route('student.profile', Auth::guard()->id());
 
         $group->members()->first()->delete();
+        $group->projects()->delete();
         $group->delete();
 
         return redirect()->route('student.profile', Auth::guard()->id());
