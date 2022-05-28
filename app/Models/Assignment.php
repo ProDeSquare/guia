@@ -17,6 +17,16 @@ class Assignment extends Model
         'is_completed',
     ];
 
+    public function milestone()
+    {
+        return $this->belongsTo(Milestone::class, 'milestone_id');
+    }
+
+    public function project()
+    {
+        return $this->milestone()->first()->project();
+    }
+
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_id');

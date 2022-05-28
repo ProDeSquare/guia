@@ -16,6 +16,11 @@ class Milestone extends Model
         'github_issue_link'
     ];
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
+
     public function assignments()
     {
         return $this->hasMany(Assignment::class, 'milestone_id');
