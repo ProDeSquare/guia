@@ -3,7 +3,9 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <h3 class="page-title">Teacher Dashboard</h3>
+            <h3 class="page-title">
+                {{ Auth::guard()->user()->name }}'s Dashboard
+            </h3>
         </div>
 
         <div class="page-body">
