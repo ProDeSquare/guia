@@ -112,7 +112,7 @@ class Student extends Authenticatable implements Searchable
     public function isAssigned(Assignment $assignment): bool
     {
         return $this->assignments()->count()
-            ? $this->assignments()->find($assignment->id)->count()
+            ? $this->assignments()->where('id', $assignment->id)->count()
             : false;
     }
 }
