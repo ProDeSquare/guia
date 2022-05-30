@@ -9,7 +9,7 @@
             </thead>
 
             <tbody>
-                @foreach ($teacher->underSupervision()->get() as $underSupervision)
+                @foreach ($teacher->underSupervision()->latest()->get() as $underSupervision)
                     @php
                         $group = $underSupervision->group()->first();
                     @endphp
