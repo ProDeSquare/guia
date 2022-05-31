@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Student;
 use Illuminate\Console\Command;
 
 class DisableStudentAccounts extends Command
@@ -11,14 +12,14 @@ class DisableStudentAccounts extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'students:disable';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Disable all the previous student accounts.';
 
     /**
      * Create a new command instance.
@@ -37,6 +38,9 @@ class DisableStudentAccounts extends Command
      */
     public function handle()
     {
-        return 0;
+        Student::where('enabled', true)
+            ->get()->each(function ($student) {
+                $student->update(['enabled' => false]);
+            });
     }
 }
