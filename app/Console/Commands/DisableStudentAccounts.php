@@ -38,9 +38,11 @@ class DisableStudentAccounts extends Command
      */
     public function handle()
     {
-        Student::where('enabled', true)
+        $s = Student::where('enabled', true)
             ->get()->each(function ($student) {
                 $student->update(['enabled' => false]);
             });
+
+        printf("=> %d student account(s) were disabled!\n", $s->count());
     }
 }
