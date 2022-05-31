@@ -25,6 +25,7 @@ class Student extends Authenticatable implements Searchable
         'roll_no',
         'bio',
         'github',
+        'enabled',
     ];
 
     protected $hidden = [
