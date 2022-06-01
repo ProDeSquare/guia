@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'app.setup' => \App\Http\Middleware\AppSetup::class,
         'student.added.email' => \App\Http\Middleware\StudentHasAddedEmail::class,
         'student.not.added.email' => \App\Http\Middleware\StudentHasNotAddedEmail::class,
+        'account.enabled' => \App\Http\Middleware\AccountMustBeEnabled::class,
     ];
 }

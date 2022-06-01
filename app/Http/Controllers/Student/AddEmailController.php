@@ -11,6 +11,7 @@ class AddEmailController extends Controller
     public function __construct()
     {
         $this->middleware('auth:student');
+        $this->middleware('account.enabled');
         $this->middleware('student.not.added.email');
     }
 
