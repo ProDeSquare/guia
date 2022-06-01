@@ -10,6 +10,7 @@ class GetMilestonesController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin,mod,teacher,student');
+        $this->middleware('account.enabled');
     }
 
     public function __invoke(Project $project)

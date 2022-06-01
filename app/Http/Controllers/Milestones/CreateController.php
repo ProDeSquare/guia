@@ -13,6 +13,7 @@ class CreateController extends Controller
     public function __construct()
     {
         $this->middleware('auth:student');
+        $this->middleware('account.enabled');
     }
 
     public function add(MilestonesRequest $request, Project $project)
