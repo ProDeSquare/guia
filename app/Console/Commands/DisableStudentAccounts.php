@@ -22,6 +22,13 @@ class DisableStudentAccounts extends Command
     protected $description = 'Disable all the previous student accounts.';
 
     /**
+     * The console command confirmation message.
+     *
+     * @var string
+     */
+    protected $confirmation_message = 'Do you really want to disable all accounts? This process can\'t be undone';
+
+    /**
      * Create a new command instance.
      *
      * @return void
@@ -38,11 +45,13 @@ class DisableStudentAccounts extends Command
      */
     public function handle()
     {
+        if (!$this->confirm($this->confirmation_message)) return;
+
         $s = Student::where('enabled', true)
             ->get()->each(function ($student) {
                 $student->update(['enabled' => false]);
             });
 
-        printf("=> %d student account(s) were disabled!\n", $s->count());
+        printf(" => %d student account(s) were disabled!\n", $s->count());
     }
 }
