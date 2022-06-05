@@ -7,12 +7,13 @@ use App\Http\Controllers\Controller;
 
 class GetProjectsController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
-        return $this->middleware('auth:admin,mod,teacher,student');
+        $this->middleware('auth:admin,mod,teacher,student');
+        $this->middleware('account.enabled');
     }
 
-    public function __invoke (Group $group)
+    public function __invoke(Group $group)
     {
         return view('group.projects')->with([
             'projects' => $group->projects()->orderBy('status', 'desc')->simplePaginate(5),

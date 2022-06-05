@@ -9,14 +9,15 @@ use App\Http\Requests\ProjectRequest;
 
 class CreateController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:student');
+        $this->middleware('account.enabled');
     }
 
-    public function add (ProjectRequest $request)
+    public function add(ProjectRequest $request)
     {
-        if (! Auth::guard()->user()->isGrouped()) abort(404);
+        if (!Auth::guard()->user()->isGrouped()) abort(404);
         if (Auth::guard()->user()->mainGroup()->supervisor()->count()) abort(404);
 
         $group = Group::find(Auth::guard()->user()->getGroupId());
@@ -26,9 +27,9 @@ class CreateController extends Controller
         return redirect()->route('view.group.projects', $group->id);
     }
 
-    public function show ()
+    public function show()
     {
-        if (! Auth::guard()->user()->isGrouped()) abort(404);
+        if (!Auth::guard()->user()->isGrouped()) abort(404);
         if (Auth::guard()->user()->mainGroup()->supervisor()->count()) abort(404);
 
         $group = Group::find(Auth::guard()->user()->getGroupId());
