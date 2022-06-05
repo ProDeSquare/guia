@@ -8,13 +8,14 @@ use App\Http\Controllers\Controller;
 
 class ViewProfileController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:admin,mod,teacher,student');
         $this->middleware('student.added.email');
+        $this->middleware('account.enabled');
     }
 
-    public function __invoke (Teacher $teacher)
+    public function __invoke(Teacher $teacher)
     {
         return view('teachers.profile')->withTeacher($teacher);
     }

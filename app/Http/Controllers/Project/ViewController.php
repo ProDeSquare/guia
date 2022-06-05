@@ -8,12 +8,13 @@ use App\Http\Controllers\Controller;
 
 class ViewController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:admin,mod,teacher,student');
+        $this->middleware('account.enabled');
     }
 
-    public function __invoke (Project $project)
+    public function __invoke(Project $project)
     {
         $group = Group::find($project->group_id);
 

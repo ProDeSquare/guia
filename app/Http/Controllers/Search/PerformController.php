@@ -13,31 +13,32 @@ use Spatie\Searchable\ModelSearchAspect;
 
 class PerformController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:admin,mod,teacher,student');
+        $this->middleware('account.enabled');
     }
 
-    public function __invoke (Request $request)
+    public function __invoke(Request $request)
     {
         if (strlen($request->q) < 3) return view('pages.search');
 
         $results = (new Search())
-            ->registerModel(Student::class, function(ModelSearchAspect $modelSearchAspect) {
+            ->registerModel(Student::class, function (ModelSearchAspect $modelSearchAspect) {
                 $modelSearchAspect
                     ->addSearchableAttribute('name')
                     ->addExactSearchableAttribute('email')
                     ->addExactSearchableAttribute('roll_no')
                     ->addExactSearchableAttribute('username');
-            })->registerModel(Teacher::class, function(ModelSearchAspect $modelSearchAspect) {
+            })->registerModel(Teacher::class, function (ModelSearchAspect $modelSearchAspect) {
                 $modelSearchAspect
                     ->addSearchableAttribute('name')
                     ->addExactSearchableAttribute('email');
-            })->registerModel(Project::class, function(ModelSearchAspect $modelSearchAspect) {
+            })->registerModel(Project::class, function (ModelSearchAspect $modelSearchAspect) {
                 $modelSearchAspect
                     ->addSearchableAttribute('title');
             })->search($request->q);
-        
+
         Auth::guard()->user()->searchHistory()->updateOrCreate([
             'query' => $request->q,
             'guard' => Auth::guard()->user()->getGuardType()
