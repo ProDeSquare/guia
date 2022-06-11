@@ -21,10 +21,10 @@ class ProjectsController extends Controller
     protected function setProjects($year)
     {
         if ($year) {
-            $this->projects = Project::whereYear('created_at', $year)->latest()->simplePaginate(25);
+            $this->projects = Project::whereYear('created_at', $year)->where('status', 1)->latest()->simplePaginate(25);
             return;
         }
 
-        $this->projects = Project::latest()->simplePaginate(25);
+        $this->projects = Project::where('status', 1)->latest()->simplePaginate(25);
     }
 }
