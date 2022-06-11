@@ -15,16 +15,16 @@ class ProjectsController extends Controller
 
         if (!$this->projects->count()) abort(404);
 
-        dd($this->projects);
+        return view('pages.project-history')->withProjects($this->projects)->withYear($year);
     }
 
     protected function setProjects($year)
     {
         if ($year) {
-            $this->projects = Project::whereYear('created_at', $year)->simplePaginate(25);
+            $this->projects = Project::whereYear('created_at', $year)->latest()->simplePaginate(25);
             return;
         }
 
-        $this->projects = Project::simplePaginate(25);
+        $this->projects = Project::latest()->simplePaginate(25);
     }
 }
