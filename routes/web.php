@@ -131,3 +131,5 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/auth/update/password', \App\Http\Controllers\Auth\UpdatePasswordController::class)->name('update.password');
     });
 });
+
+Route::get('/projects/history/{year?}', \App\Http\Controllers\History\ProjectsController::class)->name('projects.history');
