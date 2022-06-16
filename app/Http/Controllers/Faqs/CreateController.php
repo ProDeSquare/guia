@@ -15,7 +15,7 @@ class CreateController extends Controller
 
     public function add(FaqRequest $request)
     {
-        Faq::firstOrCreate($request->validated());
+        Faq::create($request->validated());
 
         return redirect()->route('faq.create')->withSuccess('Success');
     }
