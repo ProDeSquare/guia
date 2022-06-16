@@ -16,7 +16,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="RIUF" class="img-fluid">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="RIUF" class="img-fluid">
+                        </a>
                     </div>
     
                     <div class="col-lg-10 mt-1">
