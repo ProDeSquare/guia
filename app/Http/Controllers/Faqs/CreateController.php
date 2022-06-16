@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Faqs;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\FaqRequest;
+use App\Models\Faq;
 
 class CreateController extends Controller
 {
@@ -12,9 +13,11 @@ class CreateController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function add()
+    public function add(FaqRequest $request)
     {
-        // 
+        Faq::firstOrCreate($request->validated());
+
+        return redirect()->route('faq.create')->withSuccess('Success');
     }
 
     public function show()

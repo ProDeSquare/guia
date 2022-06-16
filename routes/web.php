@@ -137,6 +137,7 @@ Route::middleware(['app.setup'])->group(function () {
         })->name('faqs');
 
         Route::get('/add', [\App\Http\Controllers\Faqs\CreateController::class, 'show'])->name('faq.create');
+        Route::post('/add', [\App\Http\Controllers\Faqs\CreateController::class, 'add'])->name('faq.create');
     });
 });
 
