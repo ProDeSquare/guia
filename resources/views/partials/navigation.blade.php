@@ -128,7 +128,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('faq.create') }}" class="nav-link {{ Route::currentRouteName() === 'faq.create' ? 'active' : '' }}"><i class="fe fe-plus"></i> Create FAQ</a>
+                            <a href="{{ route('faq.create') }}" class="nav-link {{ Route::currentRouteName() === 'faq.create' ? 'active' : '' }}"><i class="fe fe-plus"></i> Answer FAQ</a>
                         </li>
                     @endif
 

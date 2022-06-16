@@ -4,9 +4,9 @@
     <div class="container">
         <div class="page-header">
             <div>
-                <h3 class="page-title">Add FAQ</h3>
+                <h3 class="page-title">Answer FAQ</h3>
 
-                <p>Create a new Frequently Asked Question.</p>
+                <p>Answer a new Frequently Asked Question.</p>
             </div>
         </div>
 
