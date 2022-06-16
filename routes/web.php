@@ -130,6 +130,12 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
         Route::post('/auth/update/password', \App\Http\Controllers\Auth\UpdatePasswordController::class)->name('update.password');
     });
+
+    Route::prefix('frequently-asked-questions')->group(function () {
+        Route::get('/', function () {
+            return 'faqs';
+        })->name('faqs');
+    });
 });
 
 Route::get('/projects/history/{year?}', \App\Http\Controllers\History\ProjectsController::class)->name('projects.history');
