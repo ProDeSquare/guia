@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    | Search
+@endsection
+
 @section('content')
     <div class="container">
         <div class="page-header">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', ' | Add Moderator')
+
 @section('content')
     <div class="container">
         <div class="page-header">
