@@ -126,6 +126,10 @@
                         <li class="nav-item">
                             <a href="{{ route('mod.add') }}" class="nav-link {{ Route::currentRouteName() === 'mod.add' ? 'active' : '' }}"><i class="fe fe-plus"></i> Add Moderator</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('faq.create') }}" class="nav-link {{ Route::currentRouteName() === 'faq.create' ? 'active' : '' }}"><i class="fe fe-plus"></i> Create FAQ</a>
+                        </li>
                     @endif
 
                     @if (Auth::guard('mod')->check())
