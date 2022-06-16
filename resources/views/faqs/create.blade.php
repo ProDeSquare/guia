@@ -15,7 +15,7 @@
                 <div class="col-lg-6">
                     <div class="card card-body">
                         <div class="card-title">
-                            Add a new entry
+                            Fill out all the fields.
                         </div>
 
                         <form method="post" action="{{ route('faq.create') }}">
