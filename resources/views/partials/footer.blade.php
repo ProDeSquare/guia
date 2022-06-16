@@ -6,7 +6,7 @@
                     <div class="col-auto">
                         <ul class="list-inline list-inline-dots mb-0">
                             <li class="list-inline-item"><a href="#">Documentation</a></li>
-                            <li class="list-inline-item"><a href="#">FAQ</a></li>
+                            <li class="list-inline-item"><a href="{{ route('faqs') }}">FAQ</a></li>
                         </ul>
                     </div>
                 </div>

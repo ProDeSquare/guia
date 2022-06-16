@@ -130,6 +130,15 @@ Route::middleware(['app.setup'])->group(function () {
         Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
         Route::post('/auth/update/password', \App\Http\Controllers\Auth\UpdatePasswordController::class)->name('update.password');
     });
+
+    Route::prefix('frequently-asked-questions')->group(function () {
+        Route::get('/', \App\Http\Controllers\Faqs\GetController::class)->name('faqs');
+
+        Route::get('/add', [\App\Http\Controllers\Faqs\CreateController::class, 'show'])->name('faq.create');
+        Route::post('/add', [\App\Http\Controllers\Faqs\CreateController::class, 'add'])->name('faq.create');
+
+        Route::get('/{faq}', \App\Http\Controllers\Faqs\IndexController::class)->name('faq.view');
+    });
 });
 
 Route::get('/projects/history/{year?}', \App\Http\Controllers\History\ProjectsController::class)->name('projects.history');
