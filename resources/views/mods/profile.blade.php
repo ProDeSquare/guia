@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    | {{ $mod->name }}
+@endsection
+
 @section('content')
 <div class="my-3 my-md-5">
     <div class="container">

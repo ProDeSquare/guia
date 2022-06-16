@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '| Moderator Dashboard')
+
 @section('content')
     <div class="container">
         <div class="page-header">
