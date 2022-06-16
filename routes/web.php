@@ -132,12 +132,12 @@ Route::middleware(['app.setup'])->group(function () {
     });
 
     Route::prefix('frequently-asked-questions')->group(function () {
-        Route::get('/', function () {
-            return 'faqs';
-        })->name('faqs');
+        Route::get('/', \App\Http\Controllers\Faqs\GetController::class)->name('faqs');
 
         Route::get('/add', [\App\Http\Controllers\Faqs\CreateController::class, 'show'])->name('faq.create');
         Route::post('/add', [\App\Http\Controllers\Faqs\CreateController::class, 'add'])->name('faq.create');
+
+        Route::get('/{faq}', \App\Http\Controllers\Faqs\IndexController::class)->name('faq.view');
     });
 });
 
