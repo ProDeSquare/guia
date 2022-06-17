@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    | (Assignment) {{ $assignment->title }}
+@endsection
+
 @section('content')
     <div class="container">
         <div class="page-header">

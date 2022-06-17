@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '| Group Projects')
+
 @section('content')
     <div class="container">
         <div class="page-header">
