@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '| Admin Login')
+
 @section('content')
 <div class="col col-login mx-auto">
     <div class="text-center mb-6">
