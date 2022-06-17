@@ -51,10 +51,32 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="card card-body">
-                        <p>
-                            View all <a href="{{ route('faqs') }}">Frequently Asked Questions</a>.
-                        </p>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Recently answered FAQs
+                            </h3>
+                        </div>
+
+                        <div class="card-body">
+                            <ul>
+                                @forelse ($faqs as $faq)
+                                    <li>
+                                        <a href="{{ route('faq.view', $faq) }}">
+                                            {{ $faq->question }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li>There were no recently answered FAQs.</li>
+                                @endforelse
+                            </ul>
+                        </div>
+
+                        <div class="card-footer">
+                            <span>
+                                View all <a href="{{ route('faqs') }}">Frequently Asked Questions</a>.
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

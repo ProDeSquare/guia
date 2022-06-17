@@ -22,6 +22,8 @@ class CreateController extends Controller
 
     public function show()
     {
-        return view('faqs.create');
+        return view('faqs.create')->with([
+            'faqs' => Faq::latest()->take(5)->get(),
+        ]);
     }
 }
