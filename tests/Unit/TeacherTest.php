@@ -46,7 +46,7 @@ class TeacherTest extends TestCase
     {
         $this->actingAs(Teacher::first(), 'teacher');
 
-        $response = $this->get('/admin/view/1');
+        $response = $this->get('/admin/view/2');
 
         $response->assertStatus(403);
     }

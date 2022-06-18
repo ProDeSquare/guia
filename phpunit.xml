@@ -10,6 +10,7 @@
             <file>./tests/Unit/AppTest.php</file>
             <file>./tests/Unit/AdminTest.php</file>
             <file>./tests/Unit/ModeratorTest.php</file>
+            <file>./tests/Unit/StudentTest.php</file>
             <file>./tests/Unit/TeacherTest.php</file>
         </testsuite>
         <testsuite name="Feature">
