@@ -81,4 +81,19 @@ class TeacherTest extends TestCase
 
         $response->assertRedirect('/teacher/account/settings');
     }
+
+    public function test_teacher_can_update_their_profile()
+    {
+        $this->actingAs(Teacher::first(), 'teacher');
+
+        $response = $this->post('/teacher/profile/update', [
+            'bio' => 'I\'m the best teacher',
+            'requirements' => 'GitHub Copilot',
+            'supervise_count' => 3,
+            'co_supervise_count' => 3,
+            'whatsapp' => 'wa.me/03036310300',
+        ]);
+
+        $response->assertRedirect('/teacher/account/settings');
+    }
 }

@@ -8,15 +8,15 @@ use App\Http\Requests\TeacherUpdateProfileRequest;
 
 class UpdateProfileController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:teacher');
     }
 
-    public function __invoke (TeacherUpdateProfileRequest $request)
+    public function __invoke(TeacherUpdateProfileRequest $request)
     {
         Auth::guard()->user()->update($request->validated());
 
-        return redirect()->back()->withSuccess('Profile Information Updated!');
+        return redirect()->route('teacher.settings')->withSuccess('Profile Information Updated!');
     }
 }
