@@ -24,7 +24,7 @@ class StudentTest extends TestCase
         $response->assertRedirect('/student');
     }
 
-    public function test_student_can_add_email()
+    public function test_first_student_can_add_email()
     {
         $this->actingAs(Student::first(), 'student');
 
@@ -33,6 +33,17 @@ class StudentTest extends TestCase
         ]);
 
         $response->assertRedirect('/student/view/1');
+    }
+
+    public function test_second_student_can_add_email()
+    {
+        $this->actingAs(Student::orderBy('id', 'desc')->first(), 'student');
+
+        $response = $this->post('/student/add/email', [
+            'email' => 'saqlain@gmail.com'
+        ]);
+
+        $response->assertRedirect('/student/view/2');
     }
 
     public function test_student_can_logout()

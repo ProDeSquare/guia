@@ -77,7 +77,7 @@ class ModeratorTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_moderator_can_add_student()
+    public function test_moderator_can_add_students()
     {
         $this->actingAs(Mod::first(), 'mod');
 
@@ -85,6 +85,13 @@ class ModeratorTest extends TestCase
             'name' => 'Agha Hassan',
             'roll_no' => '10706',
             'username' => 'st1',
+            'password' => 'hamza123',
+        ]);
+
+        $response = $this->post('/mod/add/student', [
+            'name' => 'Saqlain Zahid',
+            'roll_no' => '10607',
+            'username' => 'st2',
             'password' => 'hamza123',
         ]);
 
