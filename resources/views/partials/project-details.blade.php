@@ -43,6 +43,7 @@
 
     @if (
         Auth::guard('student')->check() &&
+        Auth::guard()->user()->isGrouped() &&
         Auth::guard()->user()->getGroupId() === $project->group_id &&
         Auth::guard()->user()->mainGroup()->supervisor()->count() === 0
     )
