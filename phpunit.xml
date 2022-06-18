@@ -15,6 +15,7 @@
             <file>./tests/Unit/SearchTest.php</file>
             <file>./tests/Unit/GroupRequestsTest.php</file>
             <file>./tests/Unit/ProjectsTest.php</file>
+            <file>./tests/Unit/SupervisionTest.php</file>
         </testsuite>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
