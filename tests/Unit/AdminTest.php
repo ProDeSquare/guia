@@ -31,6 +31,19 @@ class AdminTest extends TestCase
         $response->assertRedirect('/admin');
     }
 
+    public function test_admin_can_update_their_password()
+    {
+        $this->actingAs(Admin::first(), 'admin');
+
+        $response = $this->post('/auth/auth/update/password', [
+            'current_password' => 'hamza123',
+            'password' => 'hamza1234',
+            'password_confirmation' => 'hamza1234',
+        ]);
+
+        $response->assertRedirect('/admin/account/settings');
+    }
+
     public function test_admin_can_view_add_moderators_page()
     {
         $this->actingAs(Admin::first(), 'admin');

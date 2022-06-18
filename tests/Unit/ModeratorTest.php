@@ -24,13 +24,26 @@ class ModeratorTest extends TestCase
         $response->assertRedirect('/mod');
     }
 
-    public function test_admin_can_logout()
+    public function test_moderator_can_logout()
     {
         $this->actingAs(Mod::first(), 'mod');
 
         $response = $this->post('/auth/auth/logout');
 
         $response->assertRedirect('/');
+    }
+
+    public function test_moderator_can_update_their_password()
+    {
+        $this->actingAs(Mod::first(), 'mod');
+
+        $response = $this->post('/auth/auth/update/password', [
+            'current_password' => 'hamza123',
+            'password' => 'hamza1234',
+            'password_confirmation' => 'hamza1234',
+        ]);
+
+        $response->assertRedirect('/mod/account/settings');
     }
 
     public function test_moderator_can_view_add_teachers_page()
