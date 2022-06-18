@@ -11,12 +11,12 @@ use App\Http\Requests\DefaultRegisterRequest;
 
 class AddModeratorController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:admin');
     }
 
-    public function add (DefaultRegisterRequest $request)
+    public function add(DefaultRegisterRequest $request)
     {
         Auth::guard('admin')->user()->moderators()->create([
             'name' => $request->name,
@@ -24,10 +24,10 @@ class AddModeratorController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->intended('/admin/add/moderator?mod_added=true');
+        return redirect()->intended('/admin/add/moderator');
     }
 
-    public function show ()
+    public function show()
     {
         $mods = Mod::latest()->take(15)->get();
 
