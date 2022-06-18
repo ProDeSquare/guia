@@ -109,4 +109,22 @@ class AdminTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_admin_can_view_admin_profile_page()
+    {
+        $this->actingAs(Admin::first(), 'admin');
+
+        $response = $this->get('/admin/view/2');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_admin_can_view_moderator_profile_page()
+    {
+        $this->actingAs(Admin::first(), 'admin');
+
+        $response = $this->get('/mod/view/1');
+
+        $response->assertStatus(200);
+    }
 }
