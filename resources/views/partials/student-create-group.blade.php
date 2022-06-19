@@ -7,7 +7,7 @@
 
     <div class="card-body">
         You're not in a group! If you're the <strong>project leader</strong> you can create a group and request your
-        project partners or continue with the project alone.
+        project partners or continue with the project alone. Creating a group on your own would delete all the pending requests.
     </div>
 
     <div class="card-footer">
