@@ -22,8 +22,6 @@ class CreateGroupController extends Controller
 
         $this->groupService->createNewGroupAndAddStudent();
 
-        Auth::guard()->user()->groupRequests()->delete();
-
         return redirect()->route('student.profile', Auth::guard()->id());
     }
 }

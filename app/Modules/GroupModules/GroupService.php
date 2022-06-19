@@ -15,10 +15,17 @@ class GroupService
             'accepted' => 1,
             'group_id' => $group->id,
         ]);
+
+        $this->deleteAllGroupRequests();
     }
 
     public function groupExceedsMembersLimit(Group $group)
     {
         return $group->members()->count() >= 3;
+    }
+
+    public function deleteAllGroupRequests()
+    {
+        Auth::guard()->user()->groupRequests()->delete();
     }
 }
