@@ -23,6 +23,7 @@ class DeleteGroupController extends Controller
 
         $group->members()->first()->delete();
         $group->projects()->delete();
+        $group->pending()->delete();
         $group->delete();
 
         return redirect()->route('student.profile', Auth::guard()->id());
