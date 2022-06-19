@@ -19,7 +19,9 @@
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Group #{{ $request->group_id }}</h3>
+                                    <h3 class="card-title">
+                                        <a href="{{ route('view.group.projects', $request->group_id) }}">Group #{{ $request->group_id }}</a>
+                                    </h3>
                                 </div>
 
                                 <div class="card-body o-auto" style="max-height: 15rem">
