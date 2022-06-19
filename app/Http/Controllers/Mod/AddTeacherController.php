@@ -11,12 +11,12 @@ use App\Http\Requests\DefaultRegisterRequest;
 
 class AddTeacherController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:mod');
     }
 
-    public function add (DefaultRegisterRequest $request)
+    public function add(DefaultRegisterRequest $request)
     {
         Auth::guard('mod')->user()->teachers()->create([
             'name' => $request->name,
@@ -24,10 +24,10 @@ class AddTeacherController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->intended('/mod/add/teacher?teacher_added=true');
+        return redirect()->intended('/mod/add/teacher');
     }
 
-    public function show ()
+    public function show()
     {
         $teachers = Teacher::latest()->take(15)->get();
 

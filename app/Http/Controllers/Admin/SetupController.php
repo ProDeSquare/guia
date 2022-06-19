@@ -13,12 +13,12 @@ class SetupController extends Controller
 {
     use AuthenticatesUsers;
 
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('admin.exists');
     }
 
-    public function register (DefaultRegisterRequest $request)
+    public function register(DefaultRegisterRequest $request)
     {
         Admin::create([
             'name' => $request->name,
@@ -26,7 +26,7 @@ class SetupController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->intended('/admin/login?setup=success');
+        return redirect()->intended('/admin/login');
     }
 
     public function show()

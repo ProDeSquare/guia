@@ -11,12 +11,12 @@ use App\Http\Requests\StudentRegisterRequest;
 
 class AddStudentController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:mod');
     }
 
-    public function add (StudentRegisterRequest $request)
+    public function add(StudentRegisterRequest $request)
     {
         Auth::guard('mod')->user()->students()->create([
             'name' => $request->name,
@@ -25,10 +25,10 @@ class AddStudentController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->intended('/mod/add/student?student_added=true');
+        return redirect()->intended('/mod/add/student');
     }
 
-    public function show ()
+    public function show()
     {
         $students = Student::latest()->take(15)->get();
 

@@ -9,17 +9,18 @@ use App\Http\Requests\UpdatePasswordRequest;
 
 class UpdatePasswordController extends Controller
 {
-    public function __construct ()
+    public function __construct()
     {
         $this->middleware('auth:admin,mod,teacher,student');
     }
 
-    public function __invoke (UpdatePasswordRequest $request)
+    public function __invoke(UpdatePasswordRequest $request)
     {
         Auth::guard()->user()->update([
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->back()->withSuccess('Password Updated Successfully!');
+        return redirect('/' . Auth::guard()->user()->getGuardType() . '/account/settings')
+            ->withSuccess('Password Updated Successfully!');
     }
 }

@@ -24,6 +24,6 @@ class AcceptRequestController extends Controller
 
         $group->supervisorRequests()->delete();
 
-        return redirect()->back();
+        return redirect()->route('view.group.projects', $group);
     }
 }
