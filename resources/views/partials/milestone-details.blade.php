@@ -6,7 +6,7 @@
     </div>
 
     <div class="card-body">
-        <p>{{ $milestone->description }}</p>
+        <div>{{ Markdown::parse($milestone->description) }}</div>
 
         @if ($milestone->github_issue_link)
             <div>
