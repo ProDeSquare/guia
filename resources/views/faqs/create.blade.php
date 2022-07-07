@@ -37,7 +37,9 @@
                                 <label for="answer" class="form-label">Answer <span class="text-red">*</span></label>
 
                                 <textarea rows="7" class="form-control @error('answer') is-invalid @enderror" id="answer" placeholder="In campus..." name="answer" required>{{ old('answer') }}</textarea>
-                            
+
+                                <small class="form-hint">This field accepts markdown</small>
+
                                 @error('answer')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

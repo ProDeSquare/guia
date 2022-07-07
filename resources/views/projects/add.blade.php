@@ -37,6 +37,8 @@
                                         <label for="description" class="form-label">Project Description <span class="text-red">*</span></label>
 
                                         <textarea rows="7" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Describe your project in detail" name="description" required>{{ old('description') }}</textarea>
+
+                                        <small class="form-hint">This field accepts markdown</small>
                                     </div>
                                 </div>
 
