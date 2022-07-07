@@ -15,9 +15,9 @@
         <div class="page-body">
             <div class="row">
                 <div class="col-lg-8">
-                    <p>
-                        {{ $faq->answer }}
-                    </p>
+                    <div>
+                        {{ Markdown::parse($faq->answer) }}
+                    </div>
         
                     <span class="text-muted">Answered {{ $faq->created_at->diffForHumans() }}</span>
                     <span>
