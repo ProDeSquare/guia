@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="card-body">
-                            <p>{{ $assignment->description }}</p>
+                            <div>{{ Markdown::parse($assignment->description) }}</div>
 
                             @if ($assignment->github_commit_link)
                                 <a class="btn btn-outline-dark btn-sm" href="{{ $assignment->github_commit_link }}" target="_blank">

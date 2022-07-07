@@ -41,7 +41,9 @@
                                 <label for="description" class="form-label">Assignment Description <span class="text-red">*</span></label>
 
                                 <textarea rows="7" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Describe the task in detail" name="description" required>{{ old('description') }}</textarea>
-                            
+                                
+                                <small class="form-hint">This field accepts markdown</small>
+
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
