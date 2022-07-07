@@ -1,11 +1,40 @@
-# Final Year Project
+# Guía
 
-### Setup
+Guía is an online example portal for FYP supervision system for [RIUF](https://www.riphahfsd.edu.pk/)
+
+## Setup
+In order to setup follow these guidelines.
+- Install composer packages
+    ```shell
+    $ composer install
+    ```
+- Copy the environment file
+    ```shell
+    $ cp .env.example .env
+    ```
+- Generate app key
+    ```shell
+    $ php artisan key:generate
+    ```
+- Create an empty database and fill in the credentials
+    ```
+    DB_DATABASE=guia
+    DB_USERNAME=hamza
+    DB_PASSWORD=1234
+    ```
+- Migrate the database
+    ```shell
+    $ php artisan migrate
+    ```
+
+## Running the project
+```shell
+$ php artisan serve
 ```
-$ composer install
-$ cp .env.example .env
-$ php artisan key:generate
-$ php artisan migrate
+
+## Running unit tests
+```shell
+$ php artisan test
 ```
 
 ### Contributors
