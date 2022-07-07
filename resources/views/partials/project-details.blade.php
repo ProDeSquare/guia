@@ -14,8 +14,6 @@
     </div>
 
     <div class="card-body">
-        {{-- <p>{{ $project->description }}</p> --}}
-
         <div>
             {{ Markdown::parse($project->description) }}
         </div>
