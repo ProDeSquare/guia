@@ -40,6 +40,9 @@ $ php artisan test
 ### Contributors
 - [Hamza Mughal](https://prodesquare.com)
 
+### Special thanks to
+- [Tabler.io](https://tabler.io/) for providing FOSS theme
+
 ### Donate
 - Bitcoin: `18Hd1waYh5uG6nWRboXGD3Q3vaPzWRMgQH`
 - Ethereum: `0x90b3f1495724e9e6a18372cb939df1d7166337b9`
