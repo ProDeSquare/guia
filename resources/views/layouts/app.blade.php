@@ -50,5 +50,26 @@
             </div>
         @endauth
     </div>
+
+    @if (Auth::check() && in_array(Auth::guard()->user()->getGuardType(), ['teacher', 'student']))
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js'
+            import { getMessaging, onMessage, getToken } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-messaging.js'
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBxy48WO_nASE2uVeopqElydRDzQJS58FI",
+                authDomain: "guia-d25c6.firebaseapp.com",
+                projectId: "guia-d25c6",
+                storageBucket: "guia-d25c6.appspot.com",
+                messagingSenderId: "20366400082",
+                appId: "1:20366400082:web:32486f15acd26c2c711d8b",
+                measurementId: "G-DZ671TQVVZ"
+            };
+            
+            const app = initializeApp(firebaseConfig);
+
+            const messaging = getMessaging(app);
+        </script>
+    @endif
 </body>
 </html>
