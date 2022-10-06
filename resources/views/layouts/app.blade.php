@@ -76,6 +76,35 @@
                         console.log('Notification permission denied.');
                     }
                 })
+
+                getToken(
+                    messaging,
+                    { vapidKey: 'BKwm-KN83Ye-FQxIpBWW309TvbktD94C7BTQb3CdDDvU7Tm5kSsXcbQUJJQD8VPD-IJqVoV57O82ZHxghcHr2wE' }
+                ).then((currentToken) => {
+                    if (currentToken) {
+                        $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+                        });
+                        $.ajax({
+                            url: '{{ route("save-device-token") }}',
+                            type: 'POST',
+                            data: {
+                                token: currentToken
+                            },
+                            dataType: 'JSON',
+                            success: function (response) {
+                                // 
+                            },
+                            error: function (error) {
+                                //
+                            },
+                        });
+                    } else {
+                        console.log('No registration token available. Request permission to generate one.');
+                    }
+                }).catch((err) => {
+                    // 
+                });
             }
 
             startFCM();
