@@ -25,6 +25,7 @@ class CreateTeachersTable extends Migration
             $table->text('bio')->nullable();
             $table->string('whatsapp')->nullable();
             $table->bigInteger('created_by');
+            $table->string('device_token')->nullable();
             $table->timestamps();
         });
     }
