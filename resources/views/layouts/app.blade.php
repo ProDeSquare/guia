@@ -107,6 +107,16 @@
                 });
             }
 
+            onMessage(messaging, (payload) => {
+                console.log(payload);
+                const title = payload.notification.title;
+                const options = {
+                    body: payload.notification.body,
+                    icon: payload.notification.image,
+                };
+                new Notification(title, options);
+            });
+
             startFCM();
         </script>
     @endif
