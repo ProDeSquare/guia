@@ -141,4 +141,6 @@ Route::middleware(['app.setup'])->group(function () {
     });
 });
 
+Route::post('/save-device-token', App\Http\Controllers\Notifications\NotificationController::class)->name('save-device-token');
+
 Route::get('/projects/history/{year?}', \App\Http\Controllers\History\ProjectsController::class)->name('projects.history');
