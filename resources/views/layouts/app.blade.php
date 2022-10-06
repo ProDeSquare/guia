@@ -69,6 +69,16 @@
             const app = initializeApp(firebaseConfig);
 
             const messaging = getMessaging(app);
+
+            const startFCM = () => {
+                Notification.requestPermission().then((permission) => {
+                    if (permission !== 'granted') {
+                        console.log('Notification permission denied.');
+                    }
+                })
+            }
+
+            startFCM();
         </script>
     @endif
 </body>
