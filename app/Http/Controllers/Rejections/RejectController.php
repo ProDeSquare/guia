@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Rejections;
 
-use App\Models\Group;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,7 +43,7 @@ class RejectController extends Controller
             'Request Rejected',
             Auth::guard()->user()->name . " has rejected your supervision request.",
             Auth::guard()->user()->avatar(),
-            route('teacher.profile', Auth::guard()->id())
+            route('project.view', $project),
         ));
 
         return redirect()->back();
