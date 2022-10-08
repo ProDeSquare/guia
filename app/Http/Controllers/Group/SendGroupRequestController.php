@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Group;
 
 use App\Models\Student;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Modules\GroupModules\GroupService;
@@ -42,22 +41,14 @@ class SendGroupRequestController extends Controller
             'group_id' => $group_id,
         ]);
 
-        $student->device_token && $this->sendNotification($student);
+        $student->device_token && $this->notificationService->send($this->notificationService->prepare(
+            [$student->device_token],
+            'Group Request',
+            Auth::guard()->user()->name . " has sent you a group request.",
+            $student->avatar(),
+            route('requests.view'),
+        ));
 
         return redirect()->route('student.profile', $student->id)->withSuccess('Requested!');
-    }
-
-    protected function sendNotification (Student $student)
-    {
-        $notification = new Request();
-        $notification->setMethod('POST');
-        $notification->request->add([
-            'FcmToken' => [$student->device_token],
-            'title' => 'Group Request',
-            'description' => Auth::guard()->user()->name . " has sent you a group request.",
-            'icon' => $student->avatar(),
-        ]);
-
-        $this->notificationService->send($notification);
     }
 }
