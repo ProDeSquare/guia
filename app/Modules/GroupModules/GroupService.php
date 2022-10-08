@@ -28,4 +28,13 @@ class GroupService
     {
         Auth::guard()->user()->groupRequests()->delete();
     }
+
+    public function getDeviceTokens(Group $group)
+    {
+        $FcmTokens = [];
+
+        foreach($group->members()->get() as $member) $FcmTokens[] = $member->student()->first()->device_token;
+
+        return $FcmTokens;
+    }
 }
