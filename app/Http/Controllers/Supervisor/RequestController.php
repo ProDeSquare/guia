@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Models\Teacher;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Modules\NotificationModules\NotificationService;
@@ -28,22 +27,14 @@ class RequestController extends Controller
             ]);
         }
 
-        $this->sendNotification($teacher);
+        $teacher->device_token && $this->notificationService->send($this->notificationService->prepare(
+            [$teacher->device_token],
+            'New Supervision Request',
+            Auth::guard()->user()->name . " has sent you a supervision request.",
+            Auth::guard()->user()->avatar(),
+            route('supervision.requests'),
+        ));
 
         return redirect()->route('teacher.profile', $teacher);
-    }
-
-    protected function sendNotification(Teacher $teacher)
-    {
-        $notification = new Request();
-        $notification->setMethod('POST');
-        $notification->request->add([
-            'FcmToken' => [$teacher->device_token],
-            'title' => 'Group Request',
-            'description' => Auth::guard()->user()->name . " has sent you a supervision request.",
-            'icon' => Auth::guard()->user()->avatar(),
-        ]);
-
-        $this->notificationService->send($notification);
     }
 }
