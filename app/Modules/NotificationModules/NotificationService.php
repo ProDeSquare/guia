@@ -6,6 +6,21 @@ use Illuminate\Http\Request;
 
 class NotificationService
 {
+    public function prepare(array $tokens, $title, $description, $icon, $link)
+    {
+        $prepared = new Request();
+        $prepared->setMethod('POST');
+        $prepared->request->add([
+            'FcmToken' => $tokens,
+            'title' => $title,
+            'description' => $description,
+            'icon' => $icon,
+            'link' => $link,
+        ]);
+
+        return $prepared;
+    }
+
     public function send(Request $request)
     {
         $ch = curl_init();
@@ -29,7 +44,10 @@ class NotificationService
                 'title' => $request->title,
                 'body' => $request->description,
                 'image' => $request->icon,
-            ]
+            ],
+            'fcm_options' => [
+                'link' => $request->link,
+            ],
         ]));
 
         $result = curl_exec($ch);
