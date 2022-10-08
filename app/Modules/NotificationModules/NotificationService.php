@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class NotificationService
 {
-    public function prepare(array $tokens, $title, $description, $icon, $link)
+    public function prepare(array $tokens, $title, $description, $icon, $link=null)
     {
         $prepared = new Request();
         $prepared->setMethod('POST');
