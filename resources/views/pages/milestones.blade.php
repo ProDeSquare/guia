@@ -14,6 +14,7 @@
             @if (
                 Auth::guard('student')->check() &&
                 Auth::guard()->user()->isGrouped() &&
+                Auth::guard('student')->user()->mainGroup()->acceptedProject() &&
                 Auth::guard('student')->user()->mainGroup()->acceptedProject()->id === $project->id
             )
                 <div>
