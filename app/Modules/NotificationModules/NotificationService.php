@@ -40,13 +40,11 @@ class NotificationService
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
             'registration_ids' => $request->FcmToken,
-            'notification' => [
+            'data' => [
                 'title' => $request->title,
                 'body' => $request->description,
                 'image' => $request->icon,
-            ],
-            'fcm_options' => [
-                'link' => $request->link,
+                'clickUrl' => $request->link,
             ],
         ]));
 

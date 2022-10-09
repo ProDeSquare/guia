@@ -108,11 +108,11 @@
             }
 
             onMessage(messaging, (payload) => {
-                console.log(payload);
-                const title = payload.notification.title;
+                const title = payload.data.title;
                 const options = {
-                    body: payload.notification.body,
-                    icon: payload.notification.image,
+                    body: payload.data.body,
+                    icon: payload.data.image,
+                    clickUrl: payload.data.clickUrl,
                 };
                 new Notification(title, options);
             });
