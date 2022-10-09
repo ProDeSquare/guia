@@ -6,7 +6,6 @@ use App\Models\Project;
 use App\Models\Teacher;
 use App\Models\Milestone;
 use App\Models\Assignment;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AssignmentCompletionRequest;
@@ -33,22 +32,16 @@ class MarkAsDoneController extends Controller
             'is_completed' => true,
         ]);
 
-        $this->sendNotfication(Teacher::find($project->group()->first()->supervisor()->first()->teacher_id));
+        $teacher = Teacher::find($project->group()->first()->supervisor()->first()->teacher_id);
+
+        $this->notificationService->send($this->notificationService->prepare(
+            [$teacher->device_token],
+            'New Assignment Submission',
+            Auth::guard()->user()->name . " has marked the assginment as complete",
+            Auth::guard()->user()->avatar(),
+            route('project.milestones', $project),
+        ));
 
         return redirect()->route('assignment.view', [$project, $milestone, $assignment]);
-    }
-
-    protected function sendNotfication (Teacher $teacher)
-    {
-        $notification = new Request();
-        $notification->setMethod('POST');
-        $notification->request->add([
-            'FcmToken' => [$teacher->device_token],
-            'title' => 'New Submission',
-            'description' => Auth::guard()->user()->name . " has marked the assginment as complete",
-            'icon' => Auth::guard()->user()->avatar(),
-        ]);
-
-        $this->notificationService->send($notification);
     }
 }
