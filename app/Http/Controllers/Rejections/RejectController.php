@@ -40,8 +40,8 @@ class RejectController extends Controller
 
         $this->notificationService->send($this->notificationService->prepare(
             $this->groupService->getDeviceTokens($group),
-            'Request Rejected',
-            Auth::guard()->user()->name . " has rejected your supervision request.",
+            'Supervision Request Rejected',
+            Auth::guard()->user()->name . " has rejected your supervision request saying \"" . $request->comment . "\"",
             Auth::guard()->user()->avatar(),
             route('project.view', $project),
         ));
