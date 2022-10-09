@@ -8,18 +8,15 @@ use App\Models\Milestone;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AssignmentsRequest;
-use App\Modules\GroupModules\GroupService;
 use App\Modules\NotificationModules\NotificationService;
 
 class CreateController extends Controller
 {
-    protected $groupService;
     protected $notificationService;
 
     public function __construct()
     {
         $this->middleware('auth:teacher');
-        $this->groupService = new GroupService();
         $this->notificationService = new NotificationService();
     }
 
