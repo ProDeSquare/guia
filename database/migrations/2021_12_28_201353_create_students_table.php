@@ -26,6 +26,7 @@ class CreateStudentsTable extends Migration
             $table->string('github')->nullable();
             $table->bigInteger('created_by');
             $table->boolean('enabled')->default(1);
+            $table->string('device_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -27,6 +27,15 @@ In order to setup follow these guidelines.
     $ php artisan migrate
     ```
 
+## Enabling push notifications with firebase
+Guía uses firebase to send push notifications in the browser. Log in to [firebase](https://firebase.google.com)
+- Create a new firebase project
+- Copy configuration keys and overwrite them to `/resources/views/layouts/app.blade.php` and `/public/firebase-messaging-sw.js`
+- From the project's setting page, click on **cloud messaging** tab, copy **Server Key** and add that to `.env`
+    ```
+    FIREBASE_SERVER_KEY=your_server_key
+    ```
+
 ## Running the project
 ```shell
 $ php artisan serve

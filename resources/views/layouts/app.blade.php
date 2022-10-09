@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="_token" content="{{ csrf_token() }}">
+
     <title>Guía @yield('title')</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,5 +50,92 @@
             </div>
         @endauth
     </div>
+
+    @if (Auth::check() && in_array(Auth::guard()->user()->getGuardType(), ['teacher', 'student']))
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js'
+            import { getMessaging, onMessage, getToken } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-messaging.js'
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBxy48WO_nASE2uVeopqElydRDzQJS58FI",
+                authDomain: "guia-d25c6.firebaseapp.com",
+                projectId: "guia-d25c6",
+                storageBucket: "guia-d25c6.appspot.com",
+                messagingSenderId: "20366400082",
+                appId: "1:20366400082:web:32486f15acd26c2c711d8b",
+                measurementId: "G-DZ671TQVVZ"
+            };
+            
+            const app = initializeApp(firebaseConfig);
+
+            const messaging = getMessaging(app);
+
+            const startFCM = () => {
+                Notification.requestPermission().then((permission) => {
+                    if (permission !== 'granted') {
+                        console.log('Notification permission denied.');
+                    }
+                })
+
+                getToken(
+                    messaging,
+                    { vapidKey: 'BKwm-KN83Ye-FQxIpBWW309TvbktD94C7BTQb3CdDDvU7Tm5kSsXcbQUJJQD8VPD-IJqVoV57O82ZHxghcHr2wE' }
+                ).then((currentToken) => {
+                    if (currentToken) {
+                        $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+                        });
+                        $.ajax({
+                            url: '{{ route("save-device-token") }}',
+                            type: 'POST',
+                            data: {
+                                token: currentToken
+                            },
+                            dataType: 'JSON',
+                            success: function (response) {
+                                // 
+                            },
+                            error: function (error) {
+                                //
+                            },
+                        });
+                    } else {
+                        console.log('No registration token available. Request permission to generate one.');
+                    }
+                }).catch((err) => {
+                    // 
+                });
+            }
+
+            onMessage(messaging, (payload) => {
+                const title = payload.data.title;
+                const options = {
+                    body: payload.data.body,
+                    icon: payload.data.image,
+                    clickUrl: payload.data.clickUrl,
+                };
+                new Notification(title, options);
+            });
+
+            startFCM();
+
+            self.addEventListener('notificationclick', event => {
+                const url = event.notification.data.url;
+
+                event.notification.close();
+                event.waitUntil(
+                    clients.matchAll({type: 'window'}).then(windowClients => {
+                        for (let i = 0; i < windowClients.length; i++) {
+                            let client = windowClients[i];
+
+                            if (client.url === url && 'focus' in client) return client.focus()
+                        }
+
+                        if (clients.openWindow) return clients.openWindow(url)
+                    })
+                );
+            });
+        </script>
+    @endif
 </body>
 </html>
