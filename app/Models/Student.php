@@ -46,7 +46,7 @@ class Student extends Authenticatable implements Searchable
     public function avatar()
     {
         return $this->email
-            ? 'https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mm'
+            ? $this->avatar ?? 'https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mm'
             : 'http://www.gravatar.com/avatar/?d=mm';
     }
 

@@ -2,7 +2,7 @@
     <div class="card-header"></div>
 
     <div class="card-body text-center">
-        <img class="card-profile-img" src="{{ $mod->avatar() }}">
+        <div class="profile-image-container" style="background-image: url({{ $mod->avatar() }})"></div>
 
         <h3 class="mb-3">{{ $mod->name }}</h3>
 
