@@ -5,19 +5,21 @@ namespace App\Http\Controllers\Assignments;
 use App\Models\Project;
 use App\Models\Student;
 use App\Models\Milestone;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AssignmentsRequest;
+use App\Modules\GroupModules\GroupService;
 use App\Modules\NotificationModules\NotificationService;
 
 class CreateController extends Controller
 {
+    protected $groupService;
     protected $notificationService;
 
     public function __construct()
     {
         $this->middleware('auth:teacher');
+        $this->groupService = new GroupService();
         $this->notificationService = new NotificationService();
     }
 
@@ -29,7 +31,13 @@ class CreateController extends Controller
 
         $milestone->assignments()->firstOrCreate($request->validated());
 
-        $this->sendNotfication(Student::find($request->student_id));
+        $this->notificationService->send($this->notificationService->prepare(
+            [Student::find($request->student_id)->device_token],
+            'New Assignment',
+            Auth::guard()->user()->name . " has assigned you a new assignment",
+            Auth::guard()->user()->avatar(),
+            route('dashboard'),
+        ));
 
         return redirect()->route('milestone.view', [$project->id, $milestone->id]);
     }
@@ -43,19 +51,5 @@ class CreateController extends Controller
             'members' => $project->group()->first()->members()->get(),
             'milestone' => $milestone,
         ]);
-    }
-
-    protected function sendNotfication (Student $student)
-    {
-        $notification = new Request();
-        $notification->setMethod('POST');
-        $notification->request->add([
-            'FcmToken' => [$student->device_token],
-            'title' => 'New Assignment',
-            'description' => Auth::guard()->user()->name . " has assigned you a new assignment",
-            'icon' => Auth::guard()->user()->avatar(),
-        ]);
-
-        $this->notificationService->send($notification);
     }
 }
