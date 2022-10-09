@@ -16,10 +16,7 @@
 
                     <textarea rows="3" class="form-control @error('comment') is-invalid @enderror" id="comment" placeholder="This project is too simple" name="comment" required>{{ old('comment') }}</textarea>
                 
-                    <small class="form-hint">
-                        After posting this rejection the supervision request would be declined. 
-                        Other supervisors would still be able to accept this project.
-                    </small>
+                    <small class="form-hint">This field accepts markdown</small>
                 </div>
 
                 <div class="form-group">
