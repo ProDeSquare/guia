@@ -18,8 +18,31 @@ messaging.onBackgroundMessage(function(payload) {
     const notificationOptions = {
         body: payload.data.body,
         icon: payload.data.image,
-        clickUrl: payload.data.clickUrl,
+        data: { url: payload.data.clickUrl }
     };
   
     self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+self.addEventListener('notificationclick', function(event) {
+    const url = event.notification.data.url;
+
+    event.notification.close();
+    event.waitUntil(
+        clients.matchAll({type: 'window'}).then(windowClients => {
+            // Check if there is already a window/tab open with the target URL
+            for (var i = 0; i < windowClients.length; i++) {
+                var client = windowClients[i];
+                // If so, just focus it.
+                if (client.url === url && 'focus' in client) {
+                    return client.focus();
+                }
+            }
+
+            // If not, then open the target URL in a new window/tab.
+            if (clients.openWindow) {
+                return clients.openWindow(url);
+            }
+        })
+    );
 });
