@@ -18,6 +18,7 @@ class CreateModeratorsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('avatar')->nullable();
             $table->bigInteger('created_by');
             $table->rememberToken();
             $table->timestamps();

@@ -41,3 +41,16 @@
     font-weight: 600;
     letter-spacing: .04em;
 }
+
+.profile-image-container {
+    height: 5.5rem;
+    width: 5.5rem;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 1.5px 1.5px rgb(0 0 0 / 10%);
+    margin: -4.5rem auto 1rem auto;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

@@ -2,7 +2,7 @@
     <div class="card-header"></div>
 
     <div class="card-body text-center">
-        <img class="card-profile-img" src="{{ $student->avatar() }}">
+        <div class="profile-image-container" style="background-image: url({{ $student->avatar() }})"></div>
 
         <h3 class="mb-3">{{ $student->name }}</h3>
         <p class="mb-4">

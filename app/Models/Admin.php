@@ -27,7 +27,7 @@ class Admin extends Authenticatable
 
     public function avatar ()
     {
-        return "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
+        return $this->avatar ?? "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
     }
 
     public function moderators ()

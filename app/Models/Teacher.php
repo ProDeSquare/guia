@@ -35,7 +35,7 @@ class Teacher extends Authenticatable implements Searchable
 
     public function avatar ()
     {
-        return "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
+        return $this->avatar ?? "https://www.gravatar.com/avatar/" . md5($this->email) . "?d=mm";
     }
 
     public function createdBy ()

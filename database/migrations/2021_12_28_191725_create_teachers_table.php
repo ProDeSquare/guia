@@ -18,6 +18,7 @@ class CreateTeachersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->integer('supervise_count')->default(0);
             $table->integer('co_supervise_count')->default(0);
