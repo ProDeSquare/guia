@@ -70,7 +70,7 @@
 
             const messaging = getMessaging(app);
 
-            const startFCM = () => {
+            (() => {
                 Notification.requestPermission().then((permission) => {
                     if (permission !== 'granted') {
                         console.log('Notification permission denied.');
@@ -105,7 +105,7 @@
                 }).catch((err) => {
                     // 
                 });
-            }
+            })();
 
             onMessage(messaging, (payload) => {
                 const title = payload.data.title;
@@ -116,8 +116,6 @@
                 };
                 new Notification(title, options);
             });
-
-            startFCM();
 
             self.addEventListener('notificationclick', event => {
                 const url = event.notification.data.url;
