@@ -79,6 +79,20 @@
                         </div>
                     </div>
 
+                    @if ($assignment->submission)
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Submission by <a href="{{ route('student.profile', $assignment->student()->first()->id) }}">{{ $assignment->student()->first()->name }}</a>
+                                </h3>
+                            </div>
+
+                            <div class="card-body">
+                                {{ Markdown::parse($assignment->submission) }}
+                            </div>
+                        </div>
+                    @endif
+
                     @if (
                         Auth::guard('student')->check() &&
                         Auth::guard()->user()->isAssigned($assignment) &&
