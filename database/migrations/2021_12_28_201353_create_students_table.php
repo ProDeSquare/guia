@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('username');
             $table->string('email')->unique()->nullable();
             $table->string('password');
-            $table->string('avatar')->nullable();
+            $table->text('avatar')->nullable();
             $table->integer('roll_no')->unique();
             $table->bigInteger('group_id')->nullable();
             $table->text('bio')->nullable();
