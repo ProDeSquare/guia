@@ -116,23 +116,6 @@
                 };
                 new Notification(title, options);
             });
-
-            self.addEventListener('notificationclick', event => {
-                const url = event.notification.data.url;
-
-                event.notification.close();
-                event.waitUntil(
-                    clients.matchAll({type: 'window'}).then(windowClients => {
-                        for (let i = 0; i < windowClients.length; i++) {
-                            let client = windowClients[i];
-
-                            if (client.url === url && 'focus' in client) return client.focus()
-                        }
-
-                        if (clients.openWindow) return clients.openWindow(url)
-                    })
-                );
-            });
         </script>
     @endif
 </body>
