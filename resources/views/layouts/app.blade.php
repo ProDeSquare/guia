@@ -114,7 +114,10 @@
                     icon: payload.data.image,
                     clickUrl: payload.data.clickUrl,
                 };
-                new Notification(title, options);
+
+                const n = new Notification(title, options);
+
+                n.addEventListener('click', () => window.open(payload.data.clickUrl));
             });
         </script>
     @endif
