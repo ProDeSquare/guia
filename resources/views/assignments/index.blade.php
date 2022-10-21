@@ -96,6 +96,16 @@
                                     @method('put')
 
                                     <div class="form-group">
+                                        <label for="submission" class="form-label">Text Message/Submission</label>
+
+                                        <textarea name="submission" id="submission" class="form-control" rows="7" placeholder="Describe your assignment or submit as text"></textarea>
+
+                                        <small class="form-hint">
+                                            This is field accepts markdown
+                                        </small>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="github_commit_link" class="form-label">GitHub Commit Link</label>
         
                                         <input type="text" class="form-control @error('github_commit_link') is-invalid @enderror" id="github_commit_link" placeholder="Commit link from git repository" name="github_commit_link" value="{{ old('github_commit_link') }}" />
