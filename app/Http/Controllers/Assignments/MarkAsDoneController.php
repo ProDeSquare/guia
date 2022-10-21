@@ -28,6 +28,7 @@ class MarkAsDoneController extends Controller
         $milestone->assignments()->findOrFail($assignment->id);
 
         Auth::guard()->user()->assignments()->findOrFail($assignment->id)->update([
+            'submission' => $request->submission,
             'github_commit_link' => $request->github_commit_link,
             'is_completed' => true,
         ]);
