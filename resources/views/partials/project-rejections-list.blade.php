@@ -18,7 +18,7 @@
                         </a>
                     </p>
 
-                    <div>
+                    <div class="mt-4">
                         {{ Markdown::parse($rejection->comment) }}
                     </div>
 
