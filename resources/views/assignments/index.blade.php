@@ -81,6 +81,27 @@
                                 </a>
                             @endif
                         </div>
+
+                        @if(
+                            Auth::guard('teacher')->check() &&
+                            $supervisor->id === Auth::guard()->id() &&
+                            $assignment->submissions()->count() &&
+                            !$assignment->is_completed
+                        )
+                            <div class="card-footer">
+                                <form action="{{ route('mark.assignment.done', [$project, $milestone, $assignment]) }}" method="post">
+                                    @csrf
+                                    
+                                    @method('put')
+
+                                    <button class="float-right btn btn-primary" type="submit">
+                                        <i class="fe fe-check"></i>
+
+                                        Mark as completed
+                                    </button>
+                                </form>
+                            </div>
+                        @endif
                     </div>
 
                     {{-- Student submit assignment form --}}
