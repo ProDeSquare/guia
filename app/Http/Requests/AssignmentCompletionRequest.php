@@ -24,6 +24,7 @@ class AssignmentCompletionRequest extends FormRequest
     public function rules()
     {
         return [
+            'submission' => 'required',
             'github_commit_link' => 'nullable|url'
         ];
     }
