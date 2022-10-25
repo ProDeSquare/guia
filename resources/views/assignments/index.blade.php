@@ -127,7 +127,7 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="submission" class="form-label">Text Message/Submission</label>
+                                        <label for="submission" class="form-label">Text Message/Submission <span class="text-red">*</span></label>
 
                                         <textarea name="submission" id="submission" class="form-control" rows="7" placeholder="Describe your assignment or submit as text"></textarea>
 
