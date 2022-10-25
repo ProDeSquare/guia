@@ -123,13 +123,13 @@
                             </div>
                             
                             <div class="card-body">
-                                <form action="#{{-- {{ route('mark.assignment.done', [$project, $milestone, $assignment]) }} --}}" method="post">
+                                <form action="{{ route('add.assignment.submission', [$project, $milestone, $assignment]) }}" method="post">
                                     @csrf
 
                                     <div class="form-group">
                                         <label for="submission" class="form-label">Text Message/Submission <span class="text-red">*</span></label>
 
-                                        <textarea name="submission" id="submission" class="form-control" rows="7" placeholder="Describe your assignment or submit as text"></textarea>
+                                        <textarea name="submission" id="submission" class="form-control" rows="7" placeholder="Describe your assignment or submit as text" required>{{ old('submission') }}</textarea>
 
                                         <small class="form-hint">
                                             This is field accepts markdown
