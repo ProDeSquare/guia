@@ -16,6 +16,8 @@ class CreateSubmissionsTable extends Migration
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('assignment_id');
+            $table->foreignId('user_id');
+            $table->string('guard');
             $table->text('submission')->nullable();
             $table->string('github_commit_link')->nullable();
             $table->timestamps();
