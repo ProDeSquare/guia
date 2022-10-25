@@ -79,37 +79,10 @@
                         </div>
                     </div>
 
-                    @if ($assignment->submission)
-                        <div class="card card-body mb-5">
-                            <div class="row">
-                                <div class="col-lg-1 mb-4">
-                                    <div
-                                        class="avatar d-block"
-                                        style="background-image: url({{ $assignment->student()->first()->avatar() }})"
-                                    ></div>
-                                </div>
-
-                                <div class="col-lg">
-                                    <p class="my-1">
-                                        <a href="{{ route('student.profile', $assignment->student()->first()->id) }}">
-                                            {{ $assignment->student()->first()->name }}
-                                        </a>
-
-                                        <span class="text-muted">• Submission</span>
-                                    </p>
-
-                                    <div class="mt-4">
-                                        {{ Markdown::parse($assignment->submission) }}
-                                    </div>
-
-                                    <div class="small text-muted">
-                                        <strong>Submitted: </strong>
-                                        {{ $assignment->created_at->format('d M Y') }},
-                                        {{ $assignment->created_at->diffForHumans() }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    @if ($assignment->submissions()->count())
+                        @foreach ($assignment->submissions()->simplePaginate(12) as $submission)
+                            {{ $submission }}
+                        @endforeach
                     @endif
 
                     @if (

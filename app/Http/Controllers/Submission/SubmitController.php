@@ -36,7 +36,6 @@ class SubmitController extends Controller
         ) abort(403);
 
         $assignment->submissions()->create([
-            'user_id' => Auth::guard()->id(),
             'guard' => Auth::guard()->user()->getGuardType(),
             'submission' => $request->submission,
             'github_commit_link' => $request->github_commit_link,

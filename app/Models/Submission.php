@@ -10,7 +10,6 @@ class Submission extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'guard',
         'submission',
         'github_commit_link',
