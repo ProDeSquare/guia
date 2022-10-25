@@ -119,14 +119,12 @@
                     )
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Mark as done</h3>
+                                <h3 class="card-title">Add Submission</h3>
                             </div>
                             
                             <div class="card-body">
-                                <form action="{{ route('mark.assignment.done', [$project, $milestone, $assignment]) }}" method="post">
+                                <form action="#{{-- {{ route('mark.assignment.done', [$project, $milestone, $assignment]) }} --}}" method="post">
                                     @csrf
-
-                                    @method('put')
 
                                     <div class="form-group">
                                         <label for="submission" class="form-label">Text Message/Submission</label>

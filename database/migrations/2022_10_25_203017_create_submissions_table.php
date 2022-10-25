@@ -18,7 +18,7 @@ class CreateSubmissionsTable extends Migration
             $table->foreignId('assignment_id');
             $table->foreignId('user_id');
             $table->string('guard');
-            $table->text('submission')->nullable();
+            $table->text('submission');
             $table->string('github_commit_link')->nullable();
             $table->timestamps();
         });
