@@ -203,7 +203,7 @@
                     {{-- Submissions --}}
                     @if ($assignment->submissions()->count())
                         @foreach ($assignment->submissions()->simplePaginate(12) as $submission)
-                            <div class="card card-body mb-5">
+                            <div class="card card-body mb-5" id="submission-{{ $submission->id }}">
                                 <div class="row">
                                     <div class="col-lg-1 mb-4">
                                         @if ($submission->guard === 'student')
