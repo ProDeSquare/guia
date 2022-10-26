@@ -80,6 +80,8 @@
                                     <span class="fa fa-github"></span> View Commit on GitHub
                                 </a>
                             @endif
+
+                            <div class="small text-muted">Created: {{ $assignment->created_at->format('d M Y') }}, {{ $assignment->created_at->diffForHumans() }}</div>
                         </div>
 
                         @if(
