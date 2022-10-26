@@ -231,7 +231,7 @@
                                                 </a>
                                             @endif
 
-                                            <span class="text-muted">• {{ ucwords($submission->guard) }}</span>
+                                            <span class="text-muted">• {{ $submission->guard === 'student' ? 'Student' : 'Supervisor' }}</span>
                                         </p>
 
                                         <div class="mt-4">
