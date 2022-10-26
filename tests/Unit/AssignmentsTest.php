@@ -42,6 +42,18 @@ class AssignmentsTest extends TestCase
         $response->assertRedirect('/group/view/project/1/milestones/1/assignments/view/1#submission-1');
     }
 
+    public function test_teacher_can_reply_to_submission()
+    {
+        $this->actingAs(Teacher::first(), 'teacher');
+
+        $response = $this->post('/group/view/project/1/milestones/1/assignments/1/submission/add', [
+            'submission' => 'this is a test reply to submission made to prodesquare',
+            'github_commit_url' => 'https://github.com/ProDeSquare/final-year-project/commit/079d736d8d974a91e6bd8d10f1662c4967dad3f6',
+        ]);
+
+        $response->assertRedirect('/group/view/project/1/milestones/1/assignments/view/1#submission-2');
+    }
+
     // teacher can mark assignment as done
     // public function test_student_can_mark_assignment_as_done()
     // {
