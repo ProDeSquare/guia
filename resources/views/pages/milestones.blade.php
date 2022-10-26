@@ -57,6 +57,10 @@
                                                     </li>
                                                 @endforeach
                                             </ul>
+
+                                            <a href="{{ route('milestone.view', [$project->id, $milestone->id]) }}">
+                                                View all assignments
+                                            </a>
                                         @else
                                             <p>There were no assignments created for this milestone.</p>
                                         @endif
