@@ -13,8 +13,6 @@ class Assignment extends Model
         'title',
         'description',
         'student_id',
-        'submission',
-        'github_commit_link',
         'is_completed',
     ];
 
@@ -31,5 +29,10 @@ class Assignment extends Model
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_id');
+    }
+
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class, 'assignment_id');
     }
 }

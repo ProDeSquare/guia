@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssignmentsTable extends Migration
+class CreateSubmissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateAssignmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assignments', function (Blueprint $table) {
+        Schema::create('submissions', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->foreignId('student_id');
-            $table->foreignId('milestone_id')->constrained()->onDelete('cascade');
-            $table->boolean('is_completed')->default(false);
+            $table->foreignId('assignment_id');
+            $table->string('guard');
+            $table->text('submission');
+            $table->string('github_commit_link')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateAssignmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assignments');
+        Schema::dropIfExists('submissions');
     }
 }

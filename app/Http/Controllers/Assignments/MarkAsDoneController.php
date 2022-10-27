@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Assignments;
 
 use App\Models\Project;
-use App\Models\Teacher;
+use App\Models\Student;
 use App\Models\Milestone;
 use App\Models\Assignment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\AssignmentCompletionRequest;
 use App\Modules\NotificationModules\NotificationService;
 
 class MarkAsDoneController extends Controller
@@ -17,28 +16,28 @@ class MarkAsDoneController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:student');
+        $this->middleware('auth:teacher');
         $this->notificationService = new NotificationService();
     }
 
-    public function __invoke(AssignmentCompletionRequest $request, Project $project, Milestone $milestone, Assignment $assignment)
+    public function __invoke(Project $project, Milestone $milestone, Assignment $assignment)
     {
         $project->milestones()->findOrFail($milestone->id);
 
         $milestone->assignments()->findOrFail($assignment->id);
 
-        Auth::guard()->user()->assignments()->findOrFail($assignment->id)->update([
-            'submission' => $request->submission,
-            'github_commit_link' => $request->github_commit_link,
+        $supervisor = $project->group()->first()->supervisor()->first()->supervisor()->first();
+
+        if ($supervisor->id !== Auth::guard()->id()) abort(403);
+
+        $assignment->update([
             'is_completed' => true,
         ]);
 
-        $teacher = Teacher::find($project->group()->first()->supervisor()->first()->teacher_id);
-
         $this->notificationService->send($this->notificationService->prepare(
-            [$teacher->device_token],
+            [Student::find($assignment->student_id)->device_token],
             'New Assignment Submission',
-            Auth::guard()->user()->name . " has marked the assginment as complete",
+            Auth::guard()->user()->name . " has accepted your assignment",
             Auth::guard()->user()->avatar(),
             route('project.milestones', $project),
         ));
