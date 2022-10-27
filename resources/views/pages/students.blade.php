@@ -27,6 +27,7 @@
                                     </th>
 
                                     <th>Name</th>
+                                    <th>Username</th>
                                     <th>Email</th>
                                     <th>Added By</th>
                                     <th>Grouped</th>
@@ -47,6 +48,8 @@
                                                 {{ $student->name }}
                                             </a>
                                         </td>
+
+                                        <td>{{ $student->username }}</td>
 
                                         <td>{{ $student->email }}</td>
 
