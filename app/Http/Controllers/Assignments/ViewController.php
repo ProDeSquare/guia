@@ -21,10 +21,13 @@ class ViewController extends Controller
 
         $assignment = $milestone->assignments()->findOrFail($assignment->id);
 
+        $submissions = $assignment->submissions()->simplePaginate(20);
+
         return view('assignments.index')->with([
             'project' => $project,
             'milestone' => $milestone,
             'assignment' => $assignment,
+            'submissions' => $submissions,
         ]);
     }
 }
