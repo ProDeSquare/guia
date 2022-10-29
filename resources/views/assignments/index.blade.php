@@ -231,7 +231,9 @@
                                                 </a>
                                             @endif
 
-                                            <span class="text-muted">• {{ $submission->guard === 'student' ? 'Student' : 'Supervisor' }}</span>
+                                            <span class="badge badge-teacher-student ml-1">
+                                                {{ $submission->guard === 'student' ? 'Student' : 'Supervisor' }}
+                                            </span>
                                         </p>
 
                                         <div class="mt-4">
