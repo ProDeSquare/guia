@@ -15,6 +15,11 @@
                 </a>
             </div>
         @endif
+
+        <div class="mt-2 small text-muted">
+            {{ $milestone->created_at->format('d M Y h:iA') }},
+            {{ $milestone->created_at->diffForHumans() }}
+        </div>
     </div>
 
     @if (
