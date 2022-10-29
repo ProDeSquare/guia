@@ -6,7 +6,7 @@
     <div class="container">
         <div class="page-header">
             <h3 class="page-title">
-                {{ Auth::guard()->user()->name }}'s Dashboard
+                <a href="{{ route('teacher.profile', Auth::guard()->user()) }}">{{ Auth::guard()->user()->name }}</a>'s Dashboard
             </h3>
         </div>
 
