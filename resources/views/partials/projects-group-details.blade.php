@@ -29,14 +29,31 @@
 </div>
 
 @if ($member->group()->first()->supervisor()->count())
+    @php $supervisor = $member->group()->first()->supervisor()->first()->supervisor()->first() @endphp
+
     <div class="card">
-        <div class="card-body">
-            <p>
-                Supervised by
-                <a href="{{ route('teacher.profile', $member->group()->first()->supervisor()->first()->supervisor()->first()->id) }}">
-                    {{ $member->group()->first()->supervisor()->first()->supervisor()->first()->name }}
-                </a>
-            </p>
+        <div class="card-header">
+            <h3 class="card-title">Supervisor</h3>
+        </div>
+
+        <div class="card-body o-auto" style="max-height: 15rem">
+            <ul class="list-unstyled list-separated">
+                <li class="list-separated-item">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="avatar avatar-md d-block" style="background-image: url({{ $supervisor->avatar() }})"></span>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <a href="{{ route('student.profile', $supervisor->id) }}" class="text-inherit">{{ $supervisor->name }}</a>
+                            </div>
+                            <small class="d-block item-except text-sm text-muted h-1x">
+                                {{ $supervisor->email }}
+                            </small>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 @endif
