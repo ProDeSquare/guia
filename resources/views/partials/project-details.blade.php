@@ -40,6 +40,24 @@
                     <span class="fa fa-link"></span> Link
                 </a>
             @endif
+
+            <div class="mt-2 small">
+                <strong>Created: </strong>
+
+                <span class="text-muted">
+                    {{ $project->created_at->format('d M Y h:iA') }},
+                    {{ $project->created_at->diffForHumans() }}
+                </span>
+            </div>
+
+            <div class="small">
+                <strong>Updated: </strong>
+
+                <span class="text-muted">
+                    {{ $project->updated_at->format('d M Y h:iA') }},
+                    {{ $project->updated_at->diffForHumans() }}
+                </span>
+            </div>
         </div>
     </div>
 
