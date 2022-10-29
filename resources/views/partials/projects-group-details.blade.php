@@ -45,7 +45,7 @@
                         </div>
                         <div class="col">
                             <div>
-                                <a href="{{ route('student.profile', $supervisor->id) }}" class="text-inherit">{{ $supervisor->name }}</a>
+                                <a href="{{ route('teacher.profile', $supervisor->id) }}" class="text-inherit">{{ $supervisor->name }}</a>
                             </div>
                             <small class="d-block item-except text-sm text-muted h-1x">
                                 {{ $supervisor->email }}
