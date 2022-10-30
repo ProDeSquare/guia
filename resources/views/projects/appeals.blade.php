@@ -49,6 +49,48 @@
                             </div>
                         </div>
                     </div>
+
+                    <div>
+                        @if (
+                            Auth::guard()->user()->getGuardType() === 'student' &&
+                            Auth::guard()->user()->isGrouped() &&
+                            $project->status !== 1 &&
+                            Auth::guard()->user()->getGroupId() === $project->group_id
+                        )
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Write an appeal</h3>
+                                </div>
+    
+                                <div class="card-body">
+                                    <form action="#" method="post">
+                                        @csrf
+    
+                                        <div class="form-group">
+                                            <label class="form-label" for="appeal-text">Appeal <span class="text-danger">*</span></label>
+    
+                                            <textarea
+                                                name="text"
+                                                id="appeal-text"
+                                                rows="7"
+                                                class="form-control @error('text') is-invalid @enderror"
+                                                placeholder="This project would turn out very well..."
+                                                required
+                                            >{{ old('text') }}</textarea>
+    
+                                            @error('text')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+    
+                                        <div class="form-group mb-0">
+                                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
