@@ -18,4 +18,9 @@ class Rejection extends Model
     {
         return $this->belongsTo(Teacher::class, 'teacher_id');
     }
+
+    public function appeals ()
+    {
+        return $this->hasMany(Appeal::class, 'rejection_id');
+    }
 }
