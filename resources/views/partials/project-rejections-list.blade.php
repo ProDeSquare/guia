@@ -38,11 +38,11 @@
                 Auth::guard()->user()->getGroupId() === $project->group_id
             )
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary float-right">Appeal for project approval</a>
+                    <a href="{{ route('view.appeals', [$project, $rejection]) }}" class="btn btn-primary float-right">Appeal for project approval</a>
                 </div>
             @elseif ($rejection->appeals()->count())
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary float-right">View appeals ({{ $rejection->appeals()->count() }})</a>
+                    <a href="{{ route('view.appeals', [$project, $rejection]) }}" class="btn btn-primary float-right">View appeals ({{ $rejection->appeals()->count() }})</a>
                 </div>
             @endif
         </div>
