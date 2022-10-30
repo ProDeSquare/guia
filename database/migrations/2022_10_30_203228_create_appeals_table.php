@@ -15,6 +15,10 @@ class CreateAppealsTable extends Migration
     {
         Schema::create('appeals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('guard');
+            $table->foreignId('rejection_id');
+            $table->text('text');
             $table->timestamps();
         });
     }
