@@ -72,11 +72,52 @@
                                             <textarea
                                                 name="text"
                                                 id="appeal-text"
-                                                rows="7"
+                                                rows="5"
                                                 class="form-control @error('text') is-invalid @enderror"
                                                 placeholder="This project would turn out very well..."
                                                 required
                                             >{{ old('text') }}</textarea>
+
+                                            <small class="form-hint">This field accepts markdown</small>
+    
+                                            @error('text')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+    
+                                        <div class="form-group mb-0">
+                                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        @elseif (
+                            Auth::guard()->user()->getGuardType() === 'teacher' &&
+                            $project->status !== 1 &&
+                            $rejection->teacher_id === Auth::guard()->id()
+                        )
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Add a reply</h3>
+                                </div>
+    
+                                <div class="card-body">
+                                    <form action="#" method="post">
+                                        @csrf
+    
+                                        <div class="form-group">
+                                            <label class="form-label" for="appeal-text">Text <span class="text-danger">*</span></label>
+    
+                                            <textarea
+                                                name="text"
+                                                id="appeal-text"
+                                                rows="5"
+                                                class="form-control @error('text') is-invalid @enderror"
+                                                placeholder="This project is not feasible..."
+                                                required
+                                            >{{ old('text') }}</textarea>
+
+                                            <small class="form-hint">This field accepts markdown</small>
     
                                             @error('text')
                                                 <div class="invalid-feedback">{{ $message }}</div>
