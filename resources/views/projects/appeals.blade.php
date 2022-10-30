@@ -63,7 +63,7 @@
                                 </div>
     
                                 <div class="card-body">
-                                    <form action="#" method="post">
+                                    <form action="{{ route('create.appeal', [$project, $rejection]) }}" method="post">
                                         @csrf
     
                                         <div class="form-group">
@@ -102,7 +102,7 @@
                                 </div>
     
                                 <div class="card-body">
-                                    <form action="#" method="post">
+                                    <form action="{{ route('create.appeal', [$project, $rejection]) }}" method="post">
                                         @csrf
     
                                         <div class="form-group">
