@@ -131,6 +131,48 @@
                                 </div>
                             </div>
                         @endif
+
+                        @if ($appeals->count())
+                            <h3 class="page-title mb-3">Appeals ({{ $appeals->count() }})</h3>
+                        @endif
+
+                        @foreach ($appeals as $appeal)
+                            <div class="card mb-5">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-1 mb-4">
+                                            <div
+                                                class="avatar d-block"
+                                                style="background-image: url({{ $appeal->owner()->first()->avatar() }})"
+                                            ></div>
+                                        </div>
+                        
+                                        <div class="col-lg">
+                                            <p class="my-1">
+                                                <a
+                                                    href="{{ $appeal->guard === 'student' ? route('student.profile', $appeal->owner()->first()->id) : route('teacher.profile', $appeal->owner()->first()->id) }}"
+                                                >
+                                                    {{ $appeal->owner()->first()->name }}
+                                                </a>
+                                            </p>
+                        
+                                            <div class="mt-4">
+                                                {{ Markdown::parse($appeal->text) }}
+                                            </div>
+                        
+                                            <div class="small text-muted">
+                                                {{ $appeal->created_at->format('d M Y h:iA') }},
+                                                {{ $appeal->created_at->diffForHumans() }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <div class="mb-5">
+                            {{ $appeals->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
