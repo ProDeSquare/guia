@@ -19,4 +19,11 @@ class Appeal extends Model
     {
         return $this->belongsTo(Rejection::class, 'rejection_id');
     }
+
+    public function owner()
+    {
+        return $this->guard === 'student'
+            ? $this->belongsTo(Student::class, 'user_id')
+            : $this->belongsTo(Teacher::class, 'user_id');
+    }
 }
