@@ -137,7 +137,7 @@
                         @endif
 
                         @foreach ($appeals as $appeal)
-                            <div class="card mb-5">
+                            <div class="card mb-5" id="appeal-{{ $appeal->id }}">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-1 mb-4">
