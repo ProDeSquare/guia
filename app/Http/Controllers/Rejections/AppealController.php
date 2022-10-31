@@ -46,7 +46,7 @@ class AppealController extends Controller
             'project' => $project,
             'members' => $group->members()->get(),
             'rejection' => $rejection,
-            'appeals' => $rejection->appeals()->paginate(20),
+            'appeals' => $rejection->appeals()->simplePaginate(20),
         ]);
     }
 
