@@ -7,15 +7,18 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Modules\GroupModules\GroupService;
 use App\Modules\NotificationModules\NotificationService;
 
 class AcceptRequestController extends Controller
 {
+    protected $groupService;
     protected $notificationService;
 
     public function __construct()
     {
         $this->middleware('auth:teacher');
+        $this->groupService = new GroupService();
         $this->notificationService = new NotificationService();
     }
 
@@ -36,19 +39,12 @@ class AcceptRequestController extends Controller
 
     protected function sendNotifications (Group $group, Project $project)
     {
-        $FcmTokens = [];
-
-        foreach ($group->members()->get() as $member) $FcmTokens[] = $member->student()->first()->device_token;
-
-        $notification = new Request();
-        $notification->setMethod('POST');
-        $notification->request->add([
-            'FcmToken' => $FcmTokens,
-            'title' => 'Supervision Request',
-            'description' => Auth::guard()->user()->name . " has accepted supervision request for \"" . $project->title . "\"",
-            'icon' => Auth::guard()->user()->avatar(),
-        ]);
-
-        $this->notificationService->send($notification);
+        $this->notificationService->send($this->notificationService->prepare(
+            $this->groupService->getDeviceTokens($group),
+            'Supervision Request',
+            Auth::guard()->user()->name . " has accepted supervision request for \"" . $project->title . "\"",
+            Auth::guard()->user()->avatar(),
+            route('project.view', $project),
+        ));
     }
 }
