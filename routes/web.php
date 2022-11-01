@@ -112,6 +112,11 @@ Route::middleware(['app.setup'])->group(function () {
                 Route::post('/{assignment}/submission/add', \App\Http\Controllers\Submission\SubmitController::class)->name('add.assignment.submission');
             });
         });
+        
+        Route::prefix('view/project/{project}/rejection/{rejection}')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Rejections\AppealController::class, 'show'])->name('view.appeals');
+            Route::post('/', [\App\Http\Controllers\Rejections\AppealController::class, 'add'])->name('create.appeal');
+        });
     });
 
     Route::prefix('supervisor')->group(function () {
