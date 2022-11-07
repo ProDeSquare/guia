@@ -36,13 +36,6 @@
                             </div>
                         </div>
                     @endif
-
-                {{-- @elseif (Auth::guard()->user()->mainGroup()->projects()->count())
-                    @if (Auth::guard()->user()->mainGroup()->acceptedProject())
-                        <p>Nothing was yet assigned to you by your supervisor.</p>
-                    @else
-                        <p>Your project haven't been approved yet.</p>
-                    @endif --}}
                 </div>
             @else
                 <p>You're not in any group.</p>
