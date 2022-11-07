@@ -12,8 +12,8 @@
 
         <div class="page-body">
             @if (Auth::guard()->user()->isGrouped())
-                @if (Auth::guard()->user()->assignments()->count())
-                    <div class="row">
+                <div class="row">
+                    @if (Auth::guard()->user()->assignments()->count())
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-header">
@@ -35,14 +35,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @elseif (Auth::guard()->user()->mainGroup()->projects()->count())
+                    @endif
+
+                {{-- @elseif (Auth::guard()->user()->mainGroup()->projects()->count())
                     @if (Auth::guard()->user()->mainGroup()->acceptedProject())
                         <p>Nothing was yet assigned to you by your supervisor.</p>
                     @else
                         <p>Your project haven't been approved yet.</p>
-                    @endif
-                @endif
+                    @endif --}}
+                </div>
             @else
                 <p>You're not in any group.</p>
             @endif
