@@ -63,6 +63,24 @@
                                 </div>
                             </div>
                         </div>
+                    @elseif (Auth::guard()->user()->mainGroup()->projects()->count())
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Group Projects</h3>
+                                </div>
+    
+                                <div class="card-body">
+                                    <ul>
+                                        @foreach (Auth::guard()->user()->mainGroup()->projects()->get() as $project)
+                                            <li>
+                                                <a href="{{ route('project.view', $project) }}">{{ $project->title }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     @endif
 
                     @if (Auth::guard()->user()->assignments()->count())
