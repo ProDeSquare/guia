@@ -63,6 +63,30 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        Recent Assignments
+                                    </h3>
+                                </div>
+        
+                                <div class="card-body">
+                                    <ul>
+                                        @forelse (Auth::guard()->user()->assignments()->latest()->get() as $assignment)
+                                            <li>
+                                                <a href="{{ route('assignment.view', [$assignment->project()->first()->id, $assignment->milestone()->first()->id, $assignment->id]) }}">
+                                                    {!! $assignment->is_completed ? '<del>' . $assignment->title . '</del>' : $assignment->title !!}
+                                                </a>
+                                            </li>
+                                        @empty
+                                            <li>Nothing was assigned to you</li>
+                                        @endforelse
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     @elseif (Auth::guard()->user()->mainGroup()->projects()->count())
                         <div class="col-lg-4">
                             <div class="card">
@@ -75,30 +99,6 @@
                                         @foreach (Auth::guard()->user()->mainGroup()->projects()->get() as $project)
                                             <li>
                                                 <a href="{{ route('project.view', $project) }}">{{ $project->title }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
-                    @if (Auth::guard()->user()->assignments()->count())
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">
-                                        Recent Assignments
-                                    </h3>
-                                </div>
-        
-                                <div class="card-body">
-                                    <ul>
-                                        @foreach (Auth::guard()->user()->assignments()->latest()->get() as $assignment)
-                                            <li>
-                                                <a href="{{ route('assignment.view', [$assignment->project()->first()->id, $assignment->milestone()->first()->id, $assignment->id]) }}">
-                                                    {!! $assignment->is_completed ? '<del>' . $assignment->title . '</del>' : $assignment->title !!}
-                                                </a>
                                             </li>
                                         @endforeach
                                     </ul>
