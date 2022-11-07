@@ -33,6 +33,36 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Project Supervisor</h3>
+                                </div>
+
+                                <div class="card-body o-auto" style="max-height: 15rem">
+                                    @php $supervisor = Auth::guard()->user()->mainGroup()->supervisor()->first()->supervisor()->first() @endphp
+
+                                    <ul class="list-unstyled list-separated">
+                                        <li class="list-separated-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <span class="avatar avatar-md d-block" style="background-image: url({{ $supervisor->avatar() }})"></span>
+                                                </div>
+                                                <div class="col">
+                                                    <div>
+                                                        <a href="{{ route('teacher.profile', $supervisor->id) }}" class="text-inherit">{{ $supervisor->name }}</a>
+                                                    </div>
+                                                    <small class="d-block item-except text-sm text-muted h-1x">
+                                                        {{ $supervisor->email }}
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     @endif
 
                     @if (Auth::guard()->user()->assignments()->count())
