@@ -13,6 +13,28 @@
         <div class="page-body">
             @if (Auth::guard()->user()->isGrouped())
                 <div class="row">
+                    @if (Auth::guard()->user()->mainGroup()->acceptedProject())
+                        @php $project = Auth::guard()->user()->mainGroup()->acceptedProject(); @endphp
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <a href="{{ route('project.view', $project) }}">{{ $project->title }}</a>
+
+                                        <span class="badge badge-teacher-student ml-1">Active</span>
+                                    </h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <div>
+                                        {{ Markdown::parse($project->description) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     @if (Auth::guard()->user()->assignments()->count())
                         <div class="col-lg-4">
                             <div class="card">
