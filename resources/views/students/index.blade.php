@@ -105,6 +105,17 @@
                                 </div>
                             </div>
                         </div>
+                    @else
+                        <div class="col-lg">
+                            <p>Your group doesn't have any project yet</p>
+
+                            <a
+                                class="btn btn-primary"
+                                href="{{ route('create.project') }}"
+                            >
+                                Create a project
+                            </a>
+                        </div>
                     @endif
                 </div>
             @else
