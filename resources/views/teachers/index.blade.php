@@ -12,62 +12,64 @@
 
         <div class="page-body">
             @if (Auth::guard()->user()->underSupervision()->count())
-                <h5>Under Supervision</h5>
+                <section>
+                    <h5>Under Supervision</h5>
 
-                <div class="row">
-                    @foreach (Auth::guard()->user()->underSupervision()->latest()->get() as $underSupervision)
-                        @php $group = $underSupervision->group()->first(); @endphp
+                    <div class="row">
+                        @foreach (Auth::guard()->user()->underSupervision()->latest()->get() as $underSupervision)
+                            @php $group = $underSupervision->group()->first(); @endphp
 
-                        <div class="col-lg-4 mb-4">
-                            <div class="card card-body">
-                                <div>
-                                    <a
-                                        class="badge badge-teacher-student"
-                                        href="{{ route('view.group.projects', $group) }}"
-                                    >
-                                        #{{ $group->id }}
-                                    </a>
-                                </div>
-
-                                <h3 class="card-title mt-5">
-                                    <a href="{{ route('project.view', $group->acceptedProject()) }}">
-                                        {{ $group->acceptedProject()->title }}
-                                    </a>
-                                </h3>
-
-                                <div>
-                                    @if ($group->acceptedProject()->github_repo)
-                                        <a class="btn btn-outline-dark btn-sm" href="{{ $group->acceptedProject()->github_repo }}" target="_blank">
-                                            <span class="fa fa-github"></span> GitHub
-                                        </a>
-                                    @else
+                            <div class="col-lg-4 mb-4">
+                                <div class="card card-body">
+                                    <div>
                                         <a
-                                            class="btn btn-outline-dark btn-sm disabled"
-                                            href="#"
-                                            target="_blank"
+                                            class="badge badge-teacher-student"
+                                            href="{{ route('view.group.projects', $group) }}"
                                         >
-                                            <span class="fa fa-github"></span> GitHub
+                                            #{{ $group->id }}
                                         </a>
-                                    @endif
+                                    </div>
 
-                                    @if ($group->acceptedProject()->link)
-                                        <a class="btn btn-outline-primary btn-sm" href="{{ $group->acceptedProject()->link }}" target="_blank">
-                                            <span class="fa fa-link"></span> Link
+                                    <h3 class="card-title mt-5">
+                                        <a href="{{ route('project.view', $group->acceptedProject()) }}">
+                                            {{ $group->acceptedProject()->title }}
                                         </a>
-                                    @else
-                                        <a
-                                            class="btn btn-outline-primary btn-sm disabled"
-                                            href="#"
-                                            target="_blank"
-                                        >
-                                            <span class="fa fa-link"></span> Link
-                                        </a>
-                                    @endif
+                                    </h3>
+
+                                    <div>
+                                        @if ($group->acceptedProject()->github_repo)
+                                            <a class="btn btn-outline-dark btn-sm" href="{{ $group->acceptedProject()->github_repo }}" target="_blank">
+                                                <span class="fa fa-github"></span> GitHub
+                                            </a>
+                                        @else
+                                            <a
+                                                class="btn btn-outline-dark btn-sm disabled"
+                                                href="#"
+                                                target="_blank"
+                                            >
+                                                <span class="fa fa-github"></span> GitHub
+                                            </a>
+                                        @endif
+
+                                        @if ($group->acceptedProject()->link)
+                                            <a class="btn btn-outline-primary btn-sm" href="{{ $group->acceptedProject()->link }}" target="_blank">
+                                                <span class="fa fa-link"></span> Link
+                                            </a>
+                                        @else
+                                            <a
+                                                class="btn btn-outline-primary btn-sm disabled"
+                                                href="#"
+                                                target="_blank"
+                                            >
+                                                <span class="fa fa-link"></span> Link
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
+                </section>
             @else
                 <p>You aren't supervising any groups</p>
 
