@@ -12,51 +12,64 @@
 
         <div class="page-body">
             @if (Auth::guard()->user()->underSupervision()->count())
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
-                                <thead>
-                                    <tr>
-                                        <th>Supervising</th>
-                                        <th>Project</th>
-                                    </tr>
-                                </thead>
-    
-                                <tbody>
-                                    @foreach (Auth::guard()->user()->underSupervision()->latest()->get() as $underSupervision)
-                                        @php
-                                            $group = $underSupervision->group()->first();
-                                        @endphp
+                <h5>Under Supervision</h5>
 
-                                        <tr>
-                                            <td>
-                                                <div>
-                                                    Group
-                                                    <a href="{{ route('view.group.projects', $group->id) }}">
-                                                        #{{ $group->id }}
-                                                    </a>
-                                                </div>
-                                                <div class="small text-muted">
-                                                    {{ $underSupervision->created_at->diffForHumans() }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <a href="{{ route('project.view', $group->acceptedProject()->id) }}">
-                                                        {{ $group->acceptedProject()->title }}
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                <div class="row">
+                    @foreach (Auth::guard()->user()->underSupervision()->latest()->get() as $underSupervision)
+                        @php $group = $underSupervision->group()->first(); @endphp
+
+                        <div class="col-lg-4 mb-4">
+                            <div class="card card-body">
+                                <div>
+                                    <a
+                                        class="badge badge-teacher-student"
+                                        href="{{ route('view.group.projects', $group) }}"
+                                    >
+                                        #{{ $group->id }}
+                                    </a>
+                                </div>
+
+                                <h3 class="card-title mt-5">
+                                    <a href="{{ route('project.view', $group->acceptedProject()) }}">
+                                        {{ $group->acceptedProject()->title }}
+                                    </a>
+                                </h3>
+
+                                <div>
+                                    @if ($group->acceptedProject()->github_repo)
+                                        <a class="btn btn-outline-dark btn-sm" href="{{ $group->acceptedProject()->github_repo }}" target="_blank">
+                                            <span class="fa fa-github"></span> GitHub
+                                        </a>
+                                    @else
+                                        <a
+                                            class="btn btn-outline-dark btn-sm disabled"
+                                            href="#"
+                                            target="_blank"
+                                        >
+                                            <span class="fa fa-github"></span> GitHub
+                                        </a>
+                                    @endif
+
+                                    @if ($group->acceptedProject()->link)
+                                        <a class="btn btn-outline-primary btn-sm" href="{{ $group->acceptedProject()->link }}" target="_blank">
+                                            <span class="fa fa-link"></span> Link
+                                        </a>
+                                    @else
+                                        <a
+                                            class="btn btn-outline-primary btn-sm disabled"
+                                            href="#"
+                                            target="_blank"
+                                        >
+                                            <span class="fa fa-link"></span> Link
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             @else
-                <p>You aren't supervising any groups yet.</p>
+                <p>You aren't supervising any groups</p>
             @endif
         </div>
     </div>
