@@ -80,6 +80,29 @@
                     >{{ Auth::guard()->user()->supervisionRequests()->count() }} new requests</a>
                 @endif
             @endif
+
+
+            @if (Auth::guard()->user()->rejections()->count())
+                <section class="mt-6">
+                    <h5>Recent Rejections</h5>
+
+                    <div class="row">
+                        @foreach (Auth::guard()->user()->rejections()->latest()->limit(3)->get() as $rejection)
+                            <div class="col-lg-4 mb-4">
+                                <div class="card card-body">
+                                    <div>
+                                        <a class="badge badge-teacher-student" href="{{ route('view.appeals', [$rejection->project_id, $rejection]) }}">#{{ $rejection->id }}</a>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        {{ Markdown::parse($rejection->comment) }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
         </div>
     </div>
 @endsection
