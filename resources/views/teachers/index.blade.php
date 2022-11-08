@@ -70,6 +70,13 @@
                 </div>
             @else
                 <p>You aren't supervising any groups</p>
+
+                @if (Auth::guard()->user()->supervisionRequests()->count())
+                    <a
+                        href="{{ route('supervision.requests') }}"
+                        class="btn btn-primary"
+                    >{{ Auth::guard()->user()->supervisionRequests()->count() }} new requests</a>
+                @endif
             @endif
         </div>
     </div>
