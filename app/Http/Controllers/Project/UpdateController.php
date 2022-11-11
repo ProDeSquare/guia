@@ -20,6 +20,8 @@ class UpdateController extends Controller
         if (Auth::guard()->user()->getGroupId() !== $project->group_id) abort(404);
         if (Auth::guard()->user()->mainGroup()->supervisor()->count()) abort(404);
 
+        $project->edits()->create($project->toArray());
+
         $project->update($request->validated());
 
         return redirect()->route('project.view', $project->id);

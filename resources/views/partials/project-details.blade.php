@@ -46,18 +46,21 @@
 
                 <span class="text-muted">
                     {{ $project->created_at->format('d M Y h:iA') }},
-                    {{ $project->created_at->diffForHumans() }}
+                    {{ $project->created_at->diffForHumans(null, true, true) }}
                 </span>
             </div>
 
-            <div class="small">
-                <strong>Updated: </strong>
+            @if ($project->edits()->count())
+                <div class="small">
+                    <strong>Updated: </strong>
 
-                <span class="text-muted">
-                    {{ $project->updated_at->format('d M Y h:iA') }},
-                    {{ $project->updated_at->diffForHumans() }}
-                </span>
-            </div>
+                    <span class="text-muted">
+                        {{ $project->edits()->latest()->first()->updated_at->format('d M Y h:iA') }},
+                        {{ $project->edits()->latest()->first()->updated_at->diffForHumans(null, true, true) }} •
+                        <a href="{{ route('project.edit.history', $project) }}">View Edit History</a>
+                    </span>
+                </div>
+            @endif
         </div>
     </div>
 
