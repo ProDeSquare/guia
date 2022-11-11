@@ -93,6 +93,8 @@ Route::middleware(['app.setup'])->group(function () {
 
         Route::get('view/project/{project}', \App\Http\Controllers\Project\ViewController::class)->name('project.view');
 
+        Route::get('view/project/{project}/edit-history', \App\Http\Controllers\Project\EditHistoryController::class)->name('project.edit.history');
+
         Route::prefix('view/project/{project}/milestones')->group(function () {
             Route::get('/', \App\Http\Controllers\Milestones\GetMilestonesController::class)->name('project.milestones');
 
