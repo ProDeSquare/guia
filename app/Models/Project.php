@@ -45,4 +45,9 @@ class Project extends Model implements Searchable
             $url,
         ); 
     }
+
+    public function edits ()
+    {
+        return $this->hasMany(ProjectEditHistory::class, 'project_id');
+    }
 }
