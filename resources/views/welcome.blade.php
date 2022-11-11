@@ -47,7 +47,7 @@
         </div>
 
         <div class="text-center">
-            I'm an <a href="{{ url('/admin/login') }}">admin.</a>
+            <a href="{{ url('/admin/login') }}">Administrator Login</a>
         </div>
     </div>
 @endsection
