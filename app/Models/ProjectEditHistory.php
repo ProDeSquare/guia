@@ -9,6 +9,8 @@ class ProjectEditHistory extends Model
 {
     use HasFactory;
 
+    protected $table = 'projects_edit_history';
+
     protected $fillable = [
         'technologies',
         'description',
