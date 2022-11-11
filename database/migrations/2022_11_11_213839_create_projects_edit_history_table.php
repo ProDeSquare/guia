@@ -15,6 +15,12 @@ class CreateProjectsEditHistoryTable extends Migration
     {
         Schema::create('projects_edit_history', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project_id');
+            $table->string('title');
+            $table->text('description');
+            $table->string('github_repo')->nullable();
+            $table->string('technologies');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
