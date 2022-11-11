@@ -57,7 +57,7 @@
                     <span class="text-muted">
                         {{ $project->edits()->latest()->first()->updated_at->format('d M Y h:iA') }},
                         {{ $project->edits()->latest()->first()->updated_at->diffForHumans(null, true, true) }} •
-                        <a href="#">View Edit History</a>
+                        <a href="{{ route('project.edit.history', $project) }}">View Edit History</a>
                     </span>
                 </div>
             @endif
