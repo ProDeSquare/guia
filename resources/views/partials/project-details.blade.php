@@ -50,14 +50,16 @@
                 </span>
             </div>
 
-            <div class="small">
-                <strong>Updated: </strong>
+            @if ($project->edits()->count())
+                <div class="small">
+                    <strong>Updated: </strong>
 
-                <span class="text-muted">
-                    {{ $project->updated_at->format('d M Y h:iA') }},
-                    {{ $project->updated_at->diffForHumans() }}
-                </span>
-            </div>
+                    <span class="text-muted">
+                        {{ $project->edits()->latest()->first()->updated_at->format('d M Y h:iA') }},
+                        {{ $project->edits()->latest()->first()->updated_at->diffForHumans() }}
+                    </span>
+                </div>
+            @endif
         </div>
     </div>
 
