@@ -21,6 +21,7 @@ class CreateProjectsEditHistoryTable extends Migration
             $table->string('github_repo')->nullable();
             $table->string('technologies');
             $table->string('link')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }
