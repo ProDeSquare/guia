@@ -17,4 +17,9 @@ class ProjectEditHistory extends Model
         'title',
         'link',
     ];
+
+    public function project ()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
 }
