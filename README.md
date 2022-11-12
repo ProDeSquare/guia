@@ -46,11 +46,17 @@ $ php artisan serve
 $ php artisan test
 ```
 
+### License
+**Guía** is licensed under the `GNU General Public License v3.0`. Checkout the [LICENSE](./LICENSE) file for more info.
+
 ### Contributors
 - [Hamza Mughal](https://prodesquare.com)
 
 ### Special thanks to
 - [Tabler.io](https://tabler.io/) for providing FOSS theme
+
+### Contact
+- Email: [hamza@prodesquare.com](mailto:hamza@prodesquare.com)
 
 ### Donate
 - Bitcoin: `18Hd1waYh5uG6nWRboXGD3Q3vaPzWRMgQH`
