@@ -123,5 +123,9 @@
             });
         </script>
     @endif
+
+    @auth
+        <script src="{{ asset('assets/js/resize-textarea.js') }}"></script>
+    @endauth
 </body>
 </html>
