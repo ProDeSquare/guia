@@ -29,6 +29,10 @@
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
 
+    <!-- Prism -->
+    <link rel="stylesheet" href="{{ asset('assets/css/prism.css') }}">
+    <script src="{{ asset('assets/js/prism.js') }}"></script>
+
     <link rel="stylesheet" href="{{ asset('assets/css/_app.css') }}" />
 </head>
 <body>
