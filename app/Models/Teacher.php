@@ -20,8 +20,6 @@ class Teacher extends Authenticatable implements Searchable
         'name',
         'email',
         'password',
-        'supervise_count',
-        'co_supervise_count',
         'requirements',
         'bio',
         'whatsapp',
