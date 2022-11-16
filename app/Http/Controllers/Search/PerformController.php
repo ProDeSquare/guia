@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Search;
 
 use Auth;
+use App\Models\Faq;
 use App\Models\Project;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -37,6 +38,9 @@ class PerformController extends Controller
             })->registerModel(Project::class, function (ModelSearchAspect $modelSearchAspect) {
                 $modelSearchAspect
                     ->addSearchableAttribute('title');
+            })->registerModel(Faq::class, function (ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('question');
             })->search($request->q);
 
         Auth::guard()->user()->searchHistory()->updateOrCreate([
