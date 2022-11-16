@@ -89,8 +89,6 @@ class TeacherTest extends TestCase
         $response = $this->post('/teacher/profile/update', [
             'bio' => 'I\'m the best teacher',
             'requirements' => 'GitHub Copilot',
-            'supervise_count' => 3,
-            'co_supervise_count' => 3,
             'whatsapp' => 'wa.me/03036310300',
         ]);
 

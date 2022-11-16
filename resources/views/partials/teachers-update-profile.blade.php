@@ -27,32 +27,6 @@
                 @enderror
             </div>
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="supervise_count">Supervisors Count</label>
-
-                        <input type="number" class="form-control @error('supervise_count') is-invalid @enderror" id="supervise_count" name="supervise_count" value="{{ old('supervise_count') ?? $teacher->supervise_count }}" required />
-                    
-                        @error('supervise_count')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="co_supervise_count">Co-supervisors Count</label>
-
-                        <input type="number" class="form-control @error('co_supervise_count') is-invalid @enderror" id="co_supervise_count" name="co_supervise_count" value="{{ old('co_supervise_count') ?? $teacher->co_supervise_count }}" required />
-                    
-                        @error('co_supervise_count')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-
             <div class="form-group">
                 <label for="whatsapp" class="form-label">WhatsApp link</label>
 

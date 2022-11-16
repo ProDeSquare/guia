@@ -20,8 +20,6 @@ class CreateTeachersTable extends Migration
             $table->string('password');
             $table->text('avatar')->nullable();
             $table->rememberToken();
-            $table->integer('supervise_count')->default(0);
-            $table->integer('co_supervise_count')->default(0);
             $table->string('requirements')->nullable();
             $table->text('bio')->nullable();
             $table->string('whatsapp')->nullable();
