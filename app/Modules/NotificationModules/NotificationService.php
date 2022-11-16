@@ -3,6 +3,7 @@
 namespace App\Modules\NotificationModules;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class NotificationService
 {
@@ -23,6 +24,8 @@ class NotificationService
 
     public function send(Request $request)
     {
+        if (App::environment() == 'testing') return;
+
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
