@@ -12,7 +12,7 @@
 
         <div class="page-body">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
@@ -53,8 +53,8 @@
                     </div>
                 </div>
     
-                <div class="col-lg-6">
-                    {{--  --}}
+                <div class="col-lg-8">
+                    <p class="text-center">No recent uploads</p>
                 </div>
             </div>
         </div>
