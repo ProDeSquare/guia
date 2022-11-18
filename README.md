@@ -16,6 +16,10 @@ In order to setup follow these guidelines.
     ```shell
     $ php artisan key:generate
     ```
+- Link `storage` directory to the `public` directory
+    ```shell
+    $ php artisan storage:link
+    ```
 - Create an empty database and fill in the credentials
     ```
     DB_DATABASE=guia
