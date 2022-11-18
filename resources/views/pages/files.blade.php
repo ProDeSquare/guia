@@ -58,7 +58,44 @@
                 </div>
     
                 <div class="col-lg-8">
-                    <p class="text-center">No recent uploads</p>
+                    @if ($uploads->count())
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Recent File Uploads
+                                </h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Link</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach ($uploads as $upload)
+                                                <tr>
+                                                    <td>{{ $upload->title }}</td>
+
+                                                    <td>
+                                                        <a href="{{ $upload->file }}" target="_blank">{{ url('') . $upload->file }}</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <p class="text-center">No recent uploads</p>
+                    @endif
+
+                    <div class="mb-6">{{ $uploads->links() }}</div>
                 </div>
             </div>
         </div>
