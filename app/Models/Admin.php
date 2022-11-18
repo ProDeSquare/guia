@@ -49,4 +49,9 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Search::class, 'user_id')->where('guard', $this->guard);
     }
+
+    public function uploads ()
+    {
+        return $this->hasMany(Upload::class, 'user_id')->where('guard', $this->guard);
+    }
 }

@@ -81,4 +81,9 @@ class Teacher extends Authenticatable implements Searchable
     {
         return $this->hasMany(Rejection::class, 'teacher_id');
     }
+
+    public function uploads ()
+    {
+        return $this->hasMany(Upload::class, 'user_id')->where('guard', $this->guard);
+    }
 }

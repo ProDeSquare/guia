@@ -117,4 +117,9 @@ class Student extends Authenticatable implements Searchable
             ? $this->assignments()->where('id', $assignment->id)->count()
             : false;
     }
+
+    public function uploads ()
+    {
+        return $this->hasMany(Upload::class, 'user_id')->where('guard', $this->guard);
+    }
 }
