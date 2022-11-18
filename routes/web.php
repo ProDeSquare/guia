@@ -150,6 +150,11 @@ Route::middleware(['app.setup'])->group(function () {
     });
 });
 
+Route::prefix('file-uploads')->group(function () {
+    Route::get('/', [App\Http\Controllers\File\UploadController::class, 'show'])->name('file.upload');
+    Route::post('/', [App\Http\Controllers\File\UploadController::class, 'add'])->name('file.upload');
+});
+
 Route::post('/save-device-token', App\Http\Controllers\Notifications\NotificationController::class)->name('save-device-token');
 
 Route::get('/projects/history/{year?}', \App\Http\Controllers\History\ProjectsController::class)->name('projects.history');
