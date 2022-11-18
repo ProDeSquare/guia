@@ -159,7 +159,7 @@
                         @endif
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link {{ Route::currentRouteName() === 'file.upload' ? 'active' : '' }}"><i class="fe fe-plus"></i> File Upload</a>
+                            <a href="{{ route('file.upload') }}" class="nav-link {{ Route::currentRouteName() === 'file.upload' ? 'active' : '' }}"><i class="fe fe-plus"></i> File Upload</a>
                         </li>
                     </ul>
                 </div>
