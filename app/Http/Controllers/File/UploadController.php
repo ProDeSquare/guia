@@ -18,6 +18,6 @@ class UploadController extends Controller
 
     public function show ()
     {
-        // 
+        return view('pages.files');
     }
 }
