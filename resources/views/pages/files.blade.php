@@ -66,13 +66,13 @@
                                 </h3>
                             </div>
 
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
                                         <thead>
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Link</th>
+                                                <th>File Link</th>
                                             </tr>
                                         </thead>
 
