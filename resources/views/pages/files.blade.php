@@ -38,6 +38,10 @@
                                     <input type="file" id="file">
 
                                     <label class="custom-file-label text-truncate" for="file" id="file-input-label">Choose File</label>
+
+                                    @error('file')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="d-flex justify-content-between">
