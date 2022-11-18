@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="custom-file mb-4">
-                                    <input type="file" id="file">
+                                    <input type="file" id="file" name="file">
 
                                     <label class="custom-file-label text-truncate" for="file" id="file-input-label">Choose File</label>
 
