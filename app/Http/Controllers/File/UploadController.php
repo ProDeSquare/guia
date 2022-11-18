@@ -34,6 +34,6 @@ class UploadController extends Controller
 
     public function show ()
     {
-        return view('pages.files');
+        return view('pages.files')->withUploads(Auth::guard()->user()->uploads()->latest()->simplePaginate(25));
     }
 }
