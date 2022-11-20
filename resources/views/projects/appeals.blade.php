@@ -26,7 +26,7 @@
                                 <div class="col-lg-1 mb-4">
                                     <div
                                         class="avatar d-block"
-                                        style="background-image: url({{ $rejection->teacher()->first()->avatar() }})"
+                                        style="background-image: url({{ $rejection->teacher()->first()->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($rejection->teacher()->first()->email) }}?d=mm)"
                                     ></div>
                                 </div>
                 
@@ -143,7 +143,7 @@
                                         <div class="col-lg-1 mb-4">
                                             <div
                                                 class="avatar d-block"
-                                                style="background-image: url({{ $appeal->owner()->first()->avatar() }})"
+                                                style="background-image: url({{ $appeal->owner()->first()->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($appeal->owner()->first()->email) }}?d=mm)"
                                             ></div>
                                         </div>
                         
