@@ -27,6 +27,7 @@ class Student extends Authenticatable implements Searchable
         'github',
         'enabled',
         'device_token',
+        'avatar',
     ];
 
     protected $hidden = [
