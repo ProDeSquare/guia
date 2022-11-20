@@ -19,7 +19,10 @@
                 <div class="d-flex order-lg-2 ml-auto">
                     <div class="dropdown">
                         <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                        <span class="avatar" style="background-image: url({{ auth()->guard()->user()->avatar() }})"></span>
+                        <span
+                            class="avatar"
+                            style="background-image: url({{ auth()->guard()->user()->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5(auth()->guard()->user()->email) }}?d=mm)"
+                        ></span>
                         <span class="ml-2 d-none d-lg-block">
                         <span class="text-default">
                             {{ auth()->guard()->user()->name }}
