@@ -25,7 +25,10 @@
                                     <li class="list-separated-item">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
-                                                <span class="avatar avatar-md d-block" style="background-image: url({{ $moderator->avatar() }})"></span>
+                                                <span
+                                                    class="avatar avatar-md d-block"
+                                                    style="background-image: url({{ $moderator->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($moderator->email) }}?d=mm)"
+                                                ></span>
                                             </div>
                                             <div class="col">
                                                 <div>
