@@ -37,7 +37,10 @@
                                 @foreach ($teachers as $teacher)
                                     <tr>
                                         <td>
-                                            <div class="avatar d-block" style="background-image: url({{ $teacher->avatar() }})"></div>
+                                            <div
+                                                class="avatar d-block"
+                                                style="background-image: url({{ $teacher->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($teacher->email) }}?d=mm)"
+                                            ></div>
                                         </td>
 
                                         <td>

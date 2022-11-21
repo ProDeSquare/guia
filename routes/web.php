@@ -138,6 +138,8 @@ Route::middleware(['app.setup'])->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('/auth/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
         Route::post('/auth/update/password', \App\Http\Controllers\Auth\UpdatePasswordController::class)->name('update.password');
+
+        Route::put('/update/avatar', \App\Http\Controllers\Auth\AvatarController::class)->name('update.avatar');
     });
 
     Route::prefix('frequently-asked-questions')->group(function () {

@@ -25,7 +25,10 @@
                                     <li class="list-separated-item">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
-                                                <span class="avatar avatar-md d-block" style="background-image: url({{ $teacher->avatar() }})"></span>
+                                                <span
+                                                    class="avatar avatar-md d-block"
+                                                    style="background-image: url({{ $teacher->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($teacher->email) }}?d=mm)"
+                                                ></span>
                                             </div>
                                             <div class="col">
                                                 <div>
@@ -59,7 +62,10 @@
                                     <li class="list-separated-item">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
-                                                <span class="avatar avatar-md d-block" style="background-image: url({{ $student->avatar() }})"></span>
+                                                <span
+                                                    class="avatar avatar-md d-block"
+                                                    style="background-image: url({{ $student->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($student->email) }}?d=mm)"
+                                                ></span>
                                             </div>
                                             <div class="col">
                                                 <div>

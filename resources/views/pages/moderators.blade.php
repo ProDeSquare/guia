@@ -38,7 +38,10 @@
                                 @foreach ($moderators as $mod)
                                     <tr>
                                         <td>
-                                            <div class="avatar d-block" style="background-image: url({{ $mod->avatar() }})"></div>
+                                            <div
+                                                class="avatar d-block"
+                                                style="background-image: url({{ $mod->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($mod->email) }}?d=mm)"
+                                            ></div>
                                         </td>
 
                                         <td>

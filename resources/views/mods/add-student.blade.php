@@ -106,7 +106,10 @@
                                             <div class="users-list-div">
                                                 <div class="row">
                                                     <div class="col-auto">
-                                                        <span class="avatar" style="background-image: url({{ $student->avatar() }})"></span>
+                                                        <span
+                                                            class="avatar"
+                                                            style="background-image: url({{ $student->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($student->email) }}?d=mm)"
+                                                        ></span>
                                                     </div>
                                                     <div class="col">
                                                         <div class="text-truncate">

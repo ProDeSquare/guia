@@ -24,6 +24,7 @@ class Teacher extends Authenticatable implements Searchable
         'bio',
         'whatsapp',
         'device_token',
+        'avatar',
     ];
 
     protected $hidden = [

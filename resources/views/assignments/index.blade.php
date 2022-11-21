@@ -37,7 +37,10 @@
                                 <li class="list-separated-item">
                                     <div class="row align-items-center">
                                         <div class="col-auto">
-                                            <span class="avatar avatar-md d-block" style="background-image: url({{ $assignment->student()->first()->avatar() }})"></span>
+                                            <span
+                                                class="avatar avatar-md d-block"
+                                                style="background-image: url({{ $assignment->student()->first()->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($assignment->student()->first()->email) }}?d=mm)"
+                                            ></span>
                                         </div>
                                         <div class="col">
                                             <div>
@@ -209,12 +212,12 @@
                                         @if ($submission->guard === 'student')
                                             <div
                                                 class="avatar d-block"
-                                                style="background-image: url({{ $assignment->student()->first()->avatar() }})"
+                                                style="background-image: url({{ $assignment->student()->first()->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($assignment->student()->first()->email) }}?d=mm)"
                                             ></div>
                                         @else
                                             <div
                                                 class="avatar d-block"
-                                                style="background-image: url({{ $supervisor->avatar() }})"
+                                                style="background-image: url({{ $supervisor->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($supervisor->email) }}?d=mm)"
                                             ></div>
                                         @endif
                                     </div>

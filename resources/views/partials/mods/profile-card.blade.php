@@ -2,7 +2,13 @@
     <div class="card-header"></div>
 
     <div class="card-body text-center">
-        <div class="profile-image-container" style="background-image: url({{ $mod->avatar() }})"></div>
+        <div class="profile-image-container">
+            <img
+                src="{{ $mod->avatar() }}"
+                alt="{{ $mod->name }}'s avatar"
+                onerror="this.onerror=null;this.src='https://www.gravatar.com/avatar/{{ md5($mod->email) }}?d=mm'"
+            />
+        </div>
 
         <h3 class="mb-3">{{ $mod->name }}</h3>
 

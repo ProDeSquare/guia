@@ -11,7 +11,10 @@
                 <li class="list-separated-item">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <span class="avatar avatar-md d-block" style="background-image: url({{ $member->student()->first()->avatar() }})"></span>
+                            <span
+                                class="avatar avatar-md d-block"
+                                style="background-image: url({{ $member->student()->first()->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($member->student()->first()->email) }}?d=mm)"
+                            ></span>
                         </div>
                         <div class="col">
                             <div>
@@ -41,7 +44,7 @@
                 <li class="list-separated-item">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <span class="avatar avatar-md d-block" style="background-image: url({{ $supervisor->avatar() }})"></span>
+                            <span class="avatar avatar-md d-block" style="background-image: url({{ $supervisor->avatar() }}), url(https://www.gravatar.com/avatar/{{ md5($supervisor->email) }}?d=mm)"></span>
                         </div>
                         <div class="col">
                             <div>
