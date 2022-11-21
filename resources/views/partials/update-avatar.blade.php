@@ -18,7 +18,7 @@
                     name="avatar"
                 />
 
-                <small class="form-hint">Empty the field to switch to default avatar</small>
+                <small class="form-hint">Empty the field to switch to default avatar. You can upload your image <a href="{{ route('file.upload') }}">here</a> and copy/paste the link</small>
 
                 @error('avatar')
                     <div class="invalid-feedback">{{ $message }}</div>
