@@ -2,7 +2,7 @@
     <div class="card-body">
         <h3 class="card-title">Update Avatar</h3>
 
-        <form action="#" method="post">
+        <form action="{{ route('update.avatar') }}" method="post">
             @csrf
 
             @method('put')
