@@ -16,6 +16,7 @@
 
                 <div class="col-lg">
                     @include('partials.update-password')
+                    @include('partials.update-avatar')
                 </div>
             </div>
         </div>
