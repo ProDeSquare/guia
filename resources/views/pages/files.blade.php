@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="title" class="form-label">Title <span class="text-red">*</span></label>
 
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="My project thumbnail" name="title" value="{{ old('title') }}" required>
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="File title" name="title" value="{{ old('title') }}" required>
 
                                     @error('title')
                                         <div class="invalid-feedback">{{ $message }}</div>
