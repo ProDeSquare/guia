@@ -108,6 +108,7 @@ class Markdown
     {
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
+            'html_input' => 'escape',
         ]);
 
         $converter->getEnvironment()->addExtension(new TableExtension());
