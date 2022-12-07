@@ -30,6 +30,10 @@ In order to setup follow these guidelines.
     ```shell
     $ php artisan migrate
     ```
+- Composer Dump Autoload
+    ```shell
+    $ composer dump-autoload
+    ```
 
 ## Enabling push notifications with firebase
 Guía uses firebase to send push notifications in the browser. Log in to [firebase](https://firebase.google.com)
