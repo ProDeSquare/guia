@@ -30,9 +30,15 @@
         }
     },
     "autoload-dev": {
+        "exclude-from-classmap": [
+            "vendor/laravel/framework/src/Illuminate/Mail/Markdown.php"
+        ],
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Overrides/Markdown.php"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [
