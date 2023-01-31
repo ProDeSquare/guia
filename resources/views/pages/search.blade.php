@@ -5,24 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="page-header">
-            @if (strlen(app('request')->input('q')))
-                <h3 class="page-title">
-                    Search Results.
-                </h3>
-            @else
-                <h3 class="page-title">
-                    Search For Something.
-                </h3>
-            @endif
-        </div>
-
+    <div class="container mt-6">
         <div class="page-body">
             <div class="row">
                 <div class="col-lg-8">
                     @if (strlen(app('request')->input('q')) < 3)
-                        There were no search results.
+                        <p>Search for something.</p>
                     @else
                         @include('partials.search-results')
                     @endif
