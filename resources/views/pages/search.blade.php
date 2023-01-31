@@ -8,7 +8,7 @@
     <div class="container mt-6">
         <div class="page-body">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     @if (strlen(app('request')->input('q')) < 3)
                         <p>Search for something.</p>
                     @else
@@ -16,7 +16,7 @@
                     @endif
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                     @if (Auth::guard()->user()->searchHistory()->count())
                         <div class="card">
                             <div class="card-header">
