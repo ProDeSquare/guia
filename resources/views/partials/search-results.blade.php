@@ -56,5 +56,27 @@
                 </div>
             @endforeach
         </div>
+    @else
+        <h3>{{ ucwords($type) }}</h3>
+
+        <div class="row">
+            @foreach ($modelSearchResults as $result)
+                <div class="col-lg-6 mb-5">
+                    <div class="card card-body">
+                        <div>
+                            <a class="badge badge-teacher-student" href="{{ route('faq.view', $result->searchable->id) }}">
+                                #{{ $result->searchable->id }}
+                            </a>
+                        </div>
+
+                        <h3 class="card-title mt-5">
+                            <a href="{{ route('faq.view', $result->searchable->id) }}">
+                                {{ $result->searchable->question }}
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     @endif
 @endforeach
