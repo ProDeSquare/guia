@@ -1,9 +1,9 @@
 <p>
-    There are <strong>{{ $results->count() }}</strong> results for <strong>{{ app('request')->input('q') }}</strong>
+    <strong>{{ $results->count() }}</strong> result(s) for <strong>{{ app('request')->input('q') }}</strong>
 </p>
 
 @foreach ($results->groupByType() as $type => $modelSearchResults)
-    <h4>Result in {{ ucwords($type) }}</h4>
+    <h4>{{ ucwords($type) }}</h4>
 
     @foreach ($modelSearchResults as $result)
         <ul>

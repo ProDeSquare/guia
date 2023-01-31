@@ -29,6 +29,7 @@
                                     @foreach (Auth::guard()->user()->searchHistory()->latest()->take(10)->get() as $searchQuery)
                                         <li>
                                             <a href="{{ route('search') . '?q=' . $searchQuery->query }}">{{ $searchQuery->query }}</a>
+                                            <small class="text-muted">• {{ $searchQuery->updated_at->format('d M Y') }}</small>
                                         </li>
                                     @endforeach
                                 </ul>
