@@ -127,7 +127,7 @@ class AdminTest extends TestCase
     {
         $this->actingAs(Admin::first(), 'admin');
 
-        $response = $this->get('/admin/view/2');
+        $response = $this->get(config('database.default') === 'mysql' ? '/admin/view/2' : '/admin/view/1');
 
         $response->assertStatus(200);
     }
