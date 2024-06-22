@@ -5,10 +5,10 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
+        "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^4.2.2",
         "spatie/laravel-searchable": "^1.11.2"
@@ -18,10 +18,16 @@
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10"
+        "nunomaduro/collision": "^8.1",
+        "phpunit/phpunit": "^11.2.5"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "vendor/laravel/framework/src/Illuminate/Mail/Markdown.php"
+        ],
+        "files": [
+            "app/Overrides/Markdown.php"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
@@ -29,15 +35,9 @@
         }
     },
     "autoload-dev": {
-        "exclude-from-classmap": [
-            "vendor/laravel/framework/src/Illuminate/Mail/Markdown.php"
-        ],
         "psr-4": {
             "Tests\\": "tests/"
-        },
-        "files": [
-            "app/Overrides/Markdown.php"
-        ]
+        }
     },
     "scripts": {
         "post-autoload-dump": [
